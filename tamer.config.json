@@ -1,0 +1,17 @@
+{
+  "android": {
+    "appName": "Tamer Dev App",
+    "packageName": "com.nanofuxion.tamerdevapp",
+    "sdk": "~/Library/Android/sdk"
+  },
+  "paths": {
+    "androidDir": "android"
+  },
+  "dev": {
+    "mode": "embedded"
+  },
+  "devServer": {
+    "host": "10.0.2.2",
+    "port": 3000
+  }
+}

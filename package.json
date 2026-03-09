@@ -1,0 +1,23 @@
+{
+  "name": "tamer-dev-app",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "Standalone Tamer4Lynx dev app - Expo Go-style QR scan and HMR",
+  "scripts": {
+    "build": "node scripts/build-dev-client-bundle.cjs"
+  },
+  "dependencies": {
+    "jiggle": "*",
+    "lynxwebsockets": "*",
+    "tamer-dev-client": "*"
+  },
+  "devDependencies": {
+    "@lynx-js/types": "3.3.0",
+    "@rsbuild/plugin-type-check": "1.2.3",
+    "@types/react": "^18.3.23",
+    "typescript": "~5.8.3"
+  },
+  "author": "Nanofuxion",
+  "license": "MIT"
+}
