@@ -10,7 +10,14 @@
   "dependencies": {
     "jiggle": "*",
     "lynxwebsockets": "*",
-    "tamer-dev-client": "*"
+    "tamer-dev-client": "*",
+    "tamer-icons": "*",
+    "tamer-router": "*",
+    "tamer-insets": "*",
+    "tamer-system-ui": "*",
+    "tamer-app-shell": "*",
+    "tamer-screen": "*",
+    "tamer-text-input": "*"
   },
   "devDependencies": {
     "@lynx-js/types": "3.3.0",

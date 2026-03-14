@@ -11,10 +11,9 @@ import com.facebook.imagepipeline.memory.PoolFactory;
 
 import com.lynx.service.http.LynxHttpService;
 import com.lynx.service.image.LynxImageService;
-import com.lynx.service.log.LynxLogService;
 import com.lynx.tasm.LynxEnv;
-
 import com.lynx.tasm.service.LynxServiceCenter;
+import com.nanofuxion.tamerdevclient.TamerRelogLogService;
 import com.nanofuxion.tamerdevapp.generated.GeneratedLynxExtensions;
 
 public class App extends Application {
@@ -32,7 +31,8 @@ public class App extends Application {
  }
 
   private void initLynxService() {
-    LynxServiceCenter.inst().registerService(LynxLogService.INSTANCE);
+    TamerRelogLogService.INSTANCE.init(this);
+    LynxServiceCenter.inst().registerService(TamerRelogLogService.INSTANCE);
     LynxServiceCenter.inst().registerService(LynxImageService.getInstance());
     LynxServiceCenter.inst().registerService(LynxHttpService.INSTANCE);
     }

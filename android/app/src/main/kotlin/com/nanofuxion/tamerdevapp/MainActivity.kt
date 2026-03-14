@@ -2,6 +2,9 @@ package com.nanofuxion.tamerdevapp
 
 import android.os.Build
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -19,6 +22,9 @@ import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
 import com.nanofuxion.tamerdevclient.DevClientModule
 
+import com.nanofuxion.tamerrouter.TamerRouterNativeModule
+import com.nanofuxion.tamerinsets.TamerInsetsModule
+import com.nanofuxion.tamerdevapp.generated.GeneratedLynxExtensions
 
 class MainActivity : AppCompatActivity() {
     private var reloadReceiver: BroadcastReceiver? = null
@@ -40,12 +46,9 @@ class MainActivity : AppCompatActivity() {
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
         lynxView = buildLynxView()
         setContentView(lynxView)
-        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(lynxView!!) { view, insets ->
-            val imeVisible = insets.isVisible(WindowInsetsCompat.Type.ime())
-            val imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
-            view.updatePadding(bottom = if (imeVisible) imeHeight else 0)
-            insets
-        }
+        TamerRouterNativeModule.attachHostView(lynxView)
+        TamerInsetsModule.attachHostView(lynxView)
+        GeneratedLynxExtensions.onHostViewChanged(lynxView)
         lynxView?.renderTemplateUrl(currentUri, "")
         DevClientModule.attachHostActivity(this)
         DevClientModule.attachLynxView(lynxView)
@@ -54,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
         }
         DevClientModule.attachScanLauncher {
-            scanResultLauncher.launch(IntentIntegrator(this).setPrompt("Scan dev server QR").createScanIntent())
+            scanResultLauncher.launch(IntentIntegrator(this).setCaptureActivity(PortraitCaptureActivity::class.java).setPrompt("Scan dev server QR").createScanIntent())
         }
         DevClientModule.attachReloadProjectLauncher {
             startActivity(Intent(this@MainActivity, ProjectActivity::class.java).addFlags(
@@ -80,16 +83,66 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        TamerInsetsModule.attachHostView(null)
+        GeneratedLynxExtensions.onHostViewChanged(null)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        lynxView?.let {
+            TamerInsetsModule.attachHostView(it)
+            TamerInsetsModule.reRequestInsets()
+            GeneratedLynxExtensions.onHostViewChanged(it)
+        }
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+        if (ev.action == MotionEvent.ACTION_DOWN) maybeClearFocusedInput(ev)
+        return super.dispatchTouchEvent(ev)
+    }
+
+    private fun maybeClearFocusedInput(ev: MotionEvent) {
+        val focused = currentFocus
+        if (focused is EditText) {
+            val loc = IntArray(2)
+            focused.getLocationOnScreen(loc)
+            val x = ev.rawX.toInt()
+            val y = ev.rawY.toInt()
+            if (x < loc[0] || x > loc[0] + focused.width || y < loc[1] || y > loc[1] + focused.height) {
+                focused.clearFocus()
+                (getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)
+                    ?.hideSoftInputFromWindow(focused.windowToken, 0)
+            }
+        }
+    }
+
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        TamerRouterNativeModule.requestBack { consumed ->
+            if (!consumed) {
+                runOnUiThread { super.onBackPressed() }
+            }
+        }
+    }
+
     private fun buildLynxView(): LynxView {
         val viewBuilder = LynxViewBuilder()
         viewBuilder.setTemplateProvider(TemplateProvider(this))
         return viewBuilder.build(this)
     }
-        override fun onDestroy() {
-            reloadReceiver?.let { unregisterReceiver(it) }
-            DevClientModule.attachReloadProjectLauncher(null)
-            DevClientModule.attachLynxView(null)
-            super.onDestroy()
-        }
+    override fun onDestroy() {
+        reloadReceiver?.let { unregisterReceiver(it) }
+        TamerRouterNativeModule.attachHostView(null)
+        TamerInsetsModule.attachHostView(null)
+        GeneratedLynxExtensions.onHostViewChanged(null)
+        lynxView?.destroy()
+        lynxView = null
+        DevClientModule.attachReloadProjectLauncher(null)
+        DevClientModule.attachLynxView(null)
+        super.onDestroy()
+    }
 
 }
