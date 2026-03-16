@@ -1,6 +1,12 @@
 node_modules
+dist
+.env*
+.DS_Store
+*.tsbuildinfo
 android/build
 android/app/build
 android/.gradle
 android/.kotlin
+android/.settings
+ios/build
 ios/Pods

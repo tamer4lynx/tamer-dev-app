@@ -9,10 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.updatePadding
 import com.lynx.tasm.LynxView
 import com.lynx.tasm.LynxViewBuilder
 import com.nanofuxion.tamerdevapp.DevClientManager
@@ -31,24 +28,12 @@ class ProjectActivity : AppCompatActivity() {
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
         lynxView = buildLynxView()
         setContentView(lynxView)
-        ViewCompat.setOnApplyWindowInsetsListener(lynxView!!) { view, insets ->
-            val imeVisible = insets.isVisible(WindowInsetsCompat.Type.ime())
-            val imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
-            view.updatePadding(bottom = if (imeVisible) imeHeight else 0)
-            insets
-        }
         GeneratedActivityLifecycle.onViewAttached(lynxView)
         GeneratedLynxExtensions.onHostViewChanged(lynxView)
         lynxView?.renderTemplateUrl("main.lynx.bundle", "")
         devClientManager = DevClientManager(this) { reloadProjectView() }
         devClientManager?.connect()
-
         GeneratedActivityLifecycle.onCreateDelayed(handler)
-    }
-
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        GeneratedActivityLifecycle.onWindowFocusChanged(hasFocus)
     }
 
     private fun reloadProjectView() {
@@ -63,6 +48,11 @@ class ProjectActivity : AppCompatActivity() {
         GeneratedLynxExtensions.onHostViewChanged(nextView)
         nextView.renderTemplateUrl("main.lynx.bundle", "")
         GeneratedActivityLifecycle.onCreateDelayed(handler)
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        GeneratedActivityLifecycle.onWindowFocusChanged(hasFocus)
     }
 
     override fun onResume() {
@@ -111,7 +101,6 @@ class ProjectActivity : AppCompatActivity() {
         lynxView?.destroy()
         lynxView = null
         devClientManager?.disconnect()
-
         super.onDestroy()
     }
 
