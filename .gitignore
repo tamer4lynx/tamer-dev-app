@@ -3,3 +3,4 @@ android/build
 android/app/build
 android/.gradle
 android/.kotlin
+ios/Pods

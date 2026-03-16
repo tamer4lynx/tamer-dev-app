@@ -1,5 +1,6 @@
 package com.nanofuxion.tamerdevapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -8,62 +9,65 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.updatePadding
 import com.lynx.tasm.LynxView
 import com.lynx.tasm.LynxViewBuilder
 import com.nanofuxion.tamerdevapp.DevClientManager
-import com.nanofuxion.tamerdevclient.TamerRelogLogService
-import com.nanofuxion.tamerrouter.TamerRouterNativeModule
-import com.nanofuxion.tamerinsets.TamerInsetsModule
+import com.nanofuxion.tamerdevapp.generated.GeneratedLynxExtensions
+import com.nanofuxion.tamerdevapp.generated.GeneratedActivityLifecycle
 
 class ProjectActivity : AppCompatActivity() {
     private var lynxView: LynxView? = null
     private var devClientManager: DevClientManager? = null
-
     private val handler = Handler(Looper.getMainLooper())
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        GeneratedActivityLifecycle.onCreate(intent)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
         lynxView = buildLynxView()
         setContentView(lynxView)
-        TamerRouterNativeModule.attachHostView(lynxView)
-        TamerInsetsModule.attachHostView(lynxView)
+        ViewCompat.setOnApplyWindowInsetsListener(lynxView!!) { view, insets ->
+            val imeVisible = insets.isVisible(WindowInsetsCompat.Type.ime())
+            val imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+            view.updatePadding(bottom = if (imeVisible) imeHeight else 0)
+            insets
+        }
+        GeneratedActivityLifecycle.onViewAttached(lynxView)
+        GeneratedLynxExtensions.onHostViewChanged(lynxView)
         lynxView?.renderTemplateUrl("main.lynx.bundle", "")
         devClientManager = DevClientManager(this) { reloadProjectView() }
         devClientManager?.connect()
-        TamerRelogLogService.connect()
 
-        listOf(150L, 400L, 800L).forEach { delay ->
-            handler.postDelayed({ TamerInsetsModule.reRequestInsets() }, delay)
-        }
+        GeneratedActivityLifecycle.onCreateDelayed(handler)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        if (hasFocus) TamerInsetsModule.reRequestInsets()
+        GeneratedActivityLifecycle.onWindowFocusChanged(hasFocus)
     }
 
     private fun reloadProjectView() {
-        val oldView = lynxView
-        TamerRouterNativeModule.attachHostView(null)
-        TamerInsetsModule.attachHostView(null)
-        oldView?.destroy()
+        GeneratedActivityLifecycle.onViewDetached()
+        GeneratedLynxExtensions.onHostViewChanged(null)
+        lynxView?.destroy()
 
         val nextView = buildLynxView()
         lynxView = nextView
         setContentView(nextView)
-        TamerRouterNativeModule.attachHostView(nextView)
-        TamerInsetsModule.attachHostView(nextView)
+        GeneratedActivityLifecycle.onViewAttached(nextView)
+        GeneratedLynxExtensions.onHostViewChanged(nextView)
         nextView.renderTemplateUrl("main.lynx.bundle", "")
-        listOf(150L, 400L, 800L).forEach { delay ->
-            handler.postDelayed({ TamerInsetsModule.reRequestInsets() }, delay)
-        }
+        GeneratedActivityLifecycle.onCreateDelayed(handler)
     }
 
     override fun onResume() {
         super.onResume()
-        lynxView?.let { TamerInsetsModule.reRequestInsets() }
+        GeneratedActivityLifecycle.onResume()
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
@@ -86,9 +90,15 @@ class ProjectActivity : AppCompatActivity() {
         }
     }
 
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        GeneratedActivityLifecycle.onNewIntent(intent)
+    }
+
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        TamerRouterNativeModule.requestBack { consumed ->
+        GeneratedActivityLifecycle.onBackPressed { consumed ->
             if (!consumed) {
                 runOnUiThread { super.onBackPressed() }
             }
@@ -96,12 +106,11 @@ class ProjectActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        TamerRouterNativeModule.attachHostView(null)
-        TamerInsetsModule.attachHostView(null)
+        GeneratedActivityLifecycle.onViewDetached()
+        GeneratedLynxExtensions.onHostViewChanged(null)
         lynxView?.destroy()
         lynxView = null
         devClientManager?.disconnect()
-        TamerRelogLogService.disconnect()
 
         super.onDestroy()
     }

@@ -3,10 +3,15 @@ package com.nanofuxion.tamerdevapp.generated
 import android.content.Context
 import com.lynx.tasm.LynxEnv
 import com.nanofuxion.tamerrouter.TamerRouterNativeModule
+import com.nanofuxion.tamerdisplaybrowser.DisplayBrowserModule
 import com.nanofuxion.tamerinsets.TamerInsetsModule
 import com.nanofuxion.tamerdevclient.DevClientModule
 import com.nanofuxion.tamersystemui.SystemUIModule
-import com.nanofuxion.lynxwebsockets.LynxWebSocketModule
+import com.nanofuxion.tamerlinking.LinkingModule
+import com.nanofuxion.tamerbiometric.BiometricModule
+import com.nanofuxion.tamertransports.LynxFetchModule
+import com.nanofuxion.tamertransports.LynxWebSocketModule
+import com.nanofuxion.tamersecurestore.SecureStoreModule
 import com.nanofuxion.vibration.JiggleModule
 import com.nanofuxion.tamertextinput.TamerTextInput
 import com.nanofuxion.tamericons.IconElement
@@ -18,10 +23,15 @@ import com.nanofuxion.tamericons.IconElement
 object GeneratedLynxExtensions {
     fun register(context: Context) {
         LynxEnv.inst().registerModule("TamerRouterNativeModule", TamerRouterNativeModule::class.java)
+        LynxEnv.inst().registerModule("DisplayBrowserModule", DisplayBrowserModule::class.java)
         LynxEnv.inst().registerModule("TamerInsetsModule", TamerInsetsModule::class.java)
         LynxEnv.inst().registerModule("DevClientModule", DevClientModule::class.java)
         LynxEnv.inst().registerModule("SystemUIModule", SystemUIModule::class.java)
+        LynxEnv.inst().registerModule("LinkingModule", LinkingModule::class.java)
+        LynxEnv.inst().registerModule("BiometricModule", BiometricModule::class.java)
+        LynxEnv.inst().registerModule("LynxFetchModule", LynxFetchModule::class.java)
         LynxEnv.inst().registerModule("LynxWebSocketModule", LynxWebSocketModule::class.java)
+        LynxEnv.inst().registerModule("SecureStoreModule", SecureStoreModule::class.java)
         LynxEnv.inst().registerModule("JiggleModule", JiggleModule::class.java)
         LynxEnv.inst().addBehavior(object : com.lynx.tasm.behavior.Behavior("tamer-input") {
             override fun createUI(context: com.lynx.tasm.behavior.LynxContext): com.lynx.tasm.behavior.ui.LynxUI<*> {
@@ -36,5 +46,7 @@ object GeneratedLynxExtensions {
     }
     fun onHostViewChanged(view: android.view.View?) {
         SystemUIModule.attachHostView(view)
+        BiometricModule.attachHostView(view)
+        SecureStoreModule.attachHostView(view)
     }
 }

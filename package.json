@@ -9,7 +9,11 @@
   },
   "dependencies": {
     "jiggle": "*",
-    "lynxwebsockets": "*",
+    "tamer-biometric": "*",
+    "tamer-transports": "*",
+    "tamer-linking": "*",
+    "tamer-display-browser": "*",
+    "tamer-secure-store": "*",
     "tamer-dev-client": "*",
     "tamer-icons": "*",
     "tamer-router": "*",

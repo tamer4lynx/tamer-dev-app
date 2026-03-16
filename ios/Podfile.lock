@@ -1,0 +1,180 @@
+PODS:
+  - jiggle (0.0.1):
+    - Lynx
+  - libwebp (1.5.0):
+    - libwebp/demux (= 1.5.0)
+    - libwebp/mux (= 1.5.0)
+    - libwebp/sharpyuv (= 1.5.0)
+    - libwebp/webp (= 1.5.0)
+  - libwebp/demux (1.5.0):
+    - libwebp/webp
+  - libwebp/mux (1.5.0):
+    - libwebp/demux
+  - libwebp/sharpyuv (1.5.0)
+  - libwebp/webp (1.5.0):
+    - libwebp/sharpyuv
+  - Lynx (3.6.0):
+    - Lynx/Framework (= 3.6.0)
+  - Lynx/Framework (3.6.0):
+    - Lynx/ReleaseResource
+    - LynxBase/Framework
+    - LynxServiceAPI
+    - PrimJS/napi/env
+    - PrimJS/napi/jsc
+    - PrimJS/napi/quickjs
+    - PrimJS/quickjs (= 3.6.1)
+  - Lynx/ReleaseResource (3.6.0)
+  - LynxBase (3.6.0):
+    - LynxBase/Framework (= 3.6.0)
+  - LynxBase/Framework (3.6.0):
+    - LynxServiceAPI/Core
+  - LynxService/Http (3.6.0):
+    - Lynx (= 3.6.0)
+    - LynxServiceAPI (= 3.6.0)
+  - LynxService/Image (3.6.0):
+    - Lynx (= 3.6.0)
+    - LynxServiceAPI (= 3.6.0)
+    - SDWebImage (= 5.15.5)
+    - SDWebImageWebPCoder (= 0.11.0)
+  - LynxService/Log (3.6.0):
+    - Lynx (= 3.6.0)
+    - LynxBase (= 3.6.0)
+    - LynxServiceAPI (= 3.6.0)
+  - LynxServiceAPI (3.6.0):
+    - LynxServiceAPI/Core (= 3.6.0)
+  - LynxServiceAPI/Core (3.6.0)
+  - PrimJS/log (3.6.1)
+  - PrimJS/napi (3.6.1):
+    - PrimJS/napi/adapter (= 3.6.1)
+    - PrimJS/napi/core (= 3.6.1)
+    - PrimJS/napi/env (= 3.6.1)
+    - PrimJS/napi/jsc (= 3.6.1)
+    - PrimJS/napi/quickjs (= 3.6.1)
+  - PrimJS/napi/adapter (3.6.1):
+    - PrimJS/napi/core
+    - PrimJS/napi/env
+  - PrimJS/napi/core (3.6.1)
+  - PrimJS/napi/env (3.6.1):
+    - PrimJS/napi/core
+  - PrimJS/napi/jsc (3.6.1):
+    - PrimJS/log
+    - PrimJS/napi/core
+    - PrimJS/quickjs
+  - PrimJS/napi/quickjs (3.6.1):
+    - PrimJS/napi/core
+    - PrimJS/quickjs
+  - PrimJS/quickjs (3.6.1):
+    - PrimJS/log
+  - SDWebImage (5.15.5):
+    - SDWebImage/Core (= 5.15.5)
+  - SDWebImage/Core (5.15.5)
+  - SDWebImageWebPCoder (0.11.0):
+    - libwebp (~> 1.0)
+    - SDWebImage/Core (~> 5.15)
+  - tamerbiometric (0.1.0):
+    - Lynx
+  - tamerdevclient (0.1.0):
+    - Lynx
+  - tamerdisplaybrowser (0.1.0):
+    - Lynx
+  - tamericons (0.1.0):
+    - Lynx
+  - tamerinsets (0.1.0):
+    - Lynx
+  - tamerlinking (0.1.0):
+    - Lynx
+  - tamerrouter (0.1.0):
+    - Lynx
+  - tamersecurestore (0.1.0):
+    - Lynx
+  - tamersystemui (0.1.0):
+    - Lynx
+  - tamertextinput (0.1.0):
+    - Lynx
+  - tamertransports (0.1.0):
+    - Lynx
+
+DEPENDENCIES:
+  - jiggle (from `../../../node_modules/jiggle/ios/jiggle`)
+  - Lynx/Framework (= 3.6.0)
+  - LynxService/Http (= 3.6.0)
+  - LynxService/Image (= 3.6.0)
+  - LynxService/Log (= 3.6.0)
+  - PrimJS/napi (= 3.6.1)
+  - PrimJS/quickjs (= 3.6.1)
+  - SDWebImage (= 5.15.5)
+  - SDWebImageWebPCoder (= 0.11.0)
+  - tamerbiometric (from `../../../node_modules/tamer-biometric/ios/tamerbiometric`)
+  - tamerdevclient (from `../../../node_modules/tamer-dev-client/ios/tamerdevclient`)
+  - tamerdisplaybrowser (from `../../../node_modules/tamer-display-browser/ios/tamerdisplaybrowser`)
+  - tamericons (from `../../../node_modules/tamer-icons/ios/tamericons`)
+  - tamerinsets (from `../../../node_modules/tamer-insets/ios/tamerinsets`)
+  - tamerlinking (from `../../../node_modules/tamer-linking/ios/tamerlinking`)
+  - tamerrouter (from `../../../node_modules/tamer-router/ios/tamerrouter`)
+  - tamersecurestore (from `../../../node_modules/tamer-secure-store/ios/tamersecurestore`)
+  - tamersystemui (from `../../../node_modules/tamer-system-ui/ios/tamersystemui`)
+  - tamertextinput (from `../../../node_modules/tamer-text-input/ios/tamertextinput`)
+  - tamertransports (from `../../../node_modules/tamer-transports/ios/tamertransports`)
+
+SPEC REPOS:
+  trunk:
+    - libwebp
+    - Lynx
+    - LynxBase
+    - LynxService
+    - LynxServiceAPI
+    - PrimJS
+    - SDWebImage
+    - SDWebImageWebPCoder
+
+EXTERNAL SOURCES:
+  jiggle:
+    :path: "../../../node_modules/jiggle/ios/jiggle"
+  tamerbiometric:
+    :path: "../../../node_modules/tamer-biometric/ios/tamerbiometric"
+  tamerdevclient:
+    :path: "../../../node_modules/tamer-dev-client/ios/tamerdevclient"
+  tamerdisplaybrowser:
+    :path: "../../../node_modules/tamer-display-browser/ios/tamerdisplaybrowser"
+  tamericons:
+    :path: "../../../node_modules/tamer-icons/ios/tamericons"
+  tamerinsets:
+    :path: "../../../node_modules/tamer-insets/ios/tamerinsets"
+  tamerlinking:
+    :path: "../../../node_modules/tamer-linking/ios/tamerlinking"
+  tamerrouter:
+    :path: "../../../node_modules/tamer-router/ios/tamerrouter"
+  tamersecurestore:
+    :path: "../../../node_modules/tamer-secure-store/ios/tamersecurestore"
+  tamersystemui:
+    :path: "../../../node_modules/tamer-system-ui/ios/tamersystemui"
+  tamertextinput:
+    :path: "../../../node_modules/tamer-text-input/ios/tamertextinput"
+  tamertransports:
+    :path: "../../../node_modules/tamer-transports/ios/tamertransports"
+
+SPEC CHECKSUMS:
+  jiggle: 8fc256ceb911592fc9c57f2b4f179ab7d29d72e4
+  libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
+  Lynx: 49ad3adbc536c42e22aceff5e6bcb5a60f605ad0
+  LynxBase: 8c285e5986c565dc3e06d47c08b6e11b561980fe
+  LynxService: 42a3847a279c7fff63c3794d4c6ef53ee68ef629
+  LynxServiceAPI: a552e8346a375cb500637cd7e05dd1cf2b219920
+  PrimJS: ab129af0dc78fa1aa9cf6b33f51e3c9790d6f617
+  SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
+  SDWebImageWebPCoder: 295a6573c512f54ad2dd58098e64e17dcf008499
+  tamerbiometric: 3034ad3f33e4c9a49d1a2d87289a7edd21cc54be
+  tamerdevclient: fd084c8deb980250ddaf0f819f0a7cd007578bf8
+  tamerdisplaybrowser: 23aad9ec588622347c655887c84e7e11c6a144d6
+  tamericons: ec87aad09238c785fb0cbe0a9bec4607557b8052
+  tamerinsets: 3da735d341154a684ac08e0db2aa392325c49948
+  tamerlinking: b7ab329576e7d1b19d1a7aef506206163569af9a
+  tamerrouter: 1a4460f088827ce2aa37b1440a06237a971995a6
+  tamersecurestore: 26c351694bc8be6cd3a6495e22d8c197c6278d53
+  tamersystemui: bcc070ece1fb926a4436166145d04339a7d202aa
+  tamertextinput: e99fd26ce81e264b6c388ded2aaadc5585b34ddd
+  tamertransports: 7647ae4f6ec9700941a162c03e62d3f79ccfdd69
+
+PODFILE CHECKSUM: b2a365892e970d40a64590fd1ebab9c62f9e229c
+
+COCOAPODS: 1.16.2

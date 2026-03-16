@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.ViewCompat
 import androidx.core.view.updatePadding
 import com.lynx.tasm.LynxView
 import com.lynx.tasm.LynxViewBuilder
@@ -22,9 +23,8 @@ import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
 import com.nanofuxion.tamerdevclient.DevClientModule
 
-import com.nanofuxion.tamerrouter.TamerRouterNativeModule
-import com.nanofuxion.tamerinsets.TamerInsetsModule
 import com.nanofuxion.tamerdevapp.generated.GeneratedLynxExtensions
+import com.nanofuxion.tamerdevapp.generated.GeneratedActivityLifecycle
 
 class MainActivity : AppCompatActivity() {
     private var reloadReceiver: BroadcastReceiver? = null
@@ -46,8 +46,13 @@ class MainActivity : AppCompatActivity() {
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
         lynxView = buildLynxView()
         setContentView(lynxView)
-        TamerRouterNativeModule.attachHostView(lynxView)
-        TamerInsetsModule.attachHostView(lynxView)
+        ViewCompat.setOnApplyWindowInsetsListener(lynxView!!) { view, insets ->
+            val imeVisible = insets.isVisible(WindowInsetsCompat.Type.ime())
+            val imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+            view.updatePadding(bottom = if (imeVisible) imeHeight else 0)
+            insets
+        }
+        GeneratedActivityLifecycle.onViewAttached(lynxView)
         GeneratedLynxExtensions.onHostViewChanged(lynxView)
         lynxView?.renderTemplateUrl(currentUri, "")
         DevClientModule.attachHostActivity(this)
@@ -85,17 +90,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        TamerInsetsModule.attachHostView(null)
-        GeneratedLynxExtensions.onHostViewChanged(null)
+        GeneratedActivityLifecycle.onPause()
     }
 
     override fun onResume() {
         super.onResume()
-        lynxView?.let {
-            TamerInsetsModule.attachHostView(it)
-            TamerInsetsModule.reRequestInsets()
-            GeneratedLynxExtensions.onHostViewChanged(it)
-        }
+        GeneratedActivityLifecycle.onResume()
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
@@ -118,10 +118,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        TamerRouterNativeModule.requestBack { consumed ->
+        GeneratedActivityLifecycle.onBackPressed { consumed ->
             if (!consumed) {
                 runOnUiThread { super.onBackPressed() }
             }
@@ -135,8 +134,7 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onDestroy() {
         reloadReceiver?.let { unregisterReceiver(it) }
-        TamerRouterNativeModule.attachHostView(null)
-        TamerInsetsModule.attachHostView(null)
+        GeneratedActivityLifecycle.onViewDetached()
         GeneratedLynxExtensions.onHostViewChanged(null)
         lynxView?.destroy()
         lynxView = null
