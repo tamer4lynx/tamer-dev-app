@@ -1,9 +1,17 @@
 {
-  "name": "tamer-dev-app",
-  "version": "0.1.0",
+  "name": "@tamer4lynx/tamer-dev-app",
+  "version": "0.0.2",
+  "publishConfig": { "access": "public", "tag": "prerelease" },
   "type": "module",
-  "private": true,
   "description": "Standalone Tamer4Lynx dev app - Expo Go-style QR scan and HMR",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamer4lynx/tamer-dev-app.git"
+  },
+  "homepage": "https://github.com/tamer4lynx/tamer-dev-app#readme",
+  "bugs": {
+    "url": "https://github.com/tamer4lynx/tamer-dev-app/issues"
+  },
   "scripts": {
     "build": "node scripts/build-dev-client-bundle.cjs"
   },
@@ -14,7 +22,7 @@
     "@tamer4lynx/tamer-linking": "^0.0.1",
     "@tamer4lynx/tamer-display-browser": "^0.0.1",
     "@tamer4lynx/tamer-secure-store": "^0.0.1",
-    "@tamer4lynx/tamer-dev-client": "^0.0.1",
+    "@tamer4lynx/tamer-dev-client": "^0.0.5",
     "@tamer4lynx/tamer-icons": "^0.0.1",
     "@tamer4lynx/tamer-router": "^0.0.1",
     "@tamer4lynx/tamer-insets": "^0.0.1",
