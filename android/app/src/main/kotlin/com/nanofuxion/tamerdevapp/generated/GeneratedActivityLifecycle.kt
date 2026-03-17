@@ -17,13 +17,13 @@ object GeneratedActivityLifecycle {
     }
 
     fun onViewAttached(lynxView: LynxView?) {
-        com.nanofuxion.tamerrouter.TamerRouterNativeModule.attachHostView(lynxView)
         com.nanofuxion.tamerinsets.TamerInsetsModule.attachHostView(lynxView)
+        com.nanofuxion.tamerrouter.TamerRouterNativeModule.attachHostView(lynxView)
     }
 
     fun onViewDetached() {
-        com.nanofuxion.tamerrouter.TamerRouterNativeModule.attachHostView(null)
         com.nanofuxion.tamerinsets.TamerInsetsModule.attachHostView(null)
+        com.nanofuxion.tamerrouter.TamerRouterNativeModule.attachHostView(null)
     }
 
     fun onResume() {

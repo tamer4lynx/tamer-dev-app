@@ -3,14 +3,17 @@ const fs = require('fs');
 const { execSync } = require('child_process');
 
 const appRoot = path.resolve(__dirname, '..');
-const devClientFromNode = path.join(appRoot, 'node_modules', 'tamer-dev-client');
+const devClientFromNode = path.join(appRoot, 'node_modules', '@tamer4lynx', 'tamer-dev-client');
+const devClientFromRoot = path.join(appRoot, '..', '..', 'node_modules', '@tamer4lynx', 'tamer-dev-client');
 const devClientFromRepo = path.join(appRoot, '..', 'tamer-dev-client');
 const devClientDir = fs.existsSync(path.join(devClientFromNode, 'package.json'))
   ? devClientFromNode
-  : devClientFromRepo;
+  : fs.existsSync(path.join(devClientFromRoot, 'package.json'))
+    ? devClientFromRoot
+    : devClientFromRepo;
 
 if (!fs.existsSync(path.join(devClientDir, 'package.json'))) {
-  console.error('tamer-dev-client not found. Install it or run from monorepo root.');
+  console.error('@tamer4lynx/tamer-dev-client not found. Install it or run from monorepo root.');
   process.exit(1);
 }
 

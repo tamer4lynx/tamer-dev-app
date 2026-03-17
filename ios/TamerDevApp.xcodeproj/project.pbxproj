@@ -1,0 +1,370 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		17C2D6443D170527820A91B4 /* DevTemplateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E19D84478C91F95F739117 /* DevTemplateProvider.swift */; };
+		5D0DDAB3C67F19DDDD003D64 /* dev-client.lynx.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F25B14F21B8D32C0BFD8A37 /* dev-client.lynx.bundle */; };
+		771D0342C90186BBC56C750D /* libPods-TamerDevApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C81D5CF1743EAF00BDF2AB /* libPods-TamerDevApp.a */; };
+		7E6DF904CEAE1554B4C8FF91 /* DevClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE9E0AFBAB514FEC2FAE61 /* DevClientManager.swift */; };
+		8E0DC134650ED414F49B4506 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD84043846D14DED35C510B /* Assets.xcassets */; };
+		90E3E0C0A1B24A5CB832D1F2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A22B2A8F6C4246CD8C7C3C05 /* Base */; };
+		94362ADA058FD88BAAF3AC8F /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCE0081A51711D29F1734DB /* QRScannerViewController.swift */; };
+		9F3469D0D4AD2E7B63611109 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2C22A9ADBC0D03590FFF89 /* ProjectViewController.swift */; };
+		B17356B9984F44788F3DB930 /* LynxInitProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086CE01F31690139993F16CD /* LynxInitProcessor.swift */; };
+		B55301803D4DFEFC5627BA33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFDF62EEE55A68F4F19C65 /* AppDelegate.swift */; };
+		F7C733507FF7CEE8FAA11D8A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E423429196118D1256D29441 /* Base */; };
+		FA10231CBEE71B65F4B84E73 /* DevLauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBE820BFDB2CB81C7EA9186 /* DevLauncherViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		03CE9E0AFBAB514FEC2FAE61 /* DevClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevClientManager.swift; sourceTree = "<group>"; };
+		086CE01F31690139993F16CD /* LynxInitProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LynxInitProcessor.swift; sourceTree = "<group>"; };
+		1F61CC50541A42CEDF59A21E /* DevClientModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevClientModule.swift; sourceTree = "<group>"; };
+		2A9BD0055678945576B625DE /* TamerDevApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TamerDevApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		2F25B14F21B8D32C0BFD8A37 /* dev-client.lynx.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dev-client.lynx.bundle"; sourceTree = "<group>"; };
+		431F2B2FFA6A4443384155CB /* Pods-TamerDevApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TamerDevApp.release.xcconfig"; path = "Target Support Files/Pods-TamerDevApp/Pods-TamerDevApp.release.xcconfig"; sourceTree = "<group>"; };
+		47E19D84478C91F95F739117 /* DevTemplateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevTemplateProvider.swift; sourceTree = "<group>"; };
+		4CD84043846D14DED35C510B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A22B2A8F6C4246CD8C7C3C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4F2C22A9ADBC0D03590FFF89 /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		4FBE820BFDB2CB81C7EA9186 /* DevLauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevLauncherViewController.swift; sourceTree = "<group>"; };
+		5822683EDC8FFB2EF24896E9 /* TamerDevApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TamerDevApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		74C81D5CF1743EAF00BDF2AB /* libPods-TamerDevApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TamerDevApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8BFDF62EEE55A68F4F19C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C284ECEC154BB22F53147756 /* Pods-TamerDevApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TamerDevApp.debug.xcconfig"; path = "Target Support Files/Pods-TamerDevApp/Pods-TamerDevApp.debug.xcconfig"; sourceTree = "<group>"; };
+		CDCE0081A51711D29F1734DB /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
+		E423429196118D1256D29441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FBD21DAF1947A2F405C0D297 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				771D0342C90186BBC56C750D /* libPods-TamerDevApp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0B1C65D73A7ED5CA31FEA8AE /* TamerDevApp */ = {
+			isa = PBXGroup;
+			children = (
+				A8BFDF62EEE55A68F4F19C65 /* AppDelegate.swift */,
+				4FBE820BFDB2CB81C7EA9186 /* DevLauncherViewController.swift */,
+				4F2C22A9ADBC0D03590FFF89 /* ProjectViewController.swift */,
+				47E19D84478C91F95F739117 /* DevTemplateProvider.swift */,
+				03CE9E0AFBAB514FEC2FAE61 /* DevClientManager.swift */,
+				1F61CC50541A42CEDF59A21E /* DevClientModule.swift */,
+				CDCE0081A51711D29F1734DB /* QRScannerViewController.swift */,
+				086CE01F31690139993F16CD /* LynxInitProcessor.swift */,
+				2A9BD0055678945576B625DE /* TamerDevApp-Bridging-Header.h */,
+				8D9E35E5A8582FD48736C6F3 /* Main.storyboard */,
+				5CE212D3E31344B691E67617 /* LaunchScreen.storyboard */,
+				4CD84043846D14DED35C510B /* Assets.xcassets */,
+				2F25B14F21B8D32C0BFD8A37 /* dev-client.lynx.bundle */,
+			);
+			path = TamerDevApp;
+			sourceTree = "<group>";
+		};
+		1CCF39136C4C410A0FF8B78E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C284ECEC154BB22F53147756 /* Pods-TamerDevApp.debug.xcconfig */,
+				431F2B2FFA6A4443384155CB /* Pods-TamerDevApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4D6EA95DD0E8DDA2870C93B9 = {
+			isa = PBXGroup;
+			children = (
+				0B1C65D73A7ED5CA31FEA8AE /* TamerDevApp */,
+				D634F31AD64060A49A85096C /* Products */,
+				67CB4CCF53715EA67E3CCC04 /* Frameworks */,
+				1CCF39136C4C410A0FF8B78E /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		67CB4CCF53715EA67E3CCC04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74C81D5CF1743EAF00BDF2AB /* libPods-TamerDevApp.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D634F31AD64060A49A85096C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5822683EDC8FFB2EF24896E9 /* TamerDevApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		57DCBD75BFE6795EBD99E39C /* TamerDevApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEAC41814B64BC021621B92F /* Build configuration list for PBXNativeTarget "TamerDevApp" */;
+			buildPhases = (
+				5EB5B4B1A322CF2EA08082F8 /* [CP] Check Pods Manifest.lock */,
+				76C258EFA7BCFF054E742608 /* Sources */,
+				FBD21DAF1947A2F405C0D297 /* Frameworks */,
+				08EBFA243A5849A7AEEF0E7D /* Resources */,
+				0410A66D02DB6415EC412AA4 /* [CP] Copy Pods Resources */,
+				AB4F34EED7054AD184684972 /* [Tamer] Copy Icon Fonts */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TamerDevApp;
+			productName = TamerDevApp;
+			productReference = 5822683EDC8FFB2EF24896E9 /* TamerDevApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		915BA4882870D39FF32DBB47 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1530;
+			};
+			buildConfigurationList = 9A94A8AAA92E82C817A431A3 /* Build configuration list for PBXProject "TamerDevApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4D6EA95DD0E8DDA2870C93B9;
+			productRefGroup = D634F31AD64060A49A85096C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				57DCBD75BFE6795EBD99E39C /* TamerDevApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		08EBFA243A5849A7AEEF0E7D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E0DC134650ED414F49B4506 /* Assets.xcassets in Resources */,
+				F7C733507FF7CEE8FAA11D8A /* Base in Resources */,
+				90E3E0C0A1B24A5CB832D1F2 /* Base in Resources */,
+				5D0DDAB3C67F19DDDD003D64 /* dev-client.lynx.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0410A66D02DB6415EC412AA4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TamerDevApp/Pods-TamerDevApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TamerDevApp/Pods-TamerDevApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TamerDevApp/Pods-TamerDevApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5EB5B4B1A322CF2EA08082F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TamerDevApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB4F34EED7054AD184684972 /* [Tamer] Copy Icon Fonts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[Tamer] Copy Icon Fonts";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FONTS_SRC=\"${SRCROOT}/../../tamer-icons/fonts\"\nif [ -d \"$FONTS_SRC\" ]; then\n  cp -f \"$FONTS_SRC/MaterialSymbolsOutlined.ttf\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/\" 2>/dev/null || true\n  cp -f \"$FONTS_SRC/fa-solid-900.ttf\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/\" 2>/dev/null || true\nfi\nCP_SRC=\"${SRCROOT}/../../tamer-icons/android/src/main/assets/fonts/material-codepoints.txt\"\n[ -f \"$CP_SRC\" ] && cp -f \"$CP_SRC\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/\" 2>/dev/null || true\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		76C258EFA7BCFF054E742608 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B55301803D4DFEFC5627BA33 /* AppDelegate.swift in Sources */,
+				FA10231CBEE71B65F4B84E73 /* DevLauncherViewController.swift in Sources */,
+				9F3469D0D4AD2E7B63611109 /* ProjectViewController.swift in Sources */,
+				17C2D6443D170527820A91B4 /* DevTemplateProvider.swift in Sources */,
+				7E6DF904CEAE1554B4C8FF91 /* DevClientManager.swift in Sources */,
+				94362ADA058FD88BAAF3AC8F /* QRScannerViewController.swift in Sources */,
+				B17356B9984F44788F3DB930 /* LynxInitProcessor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8D9E35E5A8582FD48736C6F3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E423429196118D1256D29441 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5CE212D3E31344B691E67617 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A22B2A8F6C4246CD8C7C3C05 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		325F45C94DD2C8EAFA15DB84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		4A49D138CC26DC95E65D1336 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 431F2B2FFA6A4443384155CB /* Pods-TamerDevApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = TamerDevApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nanofuxion.tamerdevapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TamerDevApp/TamerDevApp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		52920AEEBEF01767DC443715 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C284ECEC154BB22F53147756 /* Pods-TamerDevApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = TamerDevApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nanofuxion.tamerdevapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TamerDevApp/TamerDevApp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5AFDEC7E793DBFAB413C501A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A94A8AAA92E82C817A431A3 /* Build configuration list for PBXProject "TamerDevApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AFDEC7E793DBFAB413C501A /* Debug */,
+				325F45C94DD2C8EAFA15DB84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DEAC41814B64BC021621B92F /* Build configuration list for PBXNativeTarget "TamerDevApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52920AEEBEF01767DC443715 /* Debug */,
+				4A49D138CC26DC95E65D1336 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 915BA4882870D39FF32DBB47 /* Project object */;
+}
