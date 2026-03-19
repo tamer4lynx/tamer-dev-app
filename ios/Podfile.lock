@@ -1,5 +1,5 @@
 PODS:
-  - jiggle (0.0.1):
+  - jiggle (0.0.2):
     - Lynx
   - libwebp (1.5.0):
     - libwebp/demux (= 1.5.0)
@@ -71,31 +71,41 @@ PODS:
   - SDWebImageWebPCoder (0.11.0):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.15)
-  - tamerbiometric (0.1.0):
+  - tamerbiometric (0.0.1):
     - Lynx
-  - tamerdevclient (0.1.0):
+  - tamerdevclient (0.0.7):
     - Lynx
-  - tamerdisplaybrowser (0.1.0):
+  - tamerdisplaybrowser (0.0.1):
     - Lynx
-  - tamericons (0.1.0):
+  - tamericons (0.0.3):
     - Lynx
-  - tamerinsets (0.1.0):
+  - tamerinsets (0.0.2):
     - Lynx
-  - tamerlinking (0.1.0):
+  - tamerlinking (0.0.1):
     - Lynx
-  - tamerrouter (0.1.0):
+  - tamerrouter (0.0.1):
     - Lynx
-  - tamersecurestore (0.1.0):
+  - tamersecurestore (0.0.1):
     - Lynx
   - tamersystemui (0.1.0):
     - Lynx
-  - tamertextinput (0.1.0):
+  - tamertransports (0.0.4):
     - Lynx
-  - tamertransports (0.1.0):
-    - Lynx
+  - XElement (3.6.0):
+    - XElement/Behavior (= 3.6.0)
+    - XElement/Input (= 3.6.0)
+    - XElement/Overlay (= 3.6.0)
+  - XElement/Behavior (3.6.0):
+    - Lynx (= 3.6.0)
+    - XElement/Input
+    - XElement/Overlay
+  - XElement/Input (3.6.0):
+    - Lynx (= 3.6.0)
+  - XElement/Overlay (3.6.0):
+    - Lynx (= 3.6.0)
 
 DEPENDENCIES:
-  - jiggle (from `../../../node_modules/jiggle/ios/jiggle`)
+  - "jiggle (from `../../../node_modules/@tamer4lynx/jiggle/ios/jiggle`)"
   - Lynx/Framework (= 3.6.0)
   - LynxService/Http (= 3.6.0)
   - LynxService/Image (= 3.6.0)
@@ -104,17 +114,17 @@ DEPENDENCIES:
   - PrimJS/quickjs (= 3.6.1)
   - SDWebImage (= 5.15.5)
   - SDWebImageWebPCoder (= 0.11.0)
-  - tamerbiometric (from `../../../node_modules/tamer-biometric/ios/tamerbiometric`)
-  - tamerdevclient (from `../../../node_modules/tamer-dev-client/ios/tamerdevclient`)
-  - tamerdisplaybrowser (from `../../../node_modules/tamer-display-browser/ios/tamerdisplaybrowser`)
-  - tamericons (from `../../../node_modules/tamer-icons/ios/tamericons`)
-  - tamerinsets (from `../../../node_modules/tamer-insets/ios/tamerinsets`)
-  - tamerlinking (from `../../../node_modules/tamer-linking/ios/tamerlinking`)
-  - tamerrouter (from `../../../node_modules/tamer-router/ios/tamerrouter`)
-  - tamersecurestore (from `../../../node_modules/tamer-secure-store/ios/tamersecurestore`)
-  - tamersystemui (from `../../../node_modules/tamer-system-ui/ios/tamersystemui`)
-  - tamertextinput (from `../../../node_modules/tamer-text-input/ios/tamertextinput`)
-  - tamertransports (from `../../../node_modules/tamer-transports/ios/tamertransports`)
+  - "tamerbiometric (from `../../../node_modules/@tamer4lynx/tamer-biometric/ios/tamerbiometric`)"
+  - "tamerdevclient (from `../../../node_modules/@tamer4lynx/tamer-dev-client/ios/tamerdevclient`)"
+  - "tamerdisplaybrowser (from `../../../node_modules/@tamer4lynx/tamer-display-browser/ios/tamerdisplaybrowser`)"
+  - "tamericons (from `../../../node_modules/@tamer4lynx/tamer-icons/ios/tamericons`)"
+  - "tamerinsets (from `../../../node_modules/@tamer4lynx/tamer-insets/ios/tamerinsets`)"
+  - "tamerlinking (from `../../../node_modules/@tamer4lynx/tamer-linking/ios/tamerlinking`)"
+  - "tamerrouter (from `../../../node_modules/@tamer4lynx/tamer-router/ios/tamerrouter`)"
+  - "tamersecurestore (from `../../../node_modules/@tamer4lynx/tamer-secure-store/ios/tamersecurestore`)"
+  - "tamersystemui (from `../../../node_modules/@tamer4lynx/tamer-system-ui/ios/tamersystemui`)"
+  - "tamertransports (from `../../../node_modules/@tamer4lynx/tamer-transports/ios/tamertransports`)"
+  - XElement (= 3.6.0)
 
 SPEC REPOS:
   trunk:
@@ -126,35 +136,34 @@ SPEC REPOS:
     - PrimJS
     - SDWebImage
     - SDWebImageWebPCoder
+    - XElement
 
 EXTERNAL SOURCES:
   jiggle:
-    :path: "../../../node_modules/jiggle/ios/jiggle"
+    :path: "../../../node_modules/@tamer4lynx/jiggle/ios/jiggle"
   tamerbiometric:
-    :path: "../../../node_modules/tamer-biometric/ios/tamerbiometric"
+    :path: "../../../node_modules/@tamer4lynx/tamer-biometric/ios/tamerbiometric"
   tamerdevclient:
-    :path: "../../../node_modules/tamer-dev-client/ios/tamerdevclient"
+    :path: "../../../node_modules/@tamer4lynx/tamer-dev-client/ios/tamerdevclient"
   tamerdisplaybrowser:
-    :path: "../../../node_modules/tamer-display-browser/ios/tamerdisplaybrowser"
+    :path: "../../../node_modules/@tamer4lynx/tamer-display-browser/ios/tamerdisplaybrowser"
   tamericons:
-    :path: "../../../node_modules/tamer-icons/ios/tamericons"
+    :path: "../../../node_modules/@tamer4lynx/tamer-icons/ios/tamericons"
   tamerinsets:
-    :path: "../../../node_modules/tamer-insets/ios/tamerinsets"
+    :path: "../../../node_modules/@tamer4lynx/tamer-insets/ios/tamerinsets"
   tamerlinking:
-    :path: "../../../node_modules/tamer-linking/ios/tamerlinking"
+    :path: "../../../node_modules/@tamer4lynx/tamer-linking/ios/tamerlinking"
   tamerrouter:
-    :path: "../../../node_modules/tamer-router/ios/tamerrouter"
+    :path: "../../../node_modules/@tamer4lynx/tamer-router/ios/tamerrouter"
   tamersecurestore:
-    :path: "../../../node_modules/tamer-secure-store/ios/tamersecurestore"
+    :path: "../../../node_modules/@tamer4lynx/tamer-secure-store/ios/tamersecurestore"
   tamersystemui:
-    :path: "../../../node_modules/tamer-system-ui/ios/tamersystemui"
-  tamertextinput:
-    :path: "../../../node_modules/tamer-text-input/ios/tamertextinput"
+    :path: "../../../node_modules/@tamer4lynx/tamer-system-ui/ios/tamersystemui"
   tamertransports:
-    :path: "../../../node_modules/tamer-transports/ios/tamertransports"
+    :path: "../../../node_modules/@tamer4lynx/tamer-transports/ios/tamertransports"
 
 SPEC CHECKSUMS:
-  jiggle: 8fc256ceb911592fc9c57f2b4f179ab7d29d72e4
+  jiggle: a5b3b63255ed24598e360fde7dfde9118f46a828
   libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
   Lynx: 49ad3adbc536c42e22aceff5e6bcb5a60f605ad0
   LynxBase: 8c285e5986c565dc3e06d47c08b6e11b561980fe
@@ -163,18 +172,18 @@ SPEC CHECKSUMS:
   PrimJS: ab129af0dc78fa1aa9cf6b33f51e3c9790d6f617
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
   SDWebImageWebPCoder: 295a6573c512f54ad2dd58098e64e17dcf008499
-  tamerbiometric: 3034ad3f33e4c9a49d1a2d87289a7edd21cc54be
-  tamerdevclient: fd084c8deb980250ddaf0f819f0a7cd007578bf8
-  tamerdisplaybrowser: 23aad9ec588622347c655887c84e7e11c6a144d6
-  tamericons: ec87aad09238c785fb0cbe0a9bec4607557b8052
-  tamerinsets: 3da735d341154a684ac08e0db2aa392325c49948
-  tamerlinking: b7ab329576e7d1b19d1a7aef506206163569af9a
-  tamerrouter: 1a4460f088827ce2aa37b1440a06237a971995a6
-  tamersecurestore: 26c351694bc8be6cd3a6495e22d8c197c6278d53
+  tamerbiometric: 9008c14e7460e3f73ffcd10980c9a40875d03bda
+  tamerdevclient: 3092ac8003cb2ead1a535d5157b1a9d28c7de3c9
+  tamerdisplaybrowser: bfa39e8b59e356e0d4dd6e2af303a573d840b1cf
+  tamericons: 0d4942261174587047a92fd071012c29057560ee
+  tamerinsets: 1c086f1973472d04d011a864bd1b80a699d7f86d
+  tamerlinking: 4ca8c75ca39d6bbce6ab2083abf9c9fb911127ab
+  tamerrouter: 109c0a8fb45edd48e05dc56b74e79288c8d25fba
+  tamersecurestore: bbe3f4a12b372a3c122905f1f383c3536c4a725d
   tamersystemui: bcc070ece1fb926a4436166145d04339a7d202aa
-  tamertextinput: e99fd26ce81e264b6c388ded2aaadc5585b34ddd
-  tamertransports: 7647ae4f6ec9700941a162c03e62d3f79ccfdd69
+  tamertransports: 656bad3b8892ddc966556fc7f9b9074bd6b7d728
+  XElement: fb90e5e349dc5728f242f3881d2e5e389f3e329a
 
-PODFILE CHECKSUM: b2a365892e970d40a64590fd1ebab9c62f9e229c
+PODFILE CHECKSUM: 1788f83cf3dc68b47806fea26fbeee3e58c444c0
 
 COCOAPODS: 1.16.2

@@ -1,6 +1,6 @@
 {
   "name": "@tamer4lynx/tamer-dev-app",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publishConfig": {
     "access": "public",
     "tag": "prerelease"
@@ -16,7 +16,8 @@
     "url": "https://github.com/tamer4lynx/tamer-dev-app/issues"
   },
   "scripts": {
-    "build": "node scripts/build-dev-client-bundle.cjs"
+    "build": "node scripts/build-dev-client-bundle.cjs",
+    "link:native": "node ../../dist/index.js link"
   },
   "dependencies": {
     "@tamer4lynx/jiggle": "^0.0.1",
