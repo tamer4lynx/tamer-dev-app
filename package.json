@@ -1,7 +1,10 @@
 {
   "name": "@tamer4lynx/tamer-dev-app",
-  "version": "0.0.2",
-  "publishConfig": { "access": "public", "tag": "prerelease" },
+  "version": "0.0.3",
+  "publishConfig": {
+    "access": "public",
+    "tag": "prerelease"
+  },
   "type": "module",
   "description": "Standalone Tamer4Lynx dev app - Expo Go-style QR scan and HMR",
   "repository": {
