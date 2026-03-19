@@ -7,7 +7,6 @@ import Foundation
 // GENERATED IMPORTS START
 import tamerrouter
 import tamerdisplaybrowser
-import tamertextinput
 import tamericons
 import tamerinsets
 import tamerdevclient
@@ -39,9 +38,6 @@ final class LynxInitProcessor {
 
         // Register module from package: tamer-display-browser
         globalConfig.register(DisplayBrowserModule.self)
-
-        // Register element from package: tamer-text-input
-        globalConfig.registerUI(TamerTextInput.self, withName: "tamer-input")
 
         // Register element from package: tamer-icons
         globalConfig.registerUI(TamerIconElement.self, withName: "icon")

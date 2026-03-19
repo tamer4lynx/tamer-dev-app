@@ -31,8 +31,7 @@
     "@tamer4lynx/tamer-insets": "^0.0.1",
     "@tamer4lynx/tamer-system-ui": "^0.0.1",
     "@tamer4lynx/tamer-app-shell": "^0.0.2",
-    "@tamer4lynx/tamer-screen": "^0.0.2",
-    "@tamer4lynx/tamer-text-input": "^0.0.1"
+    "@tamer4lynx/tamer-screen": "^0.0.2"
   },
   "devDependencies": {
     "@rsbuild/plugin-type-check": "1.2.3",
