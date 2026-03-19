@@ -73,17 +73,17 @@ PODS:
     - SDWebImage/Core (~> 5.15)
   - tamerbiometric (0.0.1):
     - Lynx
-  - tamerdevclient (0.0.7):
+  - tamerdevclient (0.0.8):
     - Lynx
   - tamerdisplaybrowser (0.0.1):
     - Lynx
   - tamericons (0.0.3):
     - Lynx
-  - tamerinsets (0.0.2):
+  - tamerinsets (0.0.3):
     - Lynx
   - tamerlinking (0.0.1):
     - Lynx
-  - tamerrouter (0.0.1):
+  - tamerrouter (0.0.2):
     - Lynx
   - tamersecurestore (0.0.1):
     - Lynx
@@ -173,12 +173,12 @@ SPEC CHECKSUMS:
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
   SDWebImageWebPCoder: 295a6573c512f54ad2dd58098e64e17dcf008499
   tamerbiometric: 9008c14e7460e3f73ffcd10980c9a40875d03bda
-  tamerdevclient: 3092ac8003cb2ead1a535d5157b1a9d28c7de3c9
+  tamerdevclient: 1941a69c943daef1474dd3b5308ad8d67dd52778
   tamerdisplaybrowser: bfa39e8b59e356e0d4dd6e2af303a573d840b1cf
   tamericons: 0d4942261174587047a92fd071012c29057560ee
-  tamerinsets: 1c086f1973472d04d011a864bd1b80a699d7f86d
+  tamerinsets: df1f4570cc195dbfeb93922a75c3207d744eeacb
   tamerlinking: 4ca8c75ca39d6bbce6ab2083abf9c9fb911127ab
-  tamerrouter: 109c0a8fb45edd48e05dc56b74e79288c8d25fba
+  tamerrouter: f8ac9c540913edf81a50566982fd5b8bd8624746
   tamersecurestore: bbe3f4a12b372a3c122905f1f383c3536c4a725d
   tamersystemui: bcc070ece1fb926a4436166145d04339a7d202aa
   tamertransports: 656bad3b8892ddc966556fc7f9b9074bd6b7d728
