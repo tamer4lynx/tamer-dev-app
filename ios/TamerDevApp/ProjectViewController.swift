@@ -2,7 +2,6 @@ import UIKit
 import Lynx
 import tamerinsets
 import tamerdevclient
-import tamersystemui
 
 class ProjectViewController: UIViewController {
     private var lynxView: LynxView?
@@ -37,7 +36,7 @@ class ProjectViewController: UIViewController {
         TamerInsetsModule.reRequestInsets()
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle { SystemUIModule.statusBarStyleForHost }
+    override var preferredStatusBarStyle: UIStatusBarStyle { TamerPreferredStatusBar.style }
 
     private func buildLynxView() -> LynxView {
         let size = fullscreenBounds().size
