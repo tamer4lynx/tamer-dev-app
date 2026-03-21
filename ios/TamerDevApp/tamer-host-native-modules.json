@@ -1,0 +1,8 @@
+{
+  "moduleClassNames": [
+    "com.nanofuxion.tamerdevclient.DevClientModule",
+    "com.nanofuxion.tamerinsets.TamerInsetsModule",
+    "com.nanofuxion.tamerrouter.TamerRouterNativeModule",
+    "com.nanofuxion.tamersystemui.SystemUIModule"
+  ]
+}

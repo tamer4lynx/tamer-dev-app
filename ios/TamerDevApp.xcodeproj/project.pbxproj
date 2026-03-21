@@ -19,6 +19,9 @@
 		B55301803D4DFEFC5627BA33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BFDF62EEE55A68F4F19C65 /* AppDelegate.swift */; };
 		F7C733507FF7CEE8FAA11D8A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E423429196118D1256D29441 /* Base */; };
 		FA10231CBEE71B65F4B84E73 /* DevLauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBE820BFDB2CB81C7EA9186 /* DevLauncherViewController.swift */; };
+		B698CB2619C1507F0FF0C993 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD3D4059A487A2BB914C8CF /* SceneDelegate.swift */; };
+		9431D2EEC3D11E926152AA02 /* LynxProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27D38F49117F9112EEB5A2 /* LynxProvider.swift */; };
+		B6E6E293C0723C2FEB8516B5 /* tamer-host-native-modules.json in Resources */ = {isa = PBXBuildFile; fileRef = 137B1C8A29634BE3B8E5B936 /* tamer-host-native-modules.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		C284ECEC154BB22F53147756 /* Pods-TamerDevApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TamerDevApp.debug.xcconfig"; path = "Target Support Files/Pods-TamerDevApp/Pods-TamerDevApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CDCE0081A51711D29F1734DB /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		E423429196118D1256D29441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CDD3D4059A487A2BB914C8CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		4D27D38F49117F9112EEB5A2 /* LynxProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LynxProvider.swift; sourceTree = "<group>"; };
+		137B1C8A29634BE3B8E5B936 /* tamer-host-native-modules.json */ = {isa = PBXFileReference; lastKnownFileType = file; path = tamer-host-native-modules.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,9 @@
 		0B1C65D73A7ED5CA31FEA8AE /* TamerDevApp */ = {
 			isa = PBXGroup;
 			children = (
+				137B1C8A29634BE3B8E5B936 /* tamer-host-native-modules.json */,
+				4D27D38F49117F9112EEB5A2 /* LynxProvider.swift */,
+				CDD3D4059A487A2BB914C8CF /* SceneDelegate.swift */,
 				A8BFDF62EEE55A68F4F19C65 /* AppDelegate.swift */,
 				4FBE820BFDB2CB81C7EA9186 /* DevLauncherViewController.swift */,
 				4F2C22A9ADBC0D03590FFF89 /* ProjectViewController.swift */,
@@ -163,6 +172,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6E6E293C0723C2FEB8516B5 /* tamer-host-native-modules.json in Resources */,
 				8E0DC134650ED414F49B4506 /* Assets.xcassets in Resources */,
 				F7C733507FF7CEE8FAA11D8A /* Base in Resources */,
 				90E3E0C0A1B24A5CB832D1F2 /* Base in Resources */,
@@ -233,6 +243,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9431D2EEC3D11E926152AA02 /* LynxProvider.swift in Sources */,
+				B698CB2619C1507F0FF0C993 /* SceneDelegate.swift in Sources */,
 				B55301803D4DFEFC5627BA33 /* AppDelegate.swift in Sources */,
 				FA10231CBEE71B65F4B84E73 /* DevLauncherViewController.swift in Sources */,
 				9F3469D0D4AD2E7B63611109 /* ProjectViewController.swift in Sources */,

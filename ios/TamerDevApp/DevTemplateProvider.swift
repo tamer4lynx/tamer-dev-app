@@ -7,13 +7,11 @@ class DevTemplateProvider: NSObject, LynxTemplateProvider {
 
     func loadTemplate(withUrl url: String!, onComplete callback: LynxTemplateLoadBlock!) {
         DispatchQueue.global(qos: .background).async {
-            // dev-client.lynx.bundle always loads from the embedded asset
             if url == Self.devClientBundle || url?.hasSuffix("/" + Self.devClientBundle) == true {
                 self.loadFromBundle(url: Self.devClientBundle, callback: callback)
                 return
             }
 
-            // Try the dev server first
             if let devUrl = DevServerPrefs.getUrl(), !devUrl.isEmpty {
                 let origin: String
                 if let parsed = URL(string: devUrl) {
@@ -34,7 +32,6 @@ class DevTemplateProvider: NSObject, LynxTemplateProvider {
                 }
             }
 
-            // Fall back to embedded bundle
             self.loadFromBundle(url: url, callback: callback)
         }
     }

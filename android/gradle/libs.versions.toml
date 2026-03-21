@@ -9,12 +9,12 @@ junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 appcompat = "1.6.1"
-lynx = "3.3.1"
+lynx = "3.6.0"
 material = "1.10.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
 okhttp = "4.9.0"
-primjs = "2.12.0"
+primjs = "3.6.1"
 zxing = "4.3.0"
 biometric = "1.1.0"
 
@@ -37,6 +37,8 @@ lynx-service-http = { module = "org.lynxsdk.lynx:lynx-service-http", version.ref
 lynx-service-image = { module = "org.lynxsdk.lynx:lynx-service-image", version.ref = "lynx" }
 lynx-service-log = { module = "org.lynxsdk.lynx:lynx-service-log", version.ref = "lynx" }
 lynx-trace = { module = "org.lynxsdk.lynx:lynx-trace", version.ref = "lynx" }
+lynx-xelement = { module = "org.lynxsdk.lynx:xelement", version.ref = "lynx" }
+lynx-xelement-input = { module = "org.lynxsdk.lynx:xelement-input", version.ref = "lynx" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }

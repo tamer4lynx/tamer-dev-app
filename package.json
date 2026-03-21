@@ -1,6 +1,6 @@
 {
   "name": "@tamer4lynx/tamer-dev-app",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "publishConfig": {
     "access": "public",
     "tag": "prerelease"
@@ -20,19 +20,7 @@
     "link:native": "node ../../dist/index.js link"
   },
   "dependencies": {
-    "@tamer4lynx/jiggle": "^0.0.1",
-    "@tamer4lynx/tamer-biometric": "^0.0.1",
-    "@tamer4lynx/tamer-transports": "^0.0.1",
-    "@tamer4lynx/tamer-linking": "^0.0.1",
-    "@tamer4lynx/tamer-display-browser": "^0.0.1",
-    "@tamer4lynx/tamer-secure-store": "^0.0.1",
-    "@tamer4lynx/tamer-dev-client": "^0.0.5",
-    "@tamer4lynx/tamer-icons": "^0.0.2",
-    "@tamer4lynx/tamer-router": "^0.0.1",
-    "@tamer4lynx/tamer-insets": "^0.0.1",
-    "@tamer4lynx/tamer-system-ui": "^0.0.1",
-    "@tamer4lynx/tamer-app-shell": "^0.0.2",
-    "@tamer4lynx/tamer-screen": "^0.0.2"
+    "@tamer4lynx/tamer-dev-client": "^0.0.21"
   },
   "devDependencies": {
     "@rsbuild/plugin-type-check": "1.2.3",

@@ -1,6 +1,21 @@
 PODS:
-  - jiggle (0.0.2):
-    - Lynx
+  - BaseDevtool (3.6.0):
+    - BaseDevtool/framework (= 3.6.0)
+  - BaseDevtool/framework (3.6.0):
+    - DebugRouter (>= 5.0.13)
+    - Lynx (= 3.6.0)
+    - LynxBase (= 3.6.0)
+  - DebugRouter (5.0.15):
+    - DebugRouter/Framework (= 5.0.15)
+    - DebugRouter/Native (= 5.0.15)
+    - DebugRouter/third_party (= 5.0.15)
+  - DebugRouter/Framework (5.0.15):
+    - DebugRouter/Native
+  - DebugRouter/Native (5.0.15):
+    - DebugRouter/third_party
+  - DebugRouter/third_party (5.0.15):
+    - DebugRouter/third_party/jsoncpp (= 5.0.15)
+  - DebugRouter/third_party/jsoncpp (5.0.15)
   - libwebp (1.5.0):
     - libwebp/demux (= 1.5.0)
     - libwebp/mux (= 1.5.0)
@@ -28,6 +43,38 @@ PODS:
     - LynxBase/Framework (= 3.6.0)
   - LynxBase/Framework (3.6.0):
     - LynxServiceAPI/Core
+  - LynxDevtool (3.6.0):
+    - LynxDevtool/Framework (= 3.6.0)
+    - LynxDevtool/LynxCore (= 3.6.0)
+    - LynxDevtool/LynxRecorder (= 3.6.0)
+  - LynxDevtool/Framework (3.6.0):
+    - BaseDevtool (= 3.6.0)
+    - DebugRouter (>= 5.0.13)
+    - Lynx (= 3.6.0)
+    - LynxBase (= 3.6.0)
+    - LynxDevtool/Framework/zlib (= 3.6.0)
+    - LynxDevtool/LynxCore
+    - PrimJS/quickjs_debugger
+    - PrimJS/quickjs_heapprofiler
+    - PrimJS/quickjs_profiler
+    - SocketRocket
+  - LynxDevtool/Framework/zlib (3.6.0):
+    - BaseDevtool (= 3.6.0)
+    - DebugRouter (>= 5.0.13)
+    - Lynx (= 3.6.0)
+    - LynxBase (= 3.6.0)
+    - LynxDevtool/LynxCore
+    - PrimJS/quickjs_debugger
+    - PrimJS/quickjs_heapprofiler
+    - PrimJS/quickjs_profiler
+    - SocketRocket
+  - LynxDevtool/LynxCore (3.6.0)
+  - LynxDevtool/LynxRecorder (3.6.0):
+    - LynxDevtool/Framework
+  - LynxService/Devtool (3.6.0):
+    - Lynx (= 3.6.0)
+    - LynxDevtool (= 3.6.0)
+    - LynxServiceAPI (= 3.6.0)
   - LynxService/Http (3.6.0):
     - Lynx (= 3.6.0)
     - LynxServiceAPI (= 3.6.0)
@@ -65,31 +112,29 @@ PODS:
     - PrimJS/quickjs
   - PrimJS/quickjs (3.6.1):
     - PrimJS/log
+  - PrimJS/quickjs_debugger (3.6.1):
+    - PrimJS/quickjs
+  - PrimJS/quickjs_heapprofiler (3.6.1):
+    - PrimJS/quickjs_debugger
+  - PrimJS/quickjs_profiler (3.6.1):
+    - PrimJS/quickjs_debugger
   - SDWebImage (5.15.5):
     - SDWebImage/Core (= 5.15.5)
   - SDWebImage/Core (5.15.5)
   - SDWebImageWebPCoder (0.11.0):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.15)
-  - tamerbiometric (0.0.1):
+  - SocketRocket (0.7.1)
+  - tamerdevclient (0.0.18):
     - Lynx
-  - tamerdevclient (0.0.8):
-    - Lynx
-  - tamerdisplaybrowser (0.0.1):
-    - Lynx
-  - tamericons (0.0.3):
+    - tamersystemui
+  - tamericons (0.0.4):
     - Lynx
   - tamerinsets (0.0.3):
     - Lynx
-  - tamerlinking (0.0.1):
-    - Lynx
-  - tamerrouter (0.0.2):
-    - Lynx
-  - tamersecurestore (0.0.1):
+  - tamerrouter (0.0.3):
     - Lynx
   - tamersystemui (0.1.0):
-    - Lynx
-  - tamertransports (0.0.4):
     - Lynx
   - XElement (3.6.0):
     - XElement/Behavior (= 3.6.0)
@@ -105,8 +150,9 @@ PODS:
     - Lynx (= 3.6.0)
 
 DEPENDENCIES:
-  - "jiggle (from `../../../node_modules/@tamer4lynx/jiggle/ios/jiggle`)"
   - Lynx/Framework (= 3.6.0)
+  - LynxDevtool (= 3.6.0)
+  - LynxService/Devtool (= 3.6.0)
   - LynxService/Http (= 3.6.0)
   - LynxService/Image (= 3.6.0)
   - LynxService/Log (= 3.6.0)
@@ -114,76 +160,61 @@ DEPENDENCIES:
   - PrimJS/quickjs (= 3.6.1)
   - SDWebImage (= 5.15.5)
   - SDWebImageWebPCoder (= 0.11.0)
-  - "tamerbiometric (from `../../../node_modules/@tamer4lynx/tamer-biometric/ios/tamerbiometric`)"
   - "tamerdevclient (from `../../../node_modules/@tamer4lynx/tamer-dev-client/ios/tamerdevclient`)"
-  - "tamerdisplaybrowser (from `../../../node_modules/@tamer4lynx/tamer-display-browser/ios/tamerdisplaybrowser`)"
   - "tamericons (from `../../../node_modules/@tamer4lynx/tamer-icons/ios/tamericons`)"
   - "tamerinsets (from `../../../node_modules/@tamer4lynx/tamer-insets/ios/tamerinsets`)"
-  - "tamerlinking (from `../../../node_modules/@tamer4lynx/tamer-linking/ios/tamerlinking`)"
   - "tamerrouter (from `../../../node_modules/@tamer4lynx/tamer-router/ios/tamerrouter`)"
-  - "tamersecurestore (from `../../../node_modules/@tamer4lynx/tamer-secure-store/ios/tamersecurestore`)"
   - "tamersystemui (from `../../../node_modules/@tamer4lynx/tamer-system-ui/ios/tamersystemui`)"
-  - "tamertransports (from `../../../node_modules/@tamer4lynx/tamer-transports/ios/tamertransports`)"
   - XElement (= 3.6.0)
 
 SPEC REPOS:
   trunk:
+    - BaseDevtool
+    - DebugRouter
     - libwebp
     - Lynx
     - LynxBase
+    - LynxDevtool
     - LynxService
     - LynxServiceAPI
     - PrimJS
     - SDWebImage
     - SDWebImageWebPCoder
+    - SocketRocket
     - XElement
 
 EXTERNAL SOURCES:
-  jiggle:
-    :path: "../../../node_modules/@tamer4lynx/jiggle/ios/jiggle"
-  tamerbiometric:
-    :path: "../../../node_modules/@tamer4lynx/tamer-biometric/ios/tamerbiometric"
   tamerdevclient:
     :path: "../../../node_modules/@tamer4lynx/tamer-dev-client/ios/tamerdevclient"
-  tamerdisplaybrowser:
-    :path: "../../../node_modules/@tamer4lynx/tamer-display-browser/ios/tamerdisplaybrowser"
   tamericons:
     :path: "../../../node_modules/@tamer4lynx/tamer-icons/ios/tamericons"
   tamerinsets:
     :path: "../../../node_modules/@tamer4lynx/tamer-insets/ios/tamerinsets"
-  tamerlinking:
-    :path: "../../../node_modules/@tamer4lynx/tamer-linking/ios/tamerlinking"
   tamerrouter:
     :path: "../../../node_modules/@tamer4lynx/tamer-router/ios/tamerrouter"
-  tamersecurestore:
-    :path: "../../../node_modules/@tamer4lynx/tamer-secure-store/ios/tamersecurestore"
   tamersystemui:
     :path: "../../../node_modules/@tamer4lynx/tamer-system-ui/ios/tamersystemui"
-  tamertransports:
-    :path: "../../../node_modules/@tamer4lynx/tamer-transports/ios/tamertransports"
 
 SPEC CHECKSUMS:
-  jiggle: a5b3b63255ed24598e360fde7dfde9118f46a828
+  BaseDevtool: 39ad8896da6d55bfe4a2231feb85b8e0ef23e6e3
+  DebugRouter: f0323a03519feabd12f553f0da7ac7931873a0ea
   libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
   Lynx: 49ad3adbc536c42e22aceff5e6bcb5a60f605ad0
   LynxBase: 8c285e5986c565dc3e06d47c08b6e11b561980fe
+  LynxDevtool: 48ea15dcdf93c8c0fb3849e0b2d94d07ff96e4a7
   LynxService: 42a3847a279c7fff63c3794d4c6ef53ee68ef629
   LynxServiceAPI: a552e8346a375cb500637cd7e05dd1cf2b219920
   PrimJS: ab129af0dc78fa1aa9cf6b33f51e3c9790d6f617
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
   SDWebImageWebPCoder: 295a6573c512f54ad2dd58098e64e17dcf008499
-  tamerbiometric: 9008c14e7460e3f73ffcd10980c9a40875d03bda
-  tamerdevclient: 1941a69c943daef1474dd3b5308ad8d67dd52778
-  tamerdisplaybrowser: bfa39e8b59e356e0d4dd6e2af303a573d840b1cf
-  tamericons: 0d4942261174587047a92fd071012c29057560ee
+  SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
+  tamerdevclient: 770fbcd9ccaaae903fcd032b96e3d76587acb454
+  tamericons: f0d4ac93fac391a95af3d3cf52aed1f597545145
   tamerinsets: df1f4570cc195dbfeb93922a75c3207d744eeacb
-  tamerlinking: 4ca8c75ca39d6bbce6ab2083abf9c9fb911127ab
-  tamerrouter: f8ac9c540913edf81a50566982fd5b8bd8624746
-  tamersecurestore: bbe3f4a12b372a3c122905f1f383c3536c4a725d
+  tamerrouter: 82dd6d5142108348c51f9c52f39d93e9ab6b3736
   tamersystemui: bcc070ece1fb926a4436166145d04339a7d202aa
-  tamertransports: 656bad3b8892ddc966556fc7f9b9074bd6b7d728
   XElement: fb90e5e349dc5728f242f3881d2e5e389f3e329a
 
-PODFILE CHECKSUM: 1788f83cf3dc68b47806fea26fbeee3e58c444c0
+PODFILE CHECKSUM: 34c3bd022a7eadb695ea5d25df4b01ad34bea6fe
 
 COCOAPODS: 1.16.2

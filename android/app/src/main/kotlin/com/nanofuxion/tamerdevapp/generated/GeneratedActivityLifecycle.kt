@@ -17,15 +17,17 @@ object GeneratedActivityLifecycle {
     }
 
     fun onViewAttached(lynxView: LynxView?) {
-        // no patches
+        com.nanofuxion.tamerinsets.TamerInsetsModule.attachHostView(lynxView)
+        com.nanofuxion.tamerrouter.TamerRouterNativeModule.attachHostView(lynxView)
     }
 
     fun onViewDetached() {
-        // no patches
+        com.nanofuxion.tamerinsets.TamerInsetsModule.attachHostView(null)
+        com.nanofuxion.tamerrouter.TamerRouterNativeModule.attachHostView(null)
     }
 
     fun onResume() {
-        // no patches
+        com.nanofuxion.tamerinsets.TamerInsetsModule.reRequestInsets()
     }
 
     fun onPause() {
@@ -37,14 +39,20 @@ object GeneratedActivityLifecycle {
     }
 
     fun onBackPressed(fallback: (Boolean) -> Unit) {
-        fallback(false)
+        com.nanofuxion.tamerrouter.TamerRouterNativeModule.requestBack(fallback)
     }
 
     fun onWindowFocusChanged(hasFocus: Boolean) {
-        // no patches
+        if (hasFocus) {
+            com.nanofuxion.tamerinsets.TamerInsetsModule.reRequestInsets()
+        }
     }
 
     fun onCreateDelayed(handler: android.os.Handler) {
-        // no patches
+        listOf(150L, 400L, 800L).forEach { delay ->
+            handler.postDelayed({
+                com.nanofuxion.tamerinsets.TamerInsetsModule.reRequestInsets()
+            }, delay)
+        }
     }
 }

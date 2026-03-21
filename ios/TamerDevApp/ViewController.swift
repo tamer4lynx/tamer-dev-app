@@ -2,10 +2,10 @@ import UIKit
 import Lynx
 import tamerdevclient
 import tamerinsets
+import tamersystemui
 
-class ProjectViewController: UIViewController {
+class ViewController: UIViewController {
     private var lynxView: LynxView?
-    private var devClientManager: DevClientManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,13 +15,11 @@ class ProjectViewController: UIViewController {
         additionalSafeAreaInsets = .zero
         view.insetsLayoutMarginsFromSafeArea = false
         view.preservesSuperviewLayoutMargins = false
-        viewRespectsSystemMinimumLayoutMargins = false
+        if #available(iOS 15.0, *) {
+            viewRespectsSystemMinimumLayoutMargins = false
+        }
         setupLynxView()
-        TamerRelogLogService.connect()
-        devClientManager = DevClientManager(onReload: { [weak self] in
-            self?.reloadLynxView()
-        })
-        devClientManager?.connect()
+        setupDevClientModule()
     }
 
     override func viewDidLayoutSubviews() {
@@ -36,9 +34,9 @@ class ProjectViewController: UIViewController {
         TamerInsetsModule.reRequestInsets()
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+    override var preferredStatusBarStyle: UIStatusBarStyle { SystemUIModule.statusBarStyleForHost }
 
-    private func buildLynxView() -> LynxView {
+    private func setupLynxView() {
         let size = fullscreenBounds().size
         let lv = LynxView { builder in
             builder.config = LynxConfig(provider: DevTemplateProvider())
@@ -48,26 +46,15 @@ class ProjectViewController: UIViewController {
         lv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         lv.insetsLayoutMarginsFromSafeArea = false
         lv.preservesSuperviewLayoutMargins = false
-        applyFullscreenLayout(to: lv)
-        return lv
-    }
-
-    private func setupLynxView() {
-        let lv = buildLynxView()
         view.addSubview(lv)
-        lv.loadTemplate(fromURL: "main.lynx.bundle", initData: nil)
+        applyFullscreenLayout(to: lv)
+        TamerInsetsModule.attachHostView(lv)
+        lv.loadTemplate(fromURL: "dev-client.lynx.bundle", initData: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self, weak lv] in
             guard let self, let lv else { return }
-            self.logViewport("project post-load", lynxView: lv)
             self.applyFullscreenLayout(to: lv)
         }
         self.lynxView = lv
-    }
-
-    private func reloadLynxView() {
-        lynxView?.removeFromSuperview()
-        lynxView = nil
-        setupLynxView()
     }
 
     private func applyFullscreenLayout(to lynxView: LynxView) {
@@ -80,29 +67,29 @@ class ProjectViewController: UIViewController {
         lynxView.preferredLayoutHeight = size.height
         lynxView.layoutWidthMode = .exact
         lynxView.layoutHeightMode = .exact
-        logViewport("project apply", lynxView: lynxView)
     }
 
     private func fullscreenBounds() -> CGRect {
         let bounds = view.bounds
-        if bounds.width > 0, bounds.height > 0 {
-            return bounds
-        }
+        if bounds.width > 0, bounds.height > 0 { return bounds }
         return UIScreen.main.bounds
     }
 
-    private func logViewport(_ label: String, lynxView: LynxView) {
-        let rootWidth = lynxView.rootWidth()
-        let rootHeight = lynxView.rootHeight()
-        let intrinsic = lynxView.intrinsicContentSize
-        NSLog("[ProjectVC] %@ view=%@ safe=%@ lynxFrame=%@ lynxBounds=%@ root=%0.2fx%0.2f intrinsic=%@", label, NSCoder.string(for: view.bounds), NSCoder.string(for: view.safeAreaInsets), NSCoder.string(for: lynxView.frame), NSCoder.string(for: lynxView.bounds), rootWidth, rootHeight, NSCoder.string(for: intrinsic))
-    }
+    private func setupDevClientModule() {
+        DevClientModule.presentQRScanner = { [weak self] completion in
+            let scanner = QRScannerViewController()
+            scanner.onResult = { url in
+                scanner.dismiss(animated: true) { completion(url) }
+            }
+            scanner.modalPresentationStyle = .fullScreen
+            self?.present(scanner, animated: true)
+        }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if isBeingDismissed || isMovingFromParent {
-            devClientManager?.disconnect()
-            TamerRelogLogService.disconnect()
+        DevClientModule.reloadProjectHandler = { [weak self] in
+            guard let self = self else { return }
+            let projectVC = ProjectViewController()
+            projectVC.modalPresentationStyle = .fullScreen
+            self.present(projectVC, animated: true)
         }
     }
 }

@@ -6,13 +6,40 @@ package com.nanofuxion.tamerdevapp.generated
 
 import android.content.Context
 import com.lynx.tasm.LynxEnv
+import com.lynx.tasm.LynxViewBuilder
+import com.lynx.xelement.XElementBehaviors
 import com.nanofuxion.tamerdevclient.DevClientModule
-
+import com.nanofuxion.tamerinsets.TamerInsetsModule
+import com.nanofuxion.tamerrouter.TamerRouterNativeModule
+import com.nanofuxion.tamersystemui.SystemUIModule
+import com.nanofuxion.tamericons.IconElement
 
 object GeneratedLynxExtensions {
     fun register(context: Context) {
+        com.nanofuxion.tamerdevclient.LynxDevToolBootstrap.configure(context)
         LynxEnv.inst().registerModule("DevClientModule", DevClientModule::class.java)
-    }
-    fun onHostViewChanged(view: android.view.View?) {}
+        LynxEnv.inst().registerModule("TamerInsetsModule", TamerInsetsModule::class.java)
+        LynxEnv.inst().registerModule("TamerRouterNativeModule", TamerRouterNativeModule::class.java)
+        LynxEnv.inst().registerModule("SystemUIModule", SystemUIModule::class.java)
+        LynxEnv.inst().addBehavior(object : com.lynx.tasm.behavior.Behavior("icon") {
+            override fun createUI(context: com.lynx.tasm.behavior.LynxContext): com.lynx.tasm.behavior.ui.LynxUI<*> {
+                return IconElement(context)
+            }
+        })
+        com.nanofuxion.tamerdevclient.DevClientModule.attachSupportedModuleClassNames(listOf(
+            "com.nanofuxion.tamerdevclient.DevClientModule",
+            "com.nanofuxion.tamerinsets.TamerInsetsModule",
+            "com.nanofuxion.tamerrouter.TamerRouterNativeModule",
+            "com.nanofuxion.tamersystemui.SystemUIModule"
+        ))
+        com.nanofuxion.tamerdevclient.LynxDevToolBootstrap.enableLynxDebugFlags()
 
+    }
+
+    fun configureViewBuilder(viewBuilder: LynxViewBuilder) {
+        viewBuilder.addBehaviors(XElementBehaviors().create())
+    }
+    fun onHostViewChanged(view: android.view.View?) {
+        SystemUIModule.attachHostView(view)
+    }
 }
