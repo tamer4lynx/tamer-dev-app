@@ -32,6 +32,7 @@ target 'TamerDevApp' do
   pod 'tamerinsets', :path => '../../../node_modules/@tamer4lynx/tamer-insets/ios/tamerinsets'
   pod 'tamerrouter', :path => '../../../node_modules/@tamer4lynx/tamer-router/ios/tamerrouter'
   pod 'tamersystemui', :path => '../../../node_modules/@tamer4lynx/tamer-system-ui/ios/tamersystemui'
+  pod 'tamerwebview', :path => '../../tamer-webview/ios/tamerwebview'
 # GENERATED AUTOLINK DEPENDENCIES END
 end
 

@@ -125,16 +125,18 @@ PODS:
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.15)
   - SocketRocket (0.7.1)
-  - tamerdevclient (0.0.18):
+  - tamerdevclient (0.0.21):
     - Lynx
     - tamersystemui
   - tamericons (0.0.4):
     - Lynx
   - tamerinsets (0.0.3):
     - Lynx
-  - tamerrouter (0.0.3):
+  - tamerrouter (0.0.4):
     - Lynx
   - tamersystemui (0.1.0):
+    - Lynx
+  - tamerwebview (0.0.1):
     - Lynx
   - XElement (3.6.0):
     - XElement/Behavior (= 3.6.0)
@@ -165,6 +167,7 @@ DEPENDENCIES:
   - "tamerinsets (from `../../../node_modules/@tamer4lynx/tamer-insets/ios/tamerinsets`)"
   - "tamerrouter (from `../../../node_modules/@tamer4lynx/tamer-router/ios/tamerrouter`)"
   - "tamersystemui (from `../../../node_modules/@tamer4lynx/tamer-system-ui/ios/tamersystemui`)"
+  - tamerwebview (from `../../tamer-webview/ios/tamerwebview`)
   - XElement (= 3.6.0)
 
 SPEC REPOS:
@@ -194,6 +197,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/@tamer4lynx/tamer-router/ios/tamerrouter"
   tamersystemui:
     :path: "../../../node_modules/@tamer4lynx/tamer-system-ui/ios/tamersystemui"
+  tamerwebview:
+    :path: "../../tamer-webview/ios/tamerwebview"
 
 SPEC CHECKSUMS:
   BaseDevtool: 39ad8896da6d55bfe4a2231feb85b8e0ef23e6e3
@@ -208,13 +213,14 @@ SPEC CHECKSUMS:
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
   SDWebImageWebPCoder: 295a6573c512f54ad2dd58098e64e17dcf008499
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  tamerdevclient: 770fbcd9ccaaae903fcd032b96e3d76587acb454
+  tamerdevclient: a0e583a12b352b6f2ab8466f21a0820a604f6d1b
   tamericons: f0d4ac93fac391a95af3d3cf52aed1f597545145
   tamerinsets: df1f4570cc195dbfeb93922a75c3207d744eeacb
-  tamerrouter: 82dd6d5142108348c51f9c52f39d93e9ab6b3736
+  tamerrouter: d12f5b8aad6f2aba21693e4ddad6648b2af4fe1a
   tamersystemui: bcc070ece1fb926a4436166145d04339a7d202aa
+  tamerwebview: 410c419fe9837a1f984a067f194468f2ce682e96
   XElement: fb90e5e349dc5728f242f3881d2e5e389f3e329a
 
-PODFILE CHECKSUM: 34c3bd022a7eadb695ea5d25df4b01ad34bea6fe
+PODFILE CHECKSUM: 05e4e2a48fb2c1afd0067dc4676379af7832f75e
 
 COCOAPODS: 1.16.2

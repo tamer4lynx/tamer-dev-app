@@ -10,6 +10,7 @@ import tamericons
 import tamerinsets
 import tamerrouter
 import tamersystemui
+import tamerwebview
 // GENERATED IMPORTS END
 
 final class LynxInitProcessor {
@@ -37,6 +38,8 @@ final class LynxInitProcessor {
 
         // Register element from package: @tamer4lynx/tamer-icons
         globalConfig.registerUI(TamerIconElement.self, withName: "icon")
+
+        globalConfig.registerUI(TamerWebViewElement.self, withName: "webview")
 
         // Register module from package: @tamer4lynx/tamer-insets
         globalConfig.register(TamerInsetsModule.self)

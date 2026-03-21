@@ -35,4 +35,6 @@ include(":tamer4lynx_tamer-router")
 project(":tamer4lynx_tamer-router").projectDir = file("/Volumes/Storage/Projects/tamer4lynx/node_modules/@tamer4lynx/tamer-router/android")
 include(":tamer4lynx_tamer-system-ui")
 project(":tamer4lynx_tamer-system-ui").projectDir = file("/Volumes/Storage/Projects/tamer4lynx/node_modules/@tamer4lynx/tamer-system-ui/android")
+include(":tamer4lynx_tamer-webview")
+project(":tamer4lynx_tamer-webview").projectDir = file("../../tamer-webview/android")
 // GENERATED AUTOLINK END
