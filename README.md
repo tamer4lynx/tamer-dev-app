@@ -8,14 +8,14 @@ This package is the native host app for development. It is typically used as a w
 
 ```bash
 # From tamer4lynx root
-t4l build --platform android --install
-t4l build --platform ios --install
+t4l build android --install
+t4l build ios --install
 ```
 
 ## Usage
 
 1. Run the dev server: `t4l start` (from project root)
-2. Build and install the dev app: `t4l build --install`
+2. Build and install the dev app: `t4l build android --install` or `t4l build ios --install`
 3. Open the dev app on your device, scan the QR code, and connect to the dev server for HMR
 
 The dev app embeds **tamer-dev-client** for the launcher UI, discovery, and reload bridge.
