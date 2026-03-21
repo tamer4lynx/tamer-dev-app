@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@tamer4lynx/tamer-dev-client": "^0.0.22",
-    "@tamer4lynx/tamer-webview": "file:../tamer-webview"
+    "@tamer4lynx/tamer-webview": "^0.0.1"
   },
   "devDependencies": {
     "@rsbuild/plugin-type-check": "1.2.3",
