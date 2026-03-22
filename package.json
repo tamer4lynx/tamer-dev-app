@@ -1,6 +1,6 @@
 {
   "name": "@tamer4lynx/tamer-dev-app",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "publishConfig": {
     "access": "public",
     "tag": "prerelease"
@@ -20,7 +20,7 @@
     "link:native": "node ../../dist/index.js link"
   },
   "dependencies": {
-    "@tamer4lynx/tamer-dev-client": "^0.0.22"
+    "@tamer4lynx/tamer-dev-client": "^0.0.23"
   },
   "devDependencies": {
     "@rsbuild/plugin-type-check": "1.2.3",
