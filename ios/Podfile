@@ -52,6 +52,24 @@ post_install do |installer|
         config.build_settings['CLANG_ENABLE_EXPLICIT_MODULES'] = 'NO'
         config.build_settings['ONLY_ACTIVE_ARCH'] = 'YES'
         config.build_settings['SWIFT_ENABLE_EXPLICIT_MODULES'] = 'NO'
+        # TAMER_BUILD_SPEED_START
+        if config.name == 'Debug'
+          config.build_settings['COMPILER_INDEX_STORE_ENABLE'] = 'NO'
+        end
+        if ENV['TAMER_CCACHE'] == '1' || ENV['USE_CCACHE'] == '1'
+          ccache_bin = `which ccache`.strip
+          unless ccache_bin.empty?
+            clang_bin = `xcrun -f clang`.strip
+            clangxx_bin = `xcrun -f clang++`.strip
+            clang_bin = 'clang' if clang_bin.empty?
+            clangxx_bin = 'clang++' if clangxx_bin.empty?
+            if config.name == 'Debug'
+              config.build_settings['CC'] = "#{ccache_bin} #{clang_bin}"
+              config.build_settings['CXX'] = "#{ccache_bin} #{clangxx_bin}"
+            end
+          end
+        end
+        # TAMER_BUILD_SPEED_END
       end
 
       if target.name == 'Lynx'
