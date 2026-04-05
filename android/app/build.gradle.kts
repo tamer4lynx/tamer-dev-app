@@ -87,8 +87,8 @@ dependencies {
     implementation(project(":tamer4lynx_tamer-dev-client"))
     implementation(project(":tamer4lynx_tamer-icons"))
     implementation(project(":tamer4lynx_tamer-insets"))
+    implementation(project(":tamer4lynx_tamer-navigation"))
     implementation(project(":tamer4lynx_tamer-router"))
     implementation(project(":tamer4lynx_tamer-system-ui"))
-    implementation(project(":tamer4lynx_tamer-webview"))
 // GENERATED AUTOLINK DEPENDENCIES END
 }

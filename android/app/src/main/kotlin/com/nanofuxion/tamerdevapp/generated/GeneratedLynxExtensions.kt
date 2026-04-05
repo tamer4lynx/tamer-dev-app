@@ -13,7 +13,7 @@ import com.nanofuxion.tamerinsets.TamerInsetsModule
 import com.nanofuxion.tamerrouter.TamerRouterNativeModule
 import com.nanofuxion.tamersystemui.SystemUIModule
 import com.nanofuxion.tamericons.IconElement
-import com.nanofuxion.tamerwebview.TamerWebViewElement
+import com.nanofuxion.tamernavigation.TamerNavBehavior
 
 object GeneratedLynxExtensions {
     fun register(context: Context) {
@@ -27,11 +27,7 @@ object GeneratedLynxExtensions {
                 return IconElement(context)
             }
         })
-        LynxEnv.inst().addBehavior(object : com.lynx.tasm.behavior.Behavior("webview") {
-            override fun createUI(context: com.lynx.tasm.behavior.LynxContext): com.lynx.tasm.behavior.ui.LynxUI<*> {
-                return TamerWebViewElement(context)
-            }
-        })
+        LynxEnv.inst().addBehavior(TamerNavBehavior())
         com.nanofuxion.tamerdevclient.DevClientModule.attachSupportedModuleClassNames(listOf(
             "com.nanofuxion.tamerdevclient.DevClientModule",
             "com.nanofuxion.tamerinsets.TamerInsetsModule",
