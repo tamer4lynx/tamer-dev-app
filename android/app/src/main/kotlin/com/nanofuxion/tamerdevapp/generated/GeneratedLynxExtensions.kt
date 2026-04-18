@@ -17,7 +17,6 @@ import com.nanofuxion.tamernavigation.TamerNavBehavior
 
 object GeneratedLynxExtensions {
     fun register(context: Context) {
-        com.nanofuxion.tamerdevclient.LynxDevToolBootstrap.configure(context)
         LynxEnv.inst().registerModule("DevClientModule", DevClientModule::class.java)
         LynxEnv.inst().registerModule("TamerInsetsModule", TamerInsetsModule::class.java)
         LynxEnv.inst().registerModule("TamerRouterNativeModule", TamerRouterNativeModule::class.java)
@@ -34,8 +33,6 @@ object GeneratedLynxExtensions {
             "com.nanofuxion.tamerrouter.TamerRouterNativeModule",
             "com.nanofuxion.tamersystemui.SystemUIModule"
         ))
-        com.nanofuxion.tamerdevclient.LynxDevToolBootstrap.enableLynxDebugFlags()
-
     }
 
     fun configureViewBuilder(viewBuilder: LynxViewBuilder) {

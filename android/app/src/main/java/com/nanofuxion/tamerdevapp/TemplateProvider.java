@@ -14,15 +14,23 @@ public class TemplateProvider extends AbsTemplateProvider {
     }
 
       private static final String DEV_CLIENT_BUNDLE = "dev-client.lynx.bundle";
+    private static final String TAMER_DEBUG_BUNDLE = "tamer-debug.lynx.bundle";
     private static final String PROJECT_BUNDLE_SEGMENT = "tamer-dev-app";
+
+    private static boolean isEmbeddedDevShellUrl(String url) {
+        if (url == null) return false;
+        return url.equals(DEV_CLIENT_BUNDLE) || url.endsWith("/" + DEV_CLIENT_BUNDLE) || url.contains(DEV_CLIENT_BUNDLE)
+            || url.equals(TAMER_DEBUG_BUNDLE) || url.endsWith("/" + TAMER_DEBUG_BUNDLE) || url.contains(TAMER_DEBUG_BUNDLE);
+    }
 
     @Override
     public void loadTemplate(String url, final Callback callback) {
         new Thread(() -> {
-            if (url != null && (url.equals(DEV_CLIENT_BUNDLE) || url.endsWith("/" + DEV_CLIENT_BUNDLE) || url.contains(DEV_CLIENT_BUNDLE))) {
+            if (isEmbeddedDevShellUrl(url)) {
                 try {
+                    String assetName = url != null && url.contains(TAMER_DEBUG_BUNDLE) ? TAMER_DEBUG_BUNDLE : DEV_CLIENT_BUNDLE;
                     java.io.ByteArrayOutputStream baos = new java.io.ByteArrayOutputStream();
-                    try (java.io.InputStream is = context.getAssets().open(DEV_CLIENT_BUNDLE)) {
+                    try (java.io.InputStream is = context.getAssets().open(assetName)) {
                         byte[] buf = new byte[1024];
                         int n;
                         while ((n = is.read(buf)) != -1) baos.write(buf, 0, n);

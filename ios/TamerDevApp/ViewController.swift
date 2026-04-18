@@ -2,13 +2,22 @@ import UIKit
 import Lynx
 import tamerdevclient
 import tamerinsets
+import tamerrouter
 import tamersystemui
+
+private func tamer_disableLynxLongPressMenuIfAvailable() {
+    guard let cls = NSClassFromString("LynxDevtoolEnv") else { return }
+    let sel = NSSelectorFromString("sharedInstance")
+    guard let env = (cls as AnyObject).perform(sel)?.takeUnretainedValue() as? NSObject else { return }
+    env.setValue(false, forKey: "longPressMenuEnabled")
+}
 
 class ViewController: UIViewController {
     private var lynxView: LynxView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tamer_disableLynxLongPressMenuIfAvailable()
         view.backgroundColor = .black
         edgesForExtendedLayout = .all
         extendedLayoutIncludesOpaqueBars = true
@@ -20,6 +29,20 @@ class ViewController: UIViewController {
         }
         setupLynxView()
         setupDevClientModule()
+    }
+
+    override var canBecomeFirstResponder: Bool { true }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        _ = becomeFirstResponder()
+    }
+
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        ShakeDetector.handleMotionEnded(motion) {
+            DevClientModule.emitShakeDetected()
+        }
+        super.motionEnded(motion, with: event)
     }
 
     override func viewDidLayoutSubviews() {
@@ -49,6 +72,7 @@ class ViewController: UIViewController {
         view.addSubview(lv)
         applyFullscreenLayout(to: lv)
         TamerInsetsModule.attachHostView(lv)
+        TamerRouterNativeModule.attachHostView(lv)
         lv.loadTemplate(fromURL: "dev-client.lynx.bundle", initData: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self, weak lv] in
             guard let self, let lv else { return }
@@ -88,6 +112,14 @@ class ViewController: UIViewController {
         DevClientModule.reloadProjectHandler = { [weak self] in
             guard let self = self else { return }
             let projectVC = ProjectViewController()
+            projectVC.modalPresentationStyle = .fullScreen
+            self.present(projectVC, animated: true)
+        }
+
+        DevClientModule.openProjectDirectHandler = { [weak self] bundleUrl in
+            guard let self = self else { return }
+            let projectVC = ProjectViewController()
+            projectVC.bundleUrl = bundleUrl
             projectVC.modalPresentationStyle = .fullScreen
             self.present(projectVC, animated: true)
         }

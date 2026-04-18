@@ -12,9 +12,9 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.zxing.integration.android.IntentIntegrator
-import com.google.zxing.integration.android.IntentResult
 import com.nanofuxion.tamerdevclient.DevClientModule
 
 import com.nanofuxion.tamerdevapp.generated.GeneratedLynxExtensions
@@ -33,12 +33,27 @@ class MainActivity : AppCompatActivity() {
         scanResult?.contents?.let { DevClientModule.instance?.deliverScanResult(it) }
     }
     private var lynxView: LynxView? = null
+    private val backCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            GeneratedActivityLifecycle.onBackPressed { consumed ->
+                if (!consumed) {
+                    isEnabled = false
+                    onBackPressedDispatcher.onBackPressed()
+                    isEnabled = true
+                }
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         GeneratedLynxExtensions.register(this)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
+
+        // Handle deep link from intent (e.g., from native scanner)
+        handleDeepLink(intent)
+
         lynxView = buildLynxView()
         setContentView(lynxView)
         GeneratedActivityLifecycle.onViewAttached(lynxView)
@@ -58,6 +73,12 @@ class MainActivity : AppCompatActivity() {
                 Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
             ))
         }
+        DevClientModule.attachOpenProjectDirectLauncher { bundleUrl ->
+            startActivity(Intent(this@MainActivity, ProjectActivity::class.java).apply {
+                putExtra("bundleUrl", bundleUrl)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            })
+        }
         reloadReceiver = object : BroadcastReceiver() {
             override fun onReceive(ctx: Context, intent: Intent) {
                 if (intent.action == DevClientModule.ACTION_RELOAD_PROJECT) {
@@ -74,7 +95,32 @@ class MainActivity : AppCompatActivity() {
         } else {
             registerReceiver(reloadReceiver, IntentFilter(DevClientModule.ACTION_RELOAD_PROJECT))
         }
+        onBackPressedDispatcher.addCallback(this, backCallback)
 
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        // Handle deep link when app is already running
+        handleDeepLink(intent)
+    }
+
+    private fun handleDeepLink(intent: Intent) {
+        val data = intent.data
+        if (data != null && data.scheme == "tamerdevapp") {
+            // Parse deep link: tamerdevapp://host:port/path
+            val host = data.host ?: return
+            val port = data.port
+            val path = data.path ?: ""
+            val bundleUrl = if (port > 0) "http://$host:$port$path" else "http://$host$path"
+            if (bundleUrl.isNotEmpty()) {
+                startActivity(Intent(this@MainActivity, ProjectActivity::class.java).apply {
+                    putExtra("bundleUrl", bundleUrl)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                })
+            }
+        }
     }
 
     override fun onPause() {
@@ -85,15 +131,6 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         GeneratedActivityLifecycle.onResume()
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        GeneratedActivityLifecycle.onBackPressed { consumed ->
-            if (!consumed) {
-                runOnUiThread { super.onBackPressed() }
-            }
-        }
     }
 
     private fun buildLynxView(): LynxView {
@@ -109,6 +146,8 @@ class MainActivity : AppCompatActivity() {
         lynxView?.destroy()
         lynxView = null
         DevClientModule.attachReloadProjectLauncher(null)
+        DevClientModule.attachOpenProjectDirectLauncher(null)
+        DevClientModule.attachHostActivity(null)
         DevClientModule.attachLynxView(null)
         super.onDestroy()
     }

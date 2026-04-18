@@ -125,18 +125,18 @@ PODS:
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.15)
   - SocketRocket (0.7.1)
-  - tamerdevclient (0.0.21):
+  - tamerdevclient (0.0.27):
     - Lynx
     - tamersystemui
-  - tamericons (0.0.4):
+  - tamericons (0.0.6):
     - Lynx
-  - tamerinsets (0.0.3):
+  - tamerinsets (0.0.4):
     - Lynx
-  - tamerrouter (0.0.4):
+  - tamerrouter (0.0.10):
     - Lynx
   - tamersystemui (0.1.0):
     - Lynx
-  - tamerwebview (0.0.1):
+  - tamerwebview (0.0.2):
     - Lynx
   - XElement (3.6.0):
     - XElement/Behavior (= 3.6.0)
@@ -213,14 +213,14 @@ SPEC CHECKSUMS:
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
   SDWebImageWebPCoder: 295a6573c512f54ad2dd58098e64e17dcf008499
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  tamerdevclient: a0e583a12b352b6f2ab8466f21a0820a604f6d1b
-  tamericons: f0d4ac93fac391a95af3d3cf52aed1f597545145
-  tamerinsets: df1f4570cc195dbfeb93922a75c3207d744eeacb
-  tamerrouter: d12f5b8aad6f2aba21693e4ddad6648b2af4fe1a
+  tamerdevclient: edc8470b8024359efc698bf45da32f5cf765346d
+  tamericons: efb9740cdbb51f6b9c4ad3ff1353f6e0c6b824a5
+  tamerinsets: 525081a8e0fe6bd5aba13e9bd2eee5dd86b027a6
+  tamerrouter: 96d18eebca410aac7d150fc6203633449730c45d
   tamersystemui: bcc070ece1fb926a4436166145d04339a7d202aa
-  tamerwebview: 410c419fe9837a1f984a067f194468f2ce682e96
+  tamerwebview: 57edc997a04e7d34c42addeacb0eba178f1e7454
   XElement: fb90e5e349dc5728f242f3881d2e5e389f3e329a
 
-PODFILE CHECKSUM: 05e4e2a48fb2c1afd0067dc4676379af7832f75e
+PODFILE CHECKSUM: 305e120191ef6b435d7002fae357bff59203ca65
 
 COCOAPODS: 1.16.2

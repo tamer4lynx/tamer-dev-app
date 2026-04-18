@@ -3,12 +3,30 @@ import Lynx
 import tamerdevclient
 import tamerinsets
 
+private func tamer_project_disableLynxLongPressMenuIfAvailable() {
+    guard let cls = NSClassFromString("LynxDevtoolEnv") else { return }
+    let sel = NSSelectorFromString("sharedInstance")
+    guard let env = (cls as AnyObject).perform(sel)?.takeUnretainedValue() as? NSObject else { return }
+    env.setValue(false, forKey: "longPressMenuEnabled")
+}
+
 class ProjectViewController: UIViewController {
     private var lynxView: LynxView?
+    private var devMenuView: LynxView?
     private var devClientManager: DevClientManager?
+    private var previousReloadProjectHandler: (() -> Void)?
+    private var previousDismissTamerDebugPanelHandler: (() -> Void)?
+    var bundleUrl: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+#if DEBUG
+        let env = LynxEnv.sharedInstance()
+        env.lynxDebugEnabled = true
+        env.devtoolEnabled = true
+        env.logBoxEnabled = true
+#endif
+        tamer_project_disableLynxLongPressMenuIfAvailable()
         view.backgroundColor = .black
         edgesForExtendedLayout = .all
         extendedLayoutIncludesOpaqueBars = true
@@ -17,17 +35,46 @@ class ProjectViewController: UIViewController {
         view.preservesSuperviewLayoutMargins = false
         viewRespectsSystemMinimumLayoutMargins = false
         setupLynxView()
-        TamerRelogLogService.connect()
-        devClientManager = DevClientManager(onReload: { [weak self] in
+        devClientManager = DevClientManager(bundleUrl: bundleUrl, onReload: { [weak self] in
             self?.reloadLynxView()
         })
         devClientManager?.connect()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        previousReloadProjectHandler = DevClientModule.reloadProjectHandler
+        DevClientModule.reloadProjectHandler = { [weak self] in
+            self?.dismissProjectDevMenu()
+            self?.reloadLynxView()
+        }
+        previousDismissTamerDebugPanelHandler = DevClientModule.dismissTamerDebugPanelHandler
+        DevClientModule.dismissTamerDebugPanelHandler = { [weak self] in
+            self?.dismissProjectDevMenu()
+        }
+    }
+
+    override var canBecomeFirstResponder: Bool { true }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        _ = becomeFirstResponder()
+    }
+
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        ShakeDetector.handleMotionEnded(motion) { [weak self] in
+            self?.showProjectDevMenu()
+        }
+        super.motionEnded(motion, with: event)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if let lynxView = lynxView {
             applyFullscreenLayout(to: lynxView)
+        }
+        if let devMenuView = devMenuView {
+            applyFullscreenLayout(to: devMenuView)
         }
     }
 
@@ -65,9 +112,38 @@ class ProjectViewController: UIViewController {
     }
 
     private func reloadLynxView() {
+        dismissProjectDevMenu()
         lynxView?.removeFromSuperview()
         lynxView = nil
         setupLynxView()
+    }
+
+    private func buildDevMenuLynxView() -> LynxView {
+        let size = fullscreenBounds().size
+        let lv = LynxView { builder in
+            builder.config = LynxConfig(provider: DevTemplateProvider())
+            builder.screenSize = size
+            builder.fontScale = 1.0
+        }
+        lv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        lv.insetsLayoutMarginsFromSafeArea = false
+        lv.preservesSuperviewLayoutMargins = false
+        lv.backgroundColor = .clear
+        applyFullscreenLayout(to: lv)
+        return lv
+    }
+
+    private func showProjectDevMenu() {
+        guard devMenuView == nil else { return }
+        let lv = buildDevMenuLynxView()
+        view.addSubview(lv)
+        lv.loadTemplate(fromURL: "tamer-debug.lynx.bundle", initData: nil)
+        devMenuView = lv
+    }
+
+    private func dismissProjectDevMenu() {
+        devMenuView?.removeFromSuperview()
+        devMenuView = nil
     }
 
     private func applyFullscreenLayout(to lynxView: LynxView) {
@@ -101,8 +177,9 @@ class ProjectViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if isBeingDismissed || isMovingFromParent {
+            DevClientModule.reloadProjectHandler = previousReloadProjectHandler
+            DevClientModule.dismissTamerDebugPanelHandler = previousDismissTamerDebugPanelHandler
             devClientManager?.disconnect()
-            TamerRelogLogService.disconnect()
         }
     }
 }

@@ -10,7 +10,7 @@ import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 
-class DevClientManager(private val context: Context, private val onReload: Runnable) {
+class DevClientManager(private val context: Context, private val bundleUrl: String? = null, private val onReload: Runnable) {
     private var webSocket: WebSocket? = null
     private var shouldReconnect = false
     private val handler = Handler(Looper.getMainLooper())
@@ -22,6 +22,10 @@ class DevClientManager(private val context: Context, private val onReload: Runna
 
     fun connect() {
         shouldReconnect = true
+        // If a bundleUrl was provided (e.g., from QR scan), save it to preferences
+        if (!bundleUrl.isNullOrEmpty()) {
+            DevServerPrefs.setUrl(context, bundleUrl)
+        }
         connectInternal()
     }
 

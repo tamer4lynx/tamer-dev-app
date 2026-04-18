@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		17C2D6443D170527820A91B4 /* DevTemplateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E19D84478C91F95F739117 /* DevTemplateProvider.swift */; };
 		5D0DDAB3C67F19DDDD003D64 /* dev-client.lynx.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F25B14F21B8D32C0BFD8A37 /* dev-client.lynx.bundle */; };
+		C7F81234A56B7890CDEF1234 /* tamer-debug.lynx.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D8E92345B67C8901DEF01235 /* tamer-debug.lynx.bundle */; };
 		771D0342C90186BBC56C750D /* libPods-TamerDevApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C81D5CF1743EAF00BDF2AB /* libPods-TamerDevApp.a */; };
 		7E6DF904CEAE1554B4C8FF91 /* DevClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE9E0AFBAB514FEC2FAE61 /* DevClientManager.swift */; };
 		8E0DC134650ED414F49B4506 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD84043846D14DED35C510B /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 		FA10231CBEE71B65F4B84E73 /* DevLauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBE820BFDB2CB81C7EA9186 /* DevLauncherViewController.swift */; };
 		B698CB2619C1507F0FF0C993 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD3D4059A487A2BB914C8CF /* SceneDelegate.swift */; };
 		9431D2EEC3D11E926152AA02 /* LynxProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27D38F49117F9112EEB5A2 /* LynxProvider.swift */; };
+		6E8F901234567ABCDEFF0123 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8F901234567ABCDEFF0124 /* ViewController.swift */; };
 		B6E6E293C0723C2FEB8516B5 /* tamer-host-native-modules.json in Resources */ = {isa = PBXBuildFile; fileRef = 137B1C8A29634BE3B8E5B936 /* tamer-host-native-modules.json */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +32,7 @@
 		1F61CC50541A42CEDF59A21E /* DevClientModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevClientModule.swift; sourceTree = "<group>"; };
 		2A9BD0055678945576B625DE /* TamerDevApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TamerDevApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		2F25B14F21B8D32C0BFD8A37 /* dev-client.lynx.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dev-client.lynx.bundle"; sourceTree = "<group>"; };
+		D8E92345B67C8901DEF01235 /* tamer-debug.lynx.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = "tamer-debug.lynx.bundle"; sourceTree = "<group>"; };
 		431F2B2FFA6A4443384155CB /* Pods-TamerDevApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TamerDevApp.release.xcconfig"; path = "Target Support Files/Pods-TamerDevApp/Pods-TamerDevApp.release.xcconfig"; sourceTree = "<group>"; };
 		47E19D84478C91F95F739117 /* DevTemplateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevTemplateProvider.swift; sourceTree = "<group>"; };
 		4CD84043846D14DED35C510B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		E423429196118D1256D29441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDD3D4059A487A2BB914C8CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4D27D38F49117F9112EEB5A2 /* LynxProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LynxProvider.swift; sourceTree = "<group>"; };
+		6E8F901234567ABCDEFF0124 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		137B1C8A29634BE3B8E5B936 /* tamer-host-native-modules.json */ = {isa = PBXFileReference; lastKnownFileType = file; path = tamer-host-native-modules.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +69,7 @@
 				137B1C8A29634BE3B8E5B936 /* tamer-host-native-modules.json */,
 				4D27D38F49117F9112EEB5A2 /* LynxProvider.swift */,
 				CDD3D4059A487A2BB914C8CF /* SceneDelegate.swift */,
+				6E8F901234567ABCDEFF0124 /* ViewController.swift */,
 				A8BFDF62EEE55A68F4F19C65 /* AppDelegate.swift */,
 				4FBE820BFDB2CB81C7EA9186 /* DevLauncherViewController.swift */,
 				4F2C22A9ADBC0D03590FFF89 /* ProjectViewController.swift */,
@@ -78,6 +83,7 @@
 				5CE212D3E31344B691E67617 /* LaunchScreen.storyboard */,
 				4CD84043846D14DED35C510B /* Assets.xcassets */,
 				2F25B14F21B8D32C0BFD8A37 /* dev-client.lynx.bundle */,
+				D8E92345B67C8901DEF01235 /* tamer-debug.lynx.bundle */,
 			);
 			path = TamerDevApp;
 			sourceTree = "<group>";
@@ -177,6 +183,7 @@
 				F7C733507FF7CEE8FAA11D8A /* Base in Resources */,
 				90E3E0C0A1B24A5CB832D1F2 /* Base in Resources */,
 				5D0DDAB3C67F19DDDD003D64 /* dev-client.lynx.bundle in Resources */,
+				C7F81234A56B7890CDEF1234 /* tamer-debug.lynx.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +252,7 @@
 			files = (
 				9431D2EEC3D11E926152AA02 /* LynxProvider.swift in Sources */,
 				B698CB2619C1507F0FF0C993 /* SceneDelegate.swift in Sources */,
+				6E8F901234567ABCDEFF0123 /* ViewController.swift in Sources */,
 				B55301803D4DFEFC5627BA33 /* AppDelegate.swift in Sources */,
 				FA10231CBEE71B65F4B84E73 /* DevLauncherViewController.swift in Sources */,
 				9F3469D0D4AD2E7B63611109 /* ProjectViewController.swift in Sources */,
@@ -289,7 +297,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -348,7 +356,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

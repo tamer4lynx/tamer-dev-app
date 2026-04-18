@@ -20,12 +20,15 @@ if (!fs.existsSync(path.join(devClientDir, 'package.json'))) {
 console.log('Building tamer-dev-client...');
 execSync('npm run build', { stdio: 'inherit', cwd: devClientDir });
 
-const bundlePath = path.join(devClientDir, 'dist', 'dev-client.lynx.bundle');
+const bundles = ['dev-client.lynx.bundle', 'tamer-debug.lynx.bundle'];
 const assetsDir = path.join(appRoot, 'android', 'app', 'src', 'main', 'assets');
-if (!fs.existsSync(bundlePath)) {
-  console.error('Dev client bundle not found at', bundlePath);
-  process.exit(1);
-}
 fs.mkdirSync(assetsDir, { recursive: true });
-fs.copyFileSync(bundlePath, path.join(assetsDir, 'dev-client.lynx.bundle'));
-console.log('Copied dev-client.lynx.bundle to android assets.');
+for (const name of bundles) {
+  const bundlePath = path.join(devClientDir, 'dist', name);
+  if (!fs.existsSync(bundlePath)) {
+    console.error('Bundle not found at', bundlePath);
+    process.exit(1);
+  }
+  fs.copyFileSync(bundlePath, path.join(assetsDir, name));
+  console.log(`Copied ${name} to android assets.`);
+}
