@@ -2,6 +2,8 @@ import UIKit
 import Lynx
 import tamerdevclient
 import tamerinsets
+import tamernavigation
+import tamerrouter
 
 private func tamer_project_disableLynxLongPressMenuIfAvailable() {
     guard let cls = NSClassFromString("LynxDevtoolEnv") else { return }
@@ -16,7 +18,10 @@ class ProjectViewController: UIViewController {
     private var devClientManager: DevClientManager?
     private var previousReloadProjectHandler: (() -> Void)?
     private var previousDismissTamerDebugPanelHandler: (() -> Void)?
+    private var hasTriggeredInitialProjectLoad = false
+    private var pendingInitialLoadWorkItem: DispatchWorkItem?
     var bundleUrl: String?
+    var onDismiss: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +64,7 @@ class ProjectViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         _ = becomeFirstResponder()
+        triggerInitialProjectLoadIfNeeded(reason: "viewDidAppear")
     }
 
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
@@ -76,11 +82,13 @@ class ProjectViewController: UIViewController {
         if let devMenuView = devMenuView {
             applyFullscreenLayout(to: devMenuView)
         }
+        triggerInitialProjectLoadIfNeeded(reason: "viewDidLayoutSubviews")
     }
 
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         TamerInsetsModule.reRequestInsets()
+        triggerInitialProjectLoadIfNeeded(reason: "viewSafeAreaInsetsDidChange")
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
@@ -101,21 +109,59 @@ class ProjectViewController: UIViewController {
 
     private func setupLynxView() {
         let lv = buildLynxView()
+        lv.backgroundColor = .black
+        lv.isHidden = false
+        lv.alpha = 1
+        lv.isUserInteractionEnabled = true
         view.addSubview(lv)
-        lv.loadTemplate(fromURL: "main.lynx.bundle", initData: nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self, weak lv] in
-            guard let self, let lv else { return }
-            self.logViewport("project post-load", lynxView: lv)
-            self.applyFullscreenLayout(to: lv)
-        }
+        TamerInsetsModule.attachHostView(lv)
+        TamerNavHost.attachRoot(lv, presenter: self)
+        TamerRouterNativeModule.attachHostView(lv)
+        pendingInitialLoadWorkItem?.cancel()
+        pendingInitialLoadWorkItem = nil
+        hasTriggeredInitialProjectLoad = false
         self.lynxView = lv
     }
 
     private func reloadLynxView() {
         dismissProjectDevMenu()
+        pendingInitialLoadWorkItem?.cancel()
+        pendingInitialLoadWorkItem = nil
         lynxView?.removeFromSuperview()
         lynxView = nil
         setupLynxView()
+        triggerInitialProjectLoadIfNeeded(reason: "reloadLynxView")
+    }
+
+    private func triggerInitialProjectLoadIfNeeded(reason: String) {
+        guard !hasTriggeredInitialProjectLoad else { return }
+        guard isViewLoaded, view.window != nil else {
+            NSLog("[ProjectVC] initial load waiting reason=%@ window=%@", reason, view.window != nil ? "attached" : "nil")
+            return
+        }
+        let bounds = fullscreenBounds()
+        guard bounds.width > 0, bounds.height > 0 else {
+            NSLog("[ProjectVC] initial load deferred reason=%@ bounds=%@", reason, NSCoder.string(for: bounds))
+            pendingInitialLoadWorkItem?.cancel()
+            let workItem = DispatchWorkItem { [weak self] in
+                self?.triggerInitialProjectLoadIfNeeded(reason: "\(reason)-retry")
+            }
+            pendingInitialLoadWorkItem = workItem
+            DispatchQueue.main.async(execute: workItem)
+            return
+        }
+        guard let lynxView else { return }
+        hasTriggeredInitialProjectLoad = true
+        pendingInitialLoadWorkItem?.cancel()
+        pendingInitialLoadWorkItem = nil
+        applyFullscreenLayout(to: lynxView)
+        NSLog("[ProjectVC] initial project load reason=%@ bounds=%@ safe=%@", reason, NSCoder.string(for: bounds), NSCoder.string(for: view.safeAreaInsets))
+        lynxView.loadTemplate(fromURL: "main.lynx.bundle", initData: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self, weak lynxView] in
+            guard let self, let lynxView else { return }
+            self.logViewport("project post-load", lynxView: lynxView)
+            self.applyFullscreenLayout(to: lynxView)
+        }
     }
 
     private func buildDevMenuLynxView() -> LynxView {
@@ -181,5 +227,13 @@ class ProjectViewController: UIViewController {
             DevClientModule.dismissTamerDebugPanelHandler = previousDismissTamerDebugPanelHandler
             devClientManager?.disconnect()
         }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        guard isBeingDismissed || isMovingFromParent else { return }
+        pendingInitialLoadWorkItem?.cancel()
+        pendingInitialLoadWorkItem = nil
+        onDismiss?()
     }
 }

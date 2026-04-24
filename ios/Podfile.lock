@@ -132,6 +132,8 @@ PODS:
     - Lynx
   - tamerinsets (0.0.4):
     - Lynx
+  - tamernavigation (0.0.1):
+    - Lynx
   - tamerrouter (0.0.10):
     - Lynx
   - tamersystemui (0.1.0):
@@ -165,6 +167,7 @@ DEPENDENCIES:
   - "tamerdevclient (from `../../../node_modules/@tamer4lynx/tamer-dev-client/ios/tamerdevclient`)"
   - "tamericons (from `../../../node_modules/@tamer4lynx/tamer-icons/ios/tamericons`)"
   - "tamerinsets (from `../../../node_modules/@tamer4lynx/tamer-insets/ios/tamerinsets`)"
+  - "tamernavigation (from `../../../node_modules/@tamer4lynx/tamer-navigation/ios/tamernavigation`)"
   - "tamerrouter (from `../../../node_modules/@tamer4lynx/tamer-router/ios/tamerrouter`)"
   - "tamersystemui (from `../../../node_modules/@tamer4lynx/tamer-system-ui/ios/tamersystemui`)"
   - tamerwebview (from `../../tamer-webview/ios/tamerwebview`)
@@ -193,6 +196,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/@tamer4lynx/tamer-icons/ios/tamericons"
   tamerinsets:
     :path: "../../../node_modules/@tamer4lynx/tamer-insets/ios/tamerinsets"
+  tamernavigation:
+    :path: "../../../node_modules/@tamer4lynx/tamer-navigation/ios/tamernavigation"
   tamerrouter:
     :path: "../../../node_modules/@tamer4lynx/tamer-router/ios/tamerrouter"
   tamersystemui:
@@ -216,11 +221,12 @@ SPEC CHECKSUMS:
   tamerdevclient: edc8470b8024359efc698bf45da32f5cf765346d
   tamericons: efb9740cdbb51f6b9c4ad3ff1353f6e0c6b824a5
   tamerinsets: 525081a8e0fe6bd5aba13e9bd2eee5dd86b027a6
+  tamernavigation: 804b4e368dad942e4077b4a04e1fb26e071b99e5
   tamerrouter: 96d18eebca410aac7d150fc6203633449730c45d
   tamersystemui: bcc070ece1fb926a4436166145d04339a7d202aa
   tamerwebview: 57edc997a04e7d34c42addeacb0eba178f1e7454
   XElement: fb90e5e349dc5728f242f3881d2e5e389f3e329a
 
-PODFILE CHECKSUM: 305e120191ef6b435d7002fae357bff59203ca65
+PODFILE CHECKSUM: 3c00391cac23a2fe17c5406fcd48ba03baaa3c58
 
 COCOAPODS: 1.16.2

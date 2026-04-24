@@ -14,6 +14,7 @@ private func tamer_disableLynxLongPressMenuIfAvailable() {
 
 class ViewController: UIViewController {
     private var lynxView: LynxView?
+    private weak var activeProjectViewController: ProjectViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,7 +114,18 @@ class ViewController: UIViewController {
             guard let self = self else { return }
             let projectVC = ProjectViewController()
             projectVC.modalPresentationStyle = .fullScreen
-            self.present(projectVC, animated: true)
+            projectVC.onDismiss = { [weak self, weak projectVC] in
+                guard let self else { return }
+                if self.activeProjectViewController === projectVC {
+                    self.restoreLauncherLynxView()
+                    self.activeProjectViewController = nil
+                }
+            }
+            self.quiesceLauncherLynxView()
+            self.activeProjectViewController = projectVC
+            self.present(projectVC, animated: true) { [weak self] in
+                self?.restoreLauncherIfPresentationDidNotStick()
+            }
         }
 
         DevClientModule.openProjectDirectHandler = { [weak self] bundleUrl in
@@ -121,7 +133,40 @@ class ViewController: UIViewController {
             let projectVC = ProjectViewController()
             projectVC.bundleUrl = bundleUrl
             projectVC.modalPresentationStyle = .fullScreen
-            self.present(projectVC, animated: true)
+            projectVC.onDismiss = { [weak self, weak projectVC] in
+                guard let self else { return }
+                if self.activeProjectViewController === projectVC {
+                    self.restoreLauncherLynxView()
+                    self.activeProjectViewController = nil
+                }
+            }
+            self.quiesceLauncherLynxView()
+            self.activeProjectViewController = projectVC
+            self.present(projectVC, animated: true) { [weak self] in
+                self?.restoreLauncherIfPresentationDidNotStick()
+            }
         }
+    }
+
+    private func quiesceLauncherLynxView() {
+        guard let lynxView else { return }
+        lynxView.isHidden = true
+        lynxView.alpha = 0
+        lynxView.isUserInteractionEnabled = false
+        NSLog("[DevLauncher] launcher LynxView hidden while project is presented")
+    }
+
+    private func restoreLauncherLynxView() {
+        guard let lynxView else { return }
+        lynxView.isHidden = false
+        lynxView.alpha = 1
+        lynxView.isUserInteractionEnabled = true
+        NSLog("[DevLauncher] launcher LynxView restored")
+    }
+
+    private func restoreLauncherIfPresentationDidNotStick() {
+        guard presentedViewController == nil else { return }
+        restoreLauncherLynxView()
+        activeProjectViewController = nil
     }
 }

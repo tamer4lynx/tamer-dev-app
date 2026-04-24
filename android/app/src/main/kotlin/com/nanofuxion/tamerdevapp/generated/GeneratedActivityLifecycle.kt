@@ -18,11 +18,13 @@ object GeneratedActivityLifecycle {
 
     fun onViewAttached(lynxView: LynxView?) {
         com.nanofuxion.tamerinsets.TamerInsetsModule.attachHostView(lynxView)
+        com.nanofuxion.tamernavigation.stack.TamerNavHost.attachRoot(lynxView)
         com.nanofuxion.tamerrouter.TamerRouterNativeModule.attachHostView(lynxView)
     }
 
     fun onViewDetached() {
         com.nanofuxion.tamerinsets.TamerInsetsModule.attachHostView(null)
+        com.nanofuxion.tamernavigation.stack.TamerNavHost.attachRoot(null)
         com.nanofuxion.tamerrouter.TamerRouterNativeModule.attachHostView(null)
     }
 
@@ -39,7 +41,13 @@ object GeneratedActivityLifecycle {
     }
 
     fun onBackPressed(fallback: (Boolean) -> Unit) {
-        com.nanofuxion.tamerrouter.TamerRouterNativeModule.requestBack(fallback)
+        com.nanofuxion.tamerrouter.TamerRouterNativeModule.requestBack { consumed ->
+            if (consumed) {
+                fallback(true)
+            } else {
+                com.nanofuxion.tamernavigation.stack.TamerNavHost.handleBack(fallback)
+            }
+        }
     }
 
     fun onWindowFocusChanged(hasFocus: Boolean) {

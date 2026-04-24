@@ -16,6 +16,7 @@ import com.nanofuxion.tamerdevclient.LynxDevToolBootstrap
 import com.nanofuxion.tamerdevapp.generated.GeneratedLynxExtensions
 import com.nanofuxion.tamerdevapp.generated.GeneratedActivityLifecycle
 import com.nanofuxion.tamerdevclient.DevClientDebugPanel
+import com.nanofuxion.tamernavigation.stack.TamerNavHost
 
 class ProjectActivity : AppCompatActivity() {
     private var lynxView: LynxView? = null
@@ -37,6 +38,12 @@ class ProjectActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         LynxDevToolBootstrap.bootstrapDevToolForProjectHost(this)
         GeneratedLynxExtensions.register(this)
+        TamerNavHost.spokeBuilder = { ctx ->
+            val viewBuilder = LynxViewBuilder()
+            viewBuilder.setTemplateProvider(TemplateProvider(ctx))
+            GeneratedLynxExtensions.configureViewBuilder(viewBuilder)
+            viewBuilder.build(ctx)
+        }
         GeneratedActivityLifecycle.onCreate(intent)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true

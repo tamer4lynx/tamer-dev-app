@@ -10,15 +10,16 @@ import com.lynx.tasm.LynxViewBuilder
 import com.lynx.xelement.XElementBehaviors
 import com.nanofuxion.tamerdevclient.DevClientModule
 import com.nanofuxion.tamerinsets.TamerInsetsModule
+import com.nanofuxion.tamernavigation.stack.TamerNavModule
 import com.nanofuxion.tamerrouter.TamerRouterNativeModule
 import com.nanofuxion.tamersystemui.SystemUIModule
 import com.nanofuxion.tamericons.IconElement
-import com.nanofuxion.tamernavigation.TamerNavBehavior
 
 object GeneratedLynxExtensions {
     fun register(context: Context) {
         LynxEnv.inst().registerModule("DevClientModule", DevClientModule::class.java)
         LynxEnv.inst().registerModule("TamerInsetsModule", TamerInsetsModule::class.java)
+        LynxEnv.inst().registerModule("TamerNavModule", TamerNavModule::class.java)
         LynxEnv.inst().registerModule("TamerRouterNativeModule", TamerRouterNativeModule::class.java)
         LynxEnv.inst().registerModule("SystemUIModule", SystemUIModule::class.java)
         LynxEnv.inst().addBehavior(object : com.lynx.tasm.behavior.Behavior("icon") {
@@ -26,10 +27,10 @@ object GeneratedLynxExtensions {
                 return IconElement(context)
             }
         })
-        LynxEnv.inst().addBehavior(TamerNavBehavior())
         com.nanofuxion.tamerdevclient.DevClientModule.attachSupportedModuleClassNames(listOf(
             "com.nanofuxion.tamerdevclient.DevClientModule",
             "com.nanofuxion.tamerinsets.TamerInsetsModule",
+            "com.nanofuxion.tamernavigation.stack.TamerNavModule",
             "com.nanofuxion.tamerrouter.TamerRouterNativeModule",
             "com.nanofuxion.tamersystemui.SystemUIModule"
         ))
