@@ -127,16 +127,14 @@ class DevLauncherViewController: UIViewController {
         }
 
         DevClientModule.reloadProjectHandler = { [weak self] in
-            guard let self = self else { return }
+            guard let self, self.presentedViewController == nil else { return }
             NSLog("[DevLauncher] reloadProjectHandler invoked")
             let projectVC = ProjectViewController()
             projectVC.modalPresentationStyle = .fullScreen
-            projectVC.onDismiss = { [weak self, weak projectVC] in
+            projectVC.onDismiss = { [weak self] in
                 guard let self else { return }
-                if self.activeProjectViewController === projectVC {
-                    self.restoreLauncherLynxView()
-                    self.activeProjectViewController = nil
-                }
+                self.restoreLauncherLynxView()
+                self.activeProjectViewController = nil
             }
             self.quiesceLauncherLynxView()
             self.activeProjectViewController = projectVC
