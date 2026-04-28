@@ -2,55 +2,115 @@ import Foundation
 import Lynx
 import tamerdevclient
 
-class DevTemplateProvider: NSObject, LynxTemplateProvider {
+class DevTemplateProvider: NSObject, LynxTemplateProvider, LynxTemplateResourceFetcher, LynxGenericResourceFetcher {
     private static let devClientBundle = "dev-client.lynx.bundle"
     private static let tamerDebugBundle = "tamer-debug.lynx.bundle"
 
     func loadTemplate(withUrl url: String!, onComplete callback: LynxTemplateLoadBlock!) {
         DispatchQueue.global(qos: .background).async {
-            if url == Self.tamerDebugBundle || url?.hasSuffix("/" + Self.tamerDebugBundle) == true {
-                self.loadFromBundle(url: Self.tamerDebugBundle, callback: callback)
-                return
-            }
-            if url == Self.devClientBundle || url?.hasSuffix("/" + Self.devClientBundle) == true {
-                self.loadFromBundle(url: Self.devClientBundle, callback: callback)
-                return
-            }
-
-            if let devUrl = DevServerPrefs.getUrl(), !devUrl.isEmpty {
-                let origin: String
-                if let parsed = URL(string: devUrl) {
-                    let scheme = parsed.scheme ?? "http"
-                    let host = parsed.host ?? "localhost"
-                    let port = parsed.port.map { ":\($0)" } ?? ""
-                    origin = "\(scheme)://\(host)\(port)"
-                } else {
-                    origin = devUrl
-                }
-
-                let candidates = ["/\(url!)", "/tamer-dev-app/\(url!)"]
-                for candidate in candidates {
-                    if let data = self.httpFetch(url: origin + candidate) {
-                        callback?(data, nil)
-                        return
-                    }
-                }
-            }
-
-            self.loadFromBundle(url: url, callback: callback)
+            let result = self.loadData(url: url)
+            callback?(result.data, result.error)
         }
     }
 
-    private func loadFromBundle(url: String?, callback: LynxTemplateLoadBlock!) {
+    func fetchTemplate(_ request: LynxResourceRequest, onComplete callback: @escaping LynxTemplateResourceCompletionBlock) {
+        DispatchQueue.global(qos: .background).async {
+            let result = self.loadData(url: request.url)
+            callback(result.data.map { LynxTemplateResource(nsData: $0) }, result.error)
+        }
+    }
+
+    func fetchSSRData(_ request: LynxResourceRequest, onComplete callback: @escaping LynxSSRResourceCompletionBlock) {
+        DispatchQueue.global(qos: .background).async {
+            let result = self.loadData(url: request.url)
+            callback(result.data, result.error)
+        }
+    }
+
+    func fetchResource(_ request: LynxResourceRequest, onComplete callback: @escaping LynxGenericResourceCompletionBlock) -> (() -> Void) {
+        DispatchQueue.global(qos: .background).async {
+            let result = self.loadData(url: request.url)
+            callback(result.data, result.error)
+        }
+        return {}
+    }
+
+    func fetchResourcePath(_ request: LynxResourceRequest, onComplete callback: @escaping LynxGenericResourcePathCompletionBlock) -> (() -> Void) {
+        let error = NSError(domain: "DevTemplateProvider", code: 501,
+                            userInfo: [NSLocalizedDescriptionKey: "Resource path lookup is not supported"])
+        callback(nil, error)
+        return {}
+    }
+
+    private func loadData(url: String?) -> (data: Data?, error: NSError?) {
+        if isEmbeddedDevShellUrl(url) {
+            return loadFromBundle(url: url?.contains(Self.tamerDebugBundle) == true ? Self.tamerDebugBundle : Self.devClientBundle)
+        }
+
+        if let data = loadFromDevServer(url: url) {
+            return (data, nil)
+        }
+
+        return loadFromBundle(url: normalizeBundlePath(url))
+    }
+
+    private func loadFromBundle(url: String?) -> (data: Data?, error: NSError?) {
         guard let url = url,
               let bundleUrl = Bundle.main.url(forResource: url, withExtension: nil),
               let data = try? Data(contentsOf: bundleUrl) else {
-            let err = NSError(domain: "DevTemplateProvider", code: 404,
-                              userInfo: [NSLocalizedDescriptionKey: "Bundle not found: \(url ?? "nil")"])
-            callback?(nil, err)
-            return
+            return (nil, NSError(domain: "DevTemplateProvider", code: 404,
+                                 userInfo: [NSLocalizedDescriptionKey: "Bundle not found: \(url ?? "nil")"]))
         }
-        callback?(data, nil)
+        return (data, nil)
+    }
+
+    private func loadFromDevServer(url: String?) -> Data? {
+        guard let url = normalizeBundlePath(url),
+              let devUrl = DevServerPrefs.getUrl(),
+              !devUrl.isEmpty else { return nil }
+
+        let origin: String
+        let configuredPath: String
+        if let parsed = URL(string: devUrl) {
+            let scheme = parsed.scheme ?? "http"
+            let host = parsed.host ?? "localhost"
+            let port = parsed.port.map { ":\($0)" } ?? ""
+            origin = "\(scheme)://\(host)\(port)"
+            configuredPath = parsed.path.replacingOccurrences(of: "/+$", with: "", options: .regularExpression)
+        } else {
+            origin = devUrl
+            configuredPath = ""
+        }
+
+        var candidates: [String] = []
+        if !configuredPath.isEmpty {
+            candidates.append("\(configuredPath)/\(url)")
+        }
+        candidates.append("/tamer-dev-app/\(url)")
+        candidates.append("/\(url)")
+        for candidate in candidates {
+            if let data = httpFetch(url: origin + candidate) {
+                return data
+            }
+        }
+        return nil
+    }
+
+    private func isEmbeddedDevShellUrl(_ url: String?) -> Bool {
+        guard let url = url else { return false }
+        return url == Self.tamerDebugBundle || url.hasSuffix("/" + Self.tamerDebugBundle) || url.contains(Self.tamerDebugBundle)
+            || url == Self.devClientBundle || url.hasSuffix("/" + Self.devClientBundle) || url.contains(Self.devClientBundle)
+    }
+
+    private func normalizeBundlePath(_ url: String?) -> String? {
+        guard var s = url?.trimmingCharacters(in: .whitespacesAndNewlines), !s.isEmpty else { return nil }
+        if let query = s.firstIndex(of: "?") {
+            s = String(s[..<query])
+        }
+        while s.hasPrefix("/") {
+            s.removeFirst()
+        }
+        return (s as NSString).standardizingPath
     }
 
     private func httpFetch(url: String) -> Data? {

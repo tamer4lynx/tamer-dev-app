@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import com.lynx.tasm.LynxBooleanOption
 import com.lynx.tasm.LynxView
 import com.lynx.tasm.LynxViewBuilder
 import android.Manifest
@@ -51,7 +52,12 @@ class MainActivity : AppCompatActivity() {
         GeneratedLynxExtensions.register(this)
         TamerNavHost.spokeBuilder = { ctx ->
             val viewBuilder = LynxViewBuilder()
-            viewBuilder.setTemplateProvider(TemplateProvider(ctx))
+            viewBuilder.setLynxGroup(TamerNavLynxRuntime.group)
+            val provider = TemplateProvider(ctx)
+            viewBuilder.setTemplateProvider(provider)
+            viewBuilder.setEnableGenericResourceFetcher(LynxBooleanOption.TRUE)
+            viewBuilder.setTemplateResourceFetcher(provider.templateResourceFetcher)
+            viewBuilder.setGenericResourceFetcher(provider.genericResourceFetcher)
             GeneratedLynxExtensions.configureViewBuilder(viewBuilder)
             viewBuilder.build(ctx)
         }
@@ -142,7 +148,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun buildLynxView(): LynxView {
         val viewBuilder = LynxViewBuilder()
-        viewBuilder.setTemplateProvider(TemplateProvider(this))
+        viewBuilder.setLynxGroup(TamerNavLynxRuntime.group)
+        val provider = TemplateProvider(this)
+        viewBuilder.setTemplateProvider(provider)
+        viewBuilder.setEnableGenericResourceFetcher(LynxBooleanOption.TRUE)
+        viewBuilder.setTemplateResourceFetcher(provider.templateResourceFetcher)
+        viewBuilder.setGenericResourceFetcher(provider.genericResourceFetcher)
         GeneratedLynxExtensions.configureViewBuilder(viewBuilder)
         return viewBuilder.build(this)
     }
