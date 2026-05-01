@@ -2,6 +2,7 @@
   "moduleClassNames": [
     "com.nanofuxion.tamerdevclient.DevClientModule",
     "com.nanofuxion.tamerinsets.TamerInsetsModule",
+    "com.nanofuxion.tamerlinking.LinkingModule",
     "com.nanofuxion.tamernavigation.stack.TamerNavModule",
     "com.nanofuxion.tamerrouter.TamerRouterNativeModule",
     "com.nanofuxion.tamersystemui.SystemUIModule"

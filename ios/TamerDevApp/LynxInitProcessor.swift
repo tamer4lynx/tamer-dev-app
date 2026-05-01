@@ -8,10 +8,10 @@ import Foundation
 import tamerdevclient
 import tamericons
 import tamerinsets
+import tamerlinking
 import tamernavigation
 import tamerrouter
 import tamersystemui
-import tamerwebview
 // GENERATED IMPORTS END
 
 final class LynxInitProcessor {
@@ -39,13 +39,17 @@ final class LynxInitProcessor {
         // Register element from package: @tamer4lynx/tamer-icons
         globalConfig.registerUI(TamerIconElement.self, withName: "icon")
 
-        globalConfig.registerUI(TamerWebViewElement.self, withName: "webview")
-
         // Register module from package: @tamer4lynx/tamer-insets
         globalConfig.register(TamerInsetsModule.self)
 
+        // Register module from package: @tamer4lynx/tamer-linking
+        globalConfig.register(LinkingModule.self)
+
         // Register module from package: @tamer4lynx/tamer-navigation
         globalConfig.register(TamerNavModule.self)
+
+        // Register element from package: @tamer4lynx/tamer-navigation
+        globalConfig.registerUI(TamerNavPageOverlay.self, withName: "overlay")
 
         // Register module from package: @tamer4lynx/tamer-router
         globalConfig.register(TamerRouterNativeModule.self)
@@ -58,6 +62,7 @@ final class LynxInitProcessor {
         DevClientModule.attachSupportedModuleClassNames([
             "com.nanofuxion.tamerdevclient.DevClientModule",
             "com.nanofuxion.tamerinsets.TamerInsetsModule",
+            "com.nanofuxion.tamerlinking.LinkingModule",
             "com.nanofuxion.tamernavigation.stack.TamerNavModule",
             "com.nanofuxion.tamerrouter.TamerRouterNativeModule",
             "com.nanofuxion.tamersystemui.SystemUIModule"

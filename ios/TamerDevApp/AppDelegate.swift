@@ -1,4 +1,5 @@
 import UIKit
+import tamerlinking
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -7,6 +8,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         LynxInitProcessor.shared.setupEnvironment()
+        if let url = launchOptions?[.url] as? URL {
+            let s = url.absoluteString
+            LinkingModule.setInitialUrl(s)
+            LinkingModule.onUrlReceived(s)
+        }
         return true
     }
 
@@ -16,5 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         options: UIScene.ConnectionOptions
     ) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        let s = url.absoluteString
+        LinkingModule.setInitialUrl(s)
+        LinkingModule.onUrlReceived(s)
+        return true
     }
 }

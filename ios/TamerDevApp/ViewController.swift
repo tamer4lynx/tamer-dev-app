@@ -64,6 +64,7 @@ class ViewController: UIViewController {
         let size = fullscreenBounds().size
         let lv = LynxView { builder in
             let provider = DevTemplateProvider()
+            builder.enableGenericResourceFetcher = .true
             builder.config = LynxConfig(provider: provider)
             builder.templateResourceFetcher = provider
             builder.genericResourceFetcher = provider
@@ -103,6 +104,34 @@ class ViewController: UIViewController {
         return UIScreen.main.bounds
     }
 
+    private func presentProjectViewController(bundleUrl: String? = nil) {
+        if let bundleUrl, !bundleUrl.isEmpty {
+            DevServerPrefs.setUrl(bundleUrl)
+        }
+        if presentedViewController is ProjectViewController {
+            NSLog("[DevLauncher] presentProjectViewController skipped already presenting project")
+            return
+        }
+        guard presentedViewController == nil else {
+            NSLog("[DevLauncher] presentProjectViewController skipped existing presented=%@", String(describing: presentedViewController))
+            return
+        }
+        let projectVC = ProjectViewController()
+        projectVC.modalPresentationStyle = .fullScreen
+        projectVC.onDismiss = { [weak self, weak projectVC] in
+            guard let self else { return }
+            if self.activeProjectViewController === projectVC {
+                self.restoreLauncherLynxView()
+                self.activeProjectViewController = nil
+            }
+        }
+        self.quiesceLauncherLynxView()
+        self.activeProjectViewController = projectVC
+        self.present(projectVC, animated: true) { [weak self] in
+            self?.restoreLauncherIfPresentationDidNotStick()
+        }
+    }
+
     private func setupDevClientModule() {
         DevClientModule.presentQRScanner = { [weak self] completion in
             let scanner = QRScannerViewController()
@@ -114,36 +143,13 @@ class ViewController: UIViewController {
         }
 
         DevClientModule.reloadProjectHandler = { [weak self] in
-            guard let self, self.presentedViewController == nil else { return }
-            let projectVC = ProjectViewController()
-            projectVC.modalPresentationStyle = .fullScreen
-            projectVC.onDismiss = { [weak self] in
-                guard let self else { return }
-                self.restoreLauncherLynxView()
-                self.activeProjectViewController = nil
-            }
-            self.quiesceLauncherLynxView()
-            self.activeProjectViewController = projectVC
-            self.present(projectVC, animated: true) { [weak self] in
-                self?.restoreLauncherIfPresentationDidNotStick()
-            }
+            guard let self = self else { return }
+            self.presentProjectViewController()
         }
 
         DevClientModule.openProjectDirectHandler = { [weak self] bundleUrl in
-            guard let self, self.presentedViewController == nil else { return }
-            let projectVC = ProjectViewController()
-            projectVC.bundleUrl = bundleUrl
-            projectVC.modalPresentationStyle = .fullScreen
-            projectVC.onDismiss = { [weak self] in
-                guard let self else { return }
-                self.restoreLauncherLynxView()
-                self.activeProjectViewController = nil
-            }
-            self.quiesceLauncherLynxView()
-            self.activeProjectViewController = projectVC
-            self.present(projectVC, animated: true) { [weak self] in
-                self?.restoreLauncherIfPresentationDidNotStick()
-            }
+            guard let self = self else { return }
+            self.presentProjectViewController(bundleUrl: bundleUrl)
         }
     }
 

@@ -55,13 +55,18 @@ class DevTemplateProvider: NSObject, LynxTemplateProvider, LynxTemplateResourceF
     }
 
     private func loadFromBundle(url: String?) -> (data: Data?, error: NSError?) {
-        guard let url = url,
-              let bundleUrl = Bundle.main.url(forResource: url, withExtension: nil),
-              let data = try? Data(contentsOf: bundleUrl) else {
+        guard let rel = url, !rel.isEmpty,
+              let resourcePath = Bundle.main.resourcePath else {
             return (nil, NSError(domain: "DevTemplateProvider", code: 404,
                                  userInfo: [NSLocalizedDescriptionKey: "Bundle not found: \(url ?? "nil")"]))
         }
-        return (data, nil)
+        let abs = (resourcePath as NSString).appendingPathComponent(rel)
+        if FileManager.default.fileExists(atPath: abs),
+           let data = try? Data(contentsOf: URL(fileURLWithPath: abs)) {
+            return (data, nil)
+        }
+        return (nil, NSError(domain: "DevTemplateProvider", code: 404,
+                             userInfo: [NSLocalizedDescriptionKey: "Bundle not found: \(rel)"]))
     }
 
     private func loadFromDevServer(url: String?) -> Data? {

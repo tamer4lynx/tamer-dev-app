@@ -9,11 +9,11 @@ import com.lynx.tasm.LynxView
 
 object GeneratedActivityLifecycle {
     fun onCreate(intent: Intent?) {
-        // no patches
+        com.nanofuxion.tamerlinking.LinkingModule.setInitialUrl(intent?.data?.toString())
     }
 
     fun onNewIntent(intent: Intent?) {
-        // no patches
+        com.nanofuxion.tamerlinking.LinkingModule.onUrlReceived(intent?.data?.toString())
     }
 
     fun onViewAttached(lynxView: LynxView?) {
@@ -41,13 +41,7 @@ object GeneratedActivityLifecycle {
     }
 
     fun onBackPressed(fallback: (Boolean) -> Unit) {
-        com.nanofuxion.tamerrouter.TamerRouterNativeModule.requestBack { consumed ->
-            if (consumed) {
-                fallback(true)
-            } else {
-                com.nanofuxion.tamernavigation.stack.TamerNavHost.handleBack(fallback)
-            }
-        }
+        com.nanofuxion.tamerrouter.TamerRouterNativeModule.requestBack(fallback)
     }
 
     fun onWindowFocusChanged(hasFocus: Boolean) {

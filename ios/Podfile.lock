@@ -132,13 +132,13 @@ PODS:
     - Lynx
   - tamerinsets (0.0.4):
     - Lynx
+  - tamerlinking (0.0.3):
+    - Lynx
   - tamernavigation (0.0.1):
     - Lynx
-  - tamerrouter (0.0.10):
+  - tamerrouter (0.0.12):
     - Lynx
   - tamersystemui (0.1.0):
-    - Lynx
-  - tamerwebview (0.0.2):
     - Lynx
   - XElement (3.6.0):
     - XElement/Behavior (= 3.6.0)
@@ -167,10 +167,10 @@ DEPENDENCIES:
   - "tamerdevclient (from `../../../node_modules/@tamer4lynx/tamer-dev-client/ios/tamerdevclient`)"
   - "tamericons (from `../../../node_modules/@tamer4lynx/tamer-icons/ios/tamericons`)"
   - "tamerinsets (from `../../../node_modules/@tamer4lynx/tamer-insets/ios/tamerinsets`)"
+  - "tamerlinking (from `../../../node_modules/@tamer4lynx/tamer-linking/ios/tamerlinking`)"
   - "tamernavigation (from `../../../node_modules/@tamer4lynx/tamer-navigation/ios/tamernavigation`)"
   - "tamerrouter (from `../../../node_modules/@tamer4lynx/tamer-router/ios/tamerrouter`)"
   - "tamersystemui (from `../../../node_modules/@tamer4lynx/tamer-system-ui/ios/tamersystemui`)"
-  - tamerwebview (from `../../tamer-webview/ios/tamerwebview`)
   - XElement (= 3.6.0)
 
 SPEC REPOS:
@@ -196,14 +196,14 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/@tamer4lynx/tamer-icons/ios/tamericons"
   tamerinsets:
     :path: "../../../node_modules/@tamer4lynx/tamer-insets/ios/tamerinsets"
+  tamerlinking:
+    :path: "../../../node_modules/@tamer4lynx/tamer-linking/ios/tamerlinking"
   tamernavigation:
     :path: "../../../node_modules/@tamer4lynx/tamer-navigation/ios/tamernavigation"
   tamerrouter:
     :path: "../../../node_modules/@tamer4lynx/tamer-router/ios/tamerrouter"
   tamersystemui:
     :path: "../../../node_modules/@tamer4lynx/tamer-system-ui/ios/tamersystemui"
-  tamerwebview:
-    :path: "../../tamer-webview/ios/tamerwebview"
 
 SPEC CHECKSUMS:
   BaseDevtool: 39ad8896da6d55bfe4a2231feb85b8e0ef23e6e3
@@ -221,12 +221,12 @@ SPEC CHECKSUMS:
   tamerdevclient: edc8470b8024359efc698bf45da32f5cf765346d
   tamericons: efb9740cdbb51f6b9c4ad3ff1353f6e0c6b824a5
   tamerinsets: 525081a8e0fe6bd5aba13e9bd2eee5dd86b027a6
-  tamernavigation: 804b4e368dad942e4077b4a04e1fb26e071b99e5
-  tamerrouter: 96d18eebca410aac7d150fc6203633449730c45d
+  tamerlinking: 431300226fca9e59021f452f4b364fa6d04feaa2
+  tamernavigation: e55165ccb512d4ee7fa2a014e0b992007f39b92e
+  tamerrouter: 39253e6566c4c7cd82452173c6398571be5acc8a
   tamersystemui: bcc070ece1fb926a4436166145d04339a7d202aa
-  tamerwebview: 57edc997a04e7d34c42addeacb0eba178f1e7454
   XElement: fb90e5e349dc5728f242f3881d2e5e389f3e329a
 
-PODFILE CHECKSUM: 3c00391cac23a2fe17c5406fcd48ba03baaa3c58
+PODFILE CHECKSUM: 0660b561aa6b71313f34cf6722c5cfbecfedbea3
 
 COCOAPODS: 1.16.2

@@ -19,8 +19,6 @@ class DevClientManager {
 
     func connect() {
         shouldReconnect = true
-        // If a bundleUrl was provided (e.g., from QR scan), save it to current and recent list
-        // setUrl automatically adds to recent list and fetches metadata
         if let bundleUrl = bundleUrl, !bundleUrl.isEmpty {
             DevServerPrefs.setUrl(bundleUrl)
         }

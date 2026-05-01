@@ -309,6 +309,7 @@
 			baseConfigurationReference = 431F2B2FFA6A4443384155CB /* Pods-TamerDevApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = TamerDevApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -329,6 +330,7 @@
 			baseConfigurationReference = C284ECEC154BB22F53147756 /* Pods-TamerDevApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = TamerDevApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

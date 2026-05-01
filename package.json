@@ -20,7 +20,9 @@
     "link:native": "node ../../dist/index.js link"
   },
   "dependencies": {
-    "@tamer4lynx/tamer-dev-client": "^0.0.27"
+    "@tamer4lynx/tamer-dev-client": "^0.0.27",
+    "@tamer4lynx/tamer-linking": "^0.0.3",
+    "@tamer4lynx/tamer-navigation": "^0.0.1"
   },
   "devDependencies": {
     "@rsbuild/plugin-type-check": "1.2.3",
