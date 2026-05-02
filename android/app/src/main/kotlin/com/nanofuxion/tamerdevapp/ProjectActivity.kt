@@ -39,6 +39,7 @@ class ProjectActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         LynxDevToolBootstrap.bootstrapDevToolForProjectHost(this)
         GeneratedLynxExtensions.register(this)
+        TamerNavHost.configureSharedLynxGroup(TamerNavLynxRuntime.group)
         TamerNavHost.spokeBuilder = { ctx ->
             val viewBuilder = LynxViewBuilder()
             viewBuilder.setLynxGroup(TamerNavLynxRuntime.group)

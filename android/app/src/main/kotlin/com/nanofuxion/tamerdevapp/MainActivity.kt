@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         GeneratedLynxExtensions.register(this)
+        TamerNavHost.configureSharedLynxGroup(TamerNavLynxRuntime.group)
         TamerNavHost.spokeBuilder = { ctx ->
             val viewBuilder = LynxViewBuilder()
             viewBuilder.setLynxGroup(TamerNavLynxRuntime.group)
