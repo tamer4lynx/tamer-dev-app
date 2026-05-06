@@ -24,6 +24,32 @@ private enum TamerNavLynxRuntime {
         option.enableJSGroupThread = true
         return LynxGroup(name: "TamerNav", with: option)
     }()
+
+    private static var viewGroups: [String: LynxViewGroup] = [:]
+
+    static func viewGroup(src: String, provider: DevTemplateProvider) -> LynxViewGroup {
+        let key = src.isEmpty ? "main.lynx.bundle" : src
+        if let existing = viewGroups[key] {
+            return existing
+        }
+        let group = LynxViewGroup(url: key, templateFetcher: provider)
+        group.group = sharedGroup
+        group.enableGenericResourceFetcher = .true
+        group.config = LynxConfig(provider: provider)
+        group.templateResourceFetcher = provider
+        group.genericResourceFetcher = provider
+        viewGroups[key] = group
+        return group
+    }
+
+    static func configureBuilder(_ builder: LynxViewBuilder, src: String, provider: DevTemplateProvider) {
+        builder.lynxViewGroup = viewGroup(src: src, provider: provider)
+        builder.group = sharedGroup
+        builder.enableGenericResourceFetcher = .true
+        builder.config = LynxConfig(provider: provider)
+        builder.templateResourceFetcher = provider
+        builder.genericResourceFetcher = provider
+    }
 }
 
 class ProjectViewController: UIViewController {
@@ -89,6 +115,7 @@ class ProjectViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        DevClientModule.setProjectActive(true)
         triggerInitialProjectLoadIfNeeded(reason: "viewDidAppear")
     }
 
@@ -126,12 +153,13 @@ class ProjectViewController: UIViewController {
         let lv = LynxView { builder in
             let provider = DevTemplateProvider()
 #if canImport(tamernavigation)
-            builder.group = TamerNavLynxRuntime.sharedGroup
-#endif
+            TamerNavLynxRuntime.configureBuilder(builder, src: "main.lynx.bundle", provider: provider)
+#else
             builder.enableGenericResourceFetcher = .true
             builder.config = LynxConfig(provider: provider)
             builder.templateResourceFetcher = provider
             builder.genericResourceFetcher = provider
+#endif
             builder.screenSize = size
             builder.fontScale = 1.0
         }
@@ -146,6 +174,10 @@ class ProjectViewController: UIViewController {
         NSLog("[ProjectVC] setupLynxView devUrl=%@", DevServerPrefs.getUrl() ?? "")
 #if canImport(tamernavigation)
         TamerNavHost.configureSharedGroup(TamerNavLynxRuntime.sharedGroup)
+        TamerNavHost.configureSpokeBuilder = { builder, src in
+            let provider = DevTemplateProvider()
+            TamerNavLynxRuntime.configureBuilder(builder, src: src, provider: provider)
+        }
 #endif
         let lv = buildLynxView()
         lv.backgroundColor = .black
@@ -348,6 +380,7 @@ class ProjectViewController: UIViewController {
         pendingInitialLoadWorkItem?.cancel()
         pendingInitialLoadWorkItem = nil
         DevClientModule.attachLynxView(nil)
+        DevClientModule.setProjectActive(false)
         onDismiss?()
     }
 }
