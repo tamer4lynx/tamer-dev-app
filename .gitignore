@@ -10,3 +10,8 @@ android/.kotlin
 android/.settings
 ios/build
 ios/Pods
+
+# Release artifacts (do not commit signing keys or per-build derived data)
+android/app/release.keystore
+ios/build
+ios/build-device

@@ -130,13 +130,13 @@ PODS:
     - tamersystemui
   - tamericons (0.0.6):
     - Lynx
-  - tamerinsets (0.0.4):
+  - tamerinsets (0.0.5):
     - Lynx
   - tamerlinking (0.0.3):
     - Lynx
   - tamernavigation (0.0.1):
     - Lynx
-  - tamerrouter (0.0.12):
+  - tamerrouter (0.0.13):
     - Lynx
   - tamersystemui (0.1.0):
     - Lynx
@@ -219,11 +219,11 @@ SPEC CHECKSUMS:
   SDWebImageWebPCoder: 295a6573c512f54ad2dd58098e64e17dcf008499
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   tamerdevclient: edc8470b8024359efc698bf45da32f5cf765346d
-  tamericons: efb9740cdbb51f6b9c4ad3ff1353f6e0c6b824a5
-  tamerinsets: 525081a8e0fe6bd5aba13e9bd2eee5dd86b027a6
+  tamericons: 9c1fb087e1197760be2a3c36b491bd8283a01f9c
+  tamerinsets: db8749119874406d96e26f4f401f1018088ddc30
   tamerlinking: 431300226fca9e59021f452f4b364fa6d04feaa2
   tamernavigation: e55165ccb512d4ee7fa2a014e0b992007f39b92e
-  tamerrouter: 39253e6566c4c7cd82452173c6398571be5acc8a
+  tamerrouter: f460e2600a26527177a4153e86b5ee8fa6661200
   tamersystemui: bcc070ece1fb926a4436166145d04339a7d202aa
   XElement: fb90e5e349dc5728f242f3881d2e5e389f3e329a
 
