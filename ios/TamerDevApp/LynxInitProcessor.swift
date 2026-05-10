@@ -5,36 +5,52 @@
 import Foundation
 
 // GENERATED IMPORTS START
+import jiggle
+import tamerbiometric
+import tamercrypto
 import tamerdevclient
+import tamerdisplaybrowser
 import tamericons
 import tamerinsets
 import tamerlinking
+import tamerlocalstorage
 import tamernavigation
 import tamerrouter
+import tamersecurestore
 import tamersystemui
+import tamertransports
+import tamerwebview
 // GENERATED IMPORTS END
 
 final class LynxInitProcessor {
-    static let shared = LynxInitProcessor()
-    private init() {}
+	static let shared = LynxInitProcessor()
+	private init() {}
 
-    func setupEnvironment() {
-        TamerIconElement.registerFonts()
-        setupLynxEnv()
-        setupLynxService()
-    }
+	func setupEnvironment() {
+		TamerIconElement.registerFonts()
+		setupLynxEnv()
+		setupLynxService()
+	}
 
-    private func setupLynxEnv() {
-        let env = LynxEnv.sharedInstance()
-#if DEBUG
-        env.lynxDebugEnabled = true
-        env.logBoxEnabled = true
-#endif
-        let globalConfig = LynxConfig(provider: env.config.templateProvider)
+	private func setupLynxEnv() {
+		let env = LynxEnv.sharedInstance()
+		let globalConfig = LynxConfig(provider: env.config.templateProvider)
 
-        // GENERATED AUTOLINK START
+		// GENERATED AUTOLINK START
+        // Register module from package: @tamer4lynx/jiggle
+        globalConfig.register(JiggleModule.self)
+
+        // Register module from package: @tamer4lynx/tamer-biometric
+        globalConfig.register(BiometricModule.self)
+
+        // Register module from package: @tamer4lynx/tamer-crypto
+        globalConfig.register(TamerCryptoModule.self)
+
         // Register module from package: @tamer4lynx/tamer-dev-client
         globalConfig.register(DevClientModule.self)
+
+        // Register module from package: @tamer4lynx/tamer-display-browser
+        globalConfig.register(DisplayBrowserModule.self)
 
         // Register element from package: @tamer4lynx/tamer-icons
         globalConfig.registerUI(TamerIconElement.self, withName: "icon")
@@ -45,6 +61,9 @@ final class LynxInitProcessor {
         // Register module from package: @tamer4lynx/tamer-linking
         globalConfig.register(LinkingModule.self)
 
+        // Register module from package: @tamer4lynx/tamer-local-storage
+        globalConfig.register(NativeLocalStorageModule.self)
+
         // Register module from package: @tamer4lynx/tamer-navigation
         globalConfig.register(TamerNavModule.self)
 
@@ -54,26 +73,28 @@ final class LynxInitProcessor {
         // Register module from package: @tamer4lynx/tamer-router
         globalConfig.register(TamerRouterNativeModule.self)
 
+        // Register module from package: @tamer4lynx/tamer-secure-store
+        globalConfig.register(SecureStoreModule.self)
+
         // Register module from package: @tamer4lynx/tamer-system-ui
         globalConfig.register(SystemUIModule.self)
+
+        // Register module from package: @tamer4lynx/tamer-transports
+        globalConfig.register(LynxFetchModule.self)
+
+        // Register module from package: @tamer4lynx/tamer-transports
+        globalConfig.register(TamerTransportsWebSocketModule.self)
+
+        // Register element from package: @tamer4lynx/tamer-webview
+        globalConfig.registerUI(TamerWebViewElement.self, withName: "webview")
 // GENERATED AUTOLINK END
 
-        // GENERATED DEV_CLIENT_SUPPORTED START
-        DevClientModule.attachSupportedModuleClassNames([
-            "com.nanofuxion.tamerdevclient.DevClientModule",
-            "com.nanofuxion.tamerinsets.TamerInsetsModule",
-            "com.nanofuxion.tamerlinking.LinkingModule",
-            "com.nanofuxion.tamernavigation.stack.TamerNavModule",
-            "com.nanofuxion.tamerrouter.TamerRouterNativeModule",
-            "com.nanofuxion.tamersystemui.SystemUIModule"
-        ])
-// GENERATED DEV_CLIENT_SUPPORTED END
+		env.prepareConfig(globalConfig)
+	}
 
-        env.prepareConfig(globalConfig)
-    }
-
-    private func setupLynxService() {
-        let webPCoder = SDImageWebPCoder.shared
-        SDImageCodersManager.shared.addCoder(webPCoder)
-    }
+	private func setupLynxService() {
+		let webPCoder = SDImageWebPCoder.shared
+		SDImageCodersManager.shared.addCoder(webPCoder)
+	}
 }
+	

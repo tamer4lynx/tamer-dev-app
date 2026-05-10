@@ -1,14 +1,21 @@
 {
   "android": {
-    "appName": "TamerDevApp",
+    "appName": "Tamer App",
     "packageName": "com.nanofuxion.tamerdevapp"
   },
   "ios": {
-    "appName": "TamerDevApp",
+    "appName": "Tamer App",
     "bundleId": "com.nanofuxion.tamerdevapp"
   },
-  "dev": {
-    "mode": "embedded"
+  "icon": {
+    "source": "src/assets/tamer-logo.png",
+    "androidAdaptive": {
+      "foreground": "src/assets/tamer-logo.png",
+      "backgroundColor": "#000000",
+      "foregroundFit": "contain",
+      "foregroundScale": 0.62,
+      "foregroundPadding": 6
+    }
   },
   "paths": {
     "androidDir": "android",

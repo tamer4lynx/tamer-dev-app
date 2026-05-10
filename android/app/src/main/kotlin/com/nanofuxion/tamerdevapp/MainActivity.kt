@@ -5,25 +5,27 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.lynx.tasm.LynxBooleanOption
 import com.lynx.tasm.LynxView
 import com.lynx.tasm.LynxViewBuilder
+import com.lynx.tasm.LynxBooleanOption
+
 import android.Manifest
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import androidx.activity.OnBackPressedCallback
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.zxing.integration.android.IntentIntegrator
 import com.nanofuxion.tamerdevclient.DevClientModule
 import com.nanofuxion.tamernavigation.stack.TamerNavHost
-
 import com.nanofuxion.tamerdevapp.generated.GeneratedLynxExtensions
 import com.nanofuxion.tamerdevapp.generated.GeneratedActivityLifecycle
 
 class MainActivity : AppCompatActivity() {
     private var reloadReceiver: BroadcastReceiver? = null
+    private val handler = Handler(Looper.getMainLooper())
     private val currentUri = "dev-client.lynx.bundle"
     private var pendingScanOnPermissionGranted: Runnable? = null
     private val cameraPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
@@ -35,34 +37,14 @@ class MainActivity : AppCompatActivity() {
         scanResult?.contents?.let { DevClientModule.instance?.deliverScanResult(it) }
     }
     private var lynxView: LynxView? = null
-    private val backCallback = object : OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-            GeneratedActivityLifecycle.onBackPressed { consumed ->
-                if (!consumed) {
-                    isEnabled = false
-                    onBackPressedDispatcher.onBackPressed()
-                    isEnabled = true
-                }
-            }
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         GeneratedLynxExtensions.register(this)
-        TamerNavHost.configureSharedLynxGroup(TamerNavLynxRuntime.group)
-        TamerNavHost.sourceSpokeBuilder = { ctx, src ->
-            val viewBuilder = LynxViewBuilder()
-            TamerNavLynxRuntime.configureBuilder(ctx, viewBuilder, src)
-            GeneratedLynxExtensions.configureViewBuilder(viewBuilder)
-            viewBuilder.build(ctx)
-        }
+        configureTamerNavSpokeBuilder()
+        GeneratedActivityLifecycle.onCreate(intent)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
-
-        // Handle deep link from intent (e.g., from native scanner)
-        handleDeepLink(intent)
-
         lynxView = buildLynxView()
         setContentView(lynxView)
         GeneratedActivityLifecycle.onViewAttached(lynxView)
@@ -104,32 +86,8 @@ class MainActivity : AppCompatActivity() {
         } else {
             registerReceiver(reloadReceiver, IntentFilter(DevClientModule.ACTION_RELOAD_PROJECT))
         }
-        onBackPressedDispatcher.addCallback(this, backCallback)
 
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        setIntent(intent)
-        // Handle deep link when app is already running
-        handleDeepLink(intent)
-    }
-
-    private fun handleDeepLink(intent: Intent) {
-        val data = intent.data
-        if (data != null && data.scheme == "tamerdevapp") {
-            // Parse deep link: tamerdevapp://host:port/path
-            val host = data.host ?: return
-            val port = data.port
-            val path = data.path ?: ""
-            val bundleUrl = if (port > 0) "http://$host:$port$path" else "http://$host$path"
-            if (bundleUrl.isNotEmpty()) {
-                startActivity(Intent(this@MainActivity, ProjectActivity::class.java).apply {
-                    putExtra("bundleUrl", bundleUrl)
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                })
-            }
-        }
+        GeneratedActivityLifecycle.onCreateDelayed(handler)
     }
 
     override fun onPause() {
@@ -140,6 +98,18 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         GeneratedActivityLifecycle.onResume()
+        DevClientModule.attachHostActivity(this)
+        DevClientModule.attachLynxView(lynxView)
+        GeneratedLynxExtensions.onHostViewChanged(lynxView)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        GeneratedActivityLifecycle.onBackPressed { consumed ->
+            if (!consumed) {
+                runOnUiThread { super.onBackPressed() }
+            }
+        }
     }
 
     private fun buildLynxView(): LynxView {
@@ -148,6 +118,27 @@ class MainActivity : AppCompatActivity() {
         GeneratedLynxExtensions.configureViewBuilder(viewBuilder)
         return viewBuilder.build(this)
     }
+
+    private fun configureTamerNavSpokeBuilder() {
+        TamerNavHost.configureSharedLynxGroup(TamerNavLynxRuntime.group)
+        TamerNavHost.sourceSpokeBuilder = { ctx, src ->
+            val viewBuilder = LynxViewBuilder()
+            TamerNavLynxRuntime.configureBuilder(ctx, viewBuilder, src)
+            GeneratedLynxExtensions.configureViewBuilder(viewBuilder)
+            viewBuilder.build(ctx)
+        }
+    }
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        GeneratedActivityLifecycle.onWindowFocusChanged(hasFocus)
+    }
+
+    override fun onNewIntent(intent: android.content.Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        GeneratedActivityLifecycle.onNewIntent(intent)
+    }
+
     override fun onDestroy() {
         reloadReceiver?.let { unregisterReceiver(it) }
         GeneratedActivityLifecycle.onViewDetached()

@@ -9,8 +9,8 @@ import com.lynx.tasm.group.LynxViewGroupBuilder
 import com.lynx.xelement.XElementBehaviors
 
 /**
- * Shared [LynxGroup] plus per-bundle LynxViewGroups for coordinator + TamerNav stack spokes.
- * Used from [MainActivity] (release-style entry) and [ProjectActivity] (open-project entry).
+ * Shared LynxGroup plus per-bundle LynxViewGroups for coordinator LynxViews and TamerNav spokes.
+ * Module-singleton stores such as Zustand rely on this shared runtime group.
  */
 object TamerNavLynxRuntime {
     val group: LynxGroup = LynxGroup.LynxGroupBuilder()

@@ -8,16 +8,15 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.lynx.tasm.LynxBooleanOption
 import com.lynx.tasm.LynxView
 import com.lynx.tasm.LynxViewBuilder
+import com.lynx.tasm.LynxBooleanOption
 import com.nanofuxion.tamerdevapp.DevClientManager
+import com.nanofuxion.tamerdevclient.DevClientDebugPanel
 import com.nanofuxion.tamerdevclient.DevClientModule
-import com.nanofuxion.tamerdevclient.LynxDevToolBootstrap
+import com.nanofuxion.tamernavigation.stack.TamerNavHost
 import com.nanofuxion.tamerdevapp.generated.GeneratedLynxExtensions
 import com.nanofuxion.tamerdevapp.generated.GeneratedActivityLifecycle
-import com.nanofuxion.tamerdevclient.DevClientDebugPanel
-import com.nanofuxion.tamernavigation.stack.TamerNavHost
 
 class ProjectActivity : AppCompatActivity() {
     private var lynxView: LynxView? = null
@@ -37,15 +36,9 @@ class ProjectActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LynxDevToolBootstrap.bootstrapDevToolForProjectHost(this)
+        com.nanofuxion.tamerdevclient.LynxDevToolBootstrap.bootstrapDevToolForProjectHost(this)
         GeneratedLynxExtensions.register(this)
-        TamerNavHost.configureSharedLynxGroup(TamerNavLynxRuntime.group)
-        TamerNavHost.sourceSpokeBuilder = { ctx, src ->
-            val viewBuilder = LynxViewBuilder()
-            TamerNavLynxRuntime.configureBuilder(ctx, viewBuilder, src)
-            GeneratedLynxExtensions.configureViewBuilder(viewBuilder)
-            viewBuilder.build(ctx)
-        }
+        configureTamerNavSpokeBuilder()
         GeneratedActivityLifecycle.onCreate(intent)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
@@ -53,20 +46,20 @@ class ProjectActivity : AppCompatActivity() {
         setContentView(lynxView)
         GeneratedActivityLifecycle.onViewAttached(lynxView)
         GeneratedLynxExtensions.onHostViewChanged(lynxView)
-        lynxView?.renderTemplateUrl("main.lynx.bundle", "")
+        lynxView?.renderTemplateUrl("main.lynx.bundle", DevClientModule.getProjectInitDataJson(this))
         DevClientModule.attachHostActivity(this)
         DevClientModule.attachLynxView(lynxView)
         DevClientModule.attachReloadProjectLauncher { reloadProjectView() }
-        val bundleUrl = intent.getStringExtra("bundleUrl")
-        devClientManager = DevClientManager(this, bundleUrl) { reloadProjectView() }
+        devClientManager = DevClientManager(this) { reloadProjectView() }
         devClientManager?.connect()
+
         GeneratedActivityLifecycle.onCreateDelayed(handler)
         onBackPressedDispatcher.addCallback(this, backCallback)
     }
 
-    override fun onPause() {
-        DevClientModule.stopShakeDetection()
-        super.onPause()
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        GeneratedActivityLifecycle.onWindowFocusChanged(hasFocus)
     }
 
     private fun reloadProjectView() {
@@ -79,20 +72,20 @@ class ProjectActivity : AppCompatActivity() {
         setContentView(nextView)
         GeneratedActivityLifecycle.onViewAttached(nextView)
         GeneratedLynxExtensions.onHostViewChanged(nextView)
-        nextView.renderTemplateUrl("main.lynx.bundle", "")
+        nextView.renderTemplateUrl("main.lynx.bundle", DevClientModule.getProjectInitDataJson(this))
         DevClientModule.attachLynxView(nextView)
         GeneratedActivityLifecycle.onCreateDelayed(handler)
-    }
-
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        GeneratedActivityLifecycle.onWindowFocusChanged(hasFocus)
     }
 
     override fun onResume() {
         super.onResume()
         DevClientModule.startShakeDetection(this) { DevClientDebugPanel.show(this) }
         GeneratedActivityLifecycle.onResume()
+    }
+
+    override fun onPause() {
+        DevClientModule.stopShakeDetection()
+        super.onPause()
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -102,14 +95,15 @@ class ProjectActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        DevClientModule.attachHostActivity(null)
-        DevClientModule.attachLynxView(null)
-        DevClientModule.attachReloadProjectLauncher(null)
         GeneratedActivityLifecycle.onViewDetached()
         GeneratedLynxExtensions.onHostViewChanged(null)
         lynxView?.destroy()
         lynxView = null
+        DevClientModule.attachHostActivity(null)
+        DevClientModule.attachLynxView(null)
+        DevClientModule.attachReloadProjectLauncher(null)
         devClientManager?.disconnect()
+
         super.onDestroy()
     }
 
@@ -118,5 +112,15 @@ class ProjectActivity : AppCompatActivity() {
         TamerNavLynxRuntime.configureBuilder(this, viewBuilder, "main.lynx.bundle")
         GeneratedLynxExtensions.configureViewBuilder(viewBuilder)
         return viewBuilder.build(this)
+    }
+
+    private fun configureTamerNavSpokeBuilder() {
+        TamerNavHost.configureSharedLynxGroup(TamerNavLynxRuntime.group)
+        TamerNavHost.sourceSpokeBuilder = { ctx, src ->
+            val viewBuilder = LynxViewBuilder()
+            TamerNavLynxRuntime.configureBuilder(ctx, viewBuilder, src)
+            GeneratedLynxExtensions.configureViewBuilder(viewBuilder)
+            viewBuilder.build(ctx)
+        }
     }
 }

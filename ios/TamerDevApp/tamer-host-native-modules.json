@@ -1,10 +1,18 @@
 {
   "moduleClassNames": [
+    "com.nanofuxion.vibration.JiggleModule",
+    "com.nanofuxion.tamerbiometric.BiometricModule",
+    "com.nanofuxion.tamercrypto.TamerCryptoModule",
     "com.nanofuxion.tamerdevclient.DevClientModule",
+    "com.nanofuxion.tamerdisplaybrowser.DisplayBrowserModule",
     "com.nanofuxion.tamerinsets.TamerInsetsModule",
     "com.nanofuxion.tamerlinking.LinkingModule",
+    "com.nanofuxion.tamerlocalstorage.NativeLocalStorageModule",
     "com.nanofuxion.tamernavigation.stack.TamerNavModule",
     "com.nanofuxion.tamerrouter.TamerRouterNativeModule",
-    "com.nanofuxion.tamersystemui.SystemUIModule"
+    "com.nanofuxion.tamersecurestore.SecureStoreModule",
+    "com.nanofuxion.tamersystemui.SystemUIModule",
+    "com.nanofuxion.tamertransports.LynxFetchModule",
+    "com.nanofuxion.tamertransports.TamerTransportsWebSocketModule"
   ]
 }

@@ -15,7 +15,6 @@ public class TemplateProvider extends AbsTemplateProvider {
     private static final String DEV_CLIENT_BUNDLE = "dev-client.lynx.bundle";
     private static final String TAMER_DEBUG_BUNDLE = "tamer-debug.lynx.bundle";
     private static final String PROJECT_BUNDLE_SEGMENT = "tamer-dev-app";
-
     private final android.content.Context context;
     public final LynxGenericResourceFetcher genericResourceFetcher;
     public final LynxTemplateResourceFetcher templateResourceFetcher;
@@ -121,6 +120,12 @@ public class TemplateProvider extends AbsTemplateProvider {
         return null;
     }
 
+    private static boolean isEmbeddedDevShellUrl(String url) {
+        if (url == null) return false;
+        return url.equals(DEV_CLIENT_BUNDLE) || url.endsWith("/" + DEV_CLIENT_BUNDLE) || url.contains(DEV_CLIENT_BUNDLE)
+            || url.equals(TAMER_DEBUG_BUNDLE) || url.endsWith("/" + TAMER_DEBUG_BUNDLE) || url.contains(TAMER_DEBUG_BUNDLE);
+    }
+
     private byte[] loadAssetBytes(String assetPath) throws java.io.IOException {
         java.io.ByteArrayOutputStream baos = new java.io.ByteArrayOutputStream();
         try (java.io.InputStream is = context.getAssets().open(assetPath)) {
@@ -131,12 +136,6 @@ public class TemplateProvider extends AbsTemplateProvider {
             }
         }
         return baos.toByteArray();
-    }
-
-    private static boolean isEmbeddedDevShellUrl(String url) {
-        if (url == null) return false;
-        return url.equals(DEV_CLIENT_BUNDLE) || url.endsWith("/" + DEV_CLIENT_BUNDLE) || url.contains(DEV_CLIENT_BUNDLE)
-            || url.equals(TAMER_DEBUG_BUNDLE) || url.endsWith("/" + TAMER_DEBUG_BUNDLE) || url.contains(TAMER_DEBUG_BUNDLE);
     }
 
     private String normalizeAssetPath(String url) {

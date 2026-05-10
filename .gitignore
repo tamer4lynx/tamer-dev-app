@@ -5,9 +5,11 @@ dist
 *.tsbuildinfo
 android/build
 android/app/build
+android/local.properties
 android/.gradle
 android/.kotlin
 android/.settings
+gradle/
 ios/build
 ios/Pods
 

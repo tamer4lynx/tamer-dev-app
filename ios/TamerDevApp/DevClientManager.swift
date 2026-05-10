@@ -7,21 +7,15 @@ class DevClientManager {
     private var session: URLSession?
     private var shouldReconnect = false
     private var reconnectWorkItem: DispatchWorkItem?
-    private let bundleUrl: String?
-    private var hasSuccessfullyConnected = false
 
     private let reconnectDelay: TimeInterval = 3.0
 
-    init(bundleUrl: String? = nil, onReload: @escaping () -> Void) {
-        self.bundleUrl = bundleUrl
+    init(onReload: @escaping () -> Void) {
         self.onReload = onReload
     }
 
     func connect() {
         shouldReconnect = true
-        if let bundleUrl = bundleUrl, !bundleUrl.isEmpty {
-            DevServerPrefs.setUrl(bundleUrl)
-        }
         openSocketIfNeeded()
     }
 
