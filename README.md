@@ -2,6 +2,8 @@
 
 Standalone Tamer4Lynx dev app — Expo Go-style QR scan and HMR.
 
+This is a private monorepo workspace app, not an installable npm package for downstream projects.
+
 ## Installation
 
 This package is the native host app for development. It is typically used as a workspace package in the tamer4lynx monorepo.
