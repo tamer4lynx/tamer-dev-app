@@ -1,0 +1,31 @@
+{
+  "displayName": "Tamer Dev App",
+  "packageLabel": "Tamer Dev App",
+  "source": "official",
+  "androidPackageId": "com.nanofuxion.tamerdevapp",
+  "iosBundleId": "com.nanofuxion.tamerdevapp",
+  "creditTitle": "Created by Nanofuxion",
+  "links": [
+    {
+      "id": "github",
+      "icon": "github",
+      "set": "fab",
+      "label": "tamer4lynx/tamer4lynx",
+      "url": "https://github.com/tamer4lynx/tamer4lynx"
+    },
+    {
+      "id": "discord",
+      "icon": "discord",
+      "set": "fab",
+      "label": "@nanofuxion",
+      "url": "https://discord.com/users/235301625659392001"
+    },
+    {
+      "id": "email",
+      "icon": "envelope",
+      "set": "fa",
+      "label": "ramnadroj@gmail.com",
+      "url": "mailto:ramnadroj@gmail.com"
+    }
+  ]
+}

@@ -1,0 +1,707 @@
+$ node ../../dist/index.js build android -d
+📱 Resolving paths for Tamer Dev App (@tamer4lynx/tamer-dev-app)
+🔎 Finding Lynx extension packages (lynx.ext.json / tamer.json)...
+Found 15 package(s): @tamer4lynx/jiggle, @tamer4lynx/tamer-biometric, @tamer4lynx/tamer-crypto, @tamer4lynx/tamer-dev-client, @tamer4lynx/tamer-display-browser, @tamer4lynx/tamer-icons, @tamer4lynx/tamer-insets, @tamer4lynx/tamer-linking, @tamer4lynx/tamer-local-storage, @tamer4lynx/tamer-navigation, @tamer4lynx/tamer-router, @tamer4lynx/tamer-secure-store, @tamer4lynx/tamer-system-ui, @tamer4lynx/tamer-transports, @tamer4lynx/tamer-webview
+✅ Updated autolinked section in settings.gradle.kts
+✅ Updated autolinked section in build.gradle.kts
+✅ Generated Kotlin extensions at /Volumes/Storage/Projects/tamer4lynx/packages/tamer-dev-app/android/app/src/main/kotlin/com/nanofuxion/tamerdevapp/generated/GeneratedLynxExtensions.kt
+✅ Generated activity lifecycle patches at /Volumes/Storage/Projects/tamer4lynx/packages/tamer-dev-app/android/app/src/main/kotlin/com/nanofuxion/tamerdevapp/generated/GeneratedActivityLifecycle.kt
+ℹ️ Merged default Android deep link tamerdevapp:// (tamer-linking / OAuth redirect).
+✅ Updated autolinked section in AndroidManifest.xml
+ℹ️ Running Gradle sync in android directory...
+
+> Task :projects
+
+Projects:
+
+------------------------------------------------------------
+Root project 'Tamer App'
+------------------------------------------------------------
+
+Root project 'Tamer App'
++--- Project ':app'
++--- Project ':tamer4lynx_jiggle'
++--- Project ':tamer4lynx_tamer-biometric'
++--- Project ':tamer4lynx_tamer-crypto'
++--- Project ':tamer4lynx_tamer-dev-client'
++--- Project ':tamer4lynx_tamer-display-browser'
++--- Project ':tamer4lynx_tamer-icons'
++--- Project ':tamer4lynx_tamer-insets'
++--- Project ':tamer4lynx_tamer-linking'
++--- Project ':tamer4lynx_tamer-local-storage'
++--- Project ':tamer4lynx_tamer-navigation'
++--- Project ':tamer4lynx_tamer-router'
++--- Project ':tamer4lynx_tamer-secure-store'
++--- Project ':tamer4lynx_tamer-system-ui'
++--- Project ':tamer4lynx_tamer-transports'
+\--- Project ':tamer4lynx_tamer-webview'
+
+To see a list of the tasks of a project, run gradlew <project-path>:tasks
+For example, try running gradlew :app:tasks
+
+BUILD SUCCESSFUL in 1s
+1 actionable task: 1 executed
+✅ Gradle sync completed.
+✨ Autolinking complete.
+✅ Wrote packages/tamer-dev-app ProjectActivity.kt from getTamerDevAppProjectActivity() (full template sync skipped for dev-app).
+✅ Synced Android launcher icon(s) from tamer.config.json
+📦 Building Lynx bundle...
+
+> @tamer4lynx/tamer-dev-client@0.0.29 build
+> node ./scripts/rspeedy-build.mjs
+
+
+  Rspeedy v0.13.5 (Rsbuild v1.7.3, Rspack v1.7.9)
+
+info    build started...
+error   Build errors: 
+File: ../tamer-app-shell/src/Button.tsx:171:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[171:0]
+ 169 │ };
+ 170 │ const __snapshot_e145f_dce6b_2 = "__snapshot_e145f_dce6b_2";
+ 171 │ ReactLynx.snapshotCreatorMap[__snapshot_e145f_dce6b_2] = (__snapshot_e145f_dce6b_2)=>ReactLynx.createSnapshot(__snapshot_e145f_dce6b_2, null, null, null, undefined, globDynamicComponentEntry, null, true);
+     · ────────────────────────────
+ 172 │ const __snapshot_e145f_dce6b_3 = "__snapshot_e145f_dce6b_3";
+ 173 │ ReactLynx.snapshotCreatorMap[__snapshot_e145f_dce6b_3] = (__snapshot_e145f_dce6b_3)=>ReactLynx.createSnapshot(__snapshot_e145f_dce6b_3, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Button.tsx ×
+
+File: ../tamer-app-shell/src/Button.tsx:173:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[173:0]
+ 171 │ ReactLynx.snapshotCreatorMap[__snapshot_e145f_dce6b_2] = (__snapshot_e145f_dce6b_2)=>ReactLynx.createSnapshot(__snapshot_e145f_dce6b_2, null, null, null, undefined, globDynamicComponentEntry, null, true);
+ 172 │ const __snapshot_e145f_dce6b_3 = "__snapshot_e145f_dce6b_3";
+ 173 │ ReactLynx.snapshotCreatorMap[__snapshot_e145f_dce6b_3] = (__snapshot_e145f_dce6b_3)=>ReactLynx.createSnapshot(__snapshot_e145f_dce6b_3, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+     · ────────────────────────────
+ 174 │ const __snapshot_e145f_dce6b_1 = "__snapshot_e145f_dce6b_1";
+ 175 │ ReactLynx.snapshotCreatorMap[__snapshot_e145f_dce6b_1] = (__snapshot_e145f_dce6b_1)=>ReactLynx.createSnapshot(__snapshot_e145f_dce6b_1, null, null, [
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Button.tsx ×
+
+File: ../tamer-app-shell/src/Button.tsx:175:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[175:0]
+ 173 │ ReactLynx.snapshotCreatorMap[__snapshot_e145f_dce6b_3] = (__snapshot_e145f_dce6b_3)=>ReactLynx.createSnapshot(__snapshot_e145f_dce6b_3, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+ 174 │ const __snapshot_e145f_dce6b_1 = "__snapshot_e145f_dce6b_1";
+ 175 │ ReactLynx.snapshotCreatorMap[__snapshot_e145f_dce6b_1] = (__snapshot_e145f_dce6b_1)=>ReactLynx.createSnapshot(__snapshot_e145f_dce6b_1, null, null, [
+     · ────────────────────────────
+ 176 │         [
+ 177 │             ReactLynx.__DynamicPartSlot,
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Button.tsx ×
+
+File: ../tamer-app-shell/src/ButtonGroup.tsx:16:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[16:0]
+ 14 │ const SEG_GAP = 8;
+ 15 │ const __snapshot_30b7a_16029_1 = "__snapshot_30b7a_16029_1";
+ 16 │ ReactLynx.snapshotCreatorMap[__snapshot_30b7a_16029_1] = (__snapshot_30b7a_16029_1)=>ReactLynx.createSnapshot(__snapshot_30b7a_16029_1, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, [
+    · ────────────────────────────
+ 17 │         0
+ 18 │     ], true);
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/ButtonGroup.tsx ×
+
+File: ../tamer-app-shell/src/ButtonGroup.tsx:73:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[73:0]
+ 71 │ }
+ 72 │ const __snapshot_30b7a_16029_3 = "__snapshot_30b7a_16029_3";
+ 73 │ ReactLynx.snapshotCreatorMap[__snapshot_30b7a_16029_3] = (__snapshot_30b7a_16029_3)=>ReactLynx.createSnapshot(__snapshot_30b7a_16029_3, null, null, null, undefined, globDynamicComponentEntry, null, true);
+    · ────────────────────────────
+ 74 │ const __snapshot_30b7a_16029_4 = "__snapshot_30b7a_16029_4";
+ 75 │ ReactLynx.snapshotCreatorMap[__snapshot_30b7a_16029_4] = (__snapshot_30b7a_16029_4)=>ReactLynx.createSnapshot(__snapshot_30b7a_16029_4, null, null, null, undefined, globDynamicComponentEntry, null, true);
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/ButtonGroup.tsx ×
+
+File: ../tamer-app-shell/src/ButtonGroup.tsx:75:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[75:0]
+ 73 │ ReactLynx.snapshotCreatorMap[__snapshot_30b7a_16029_3] = (__snapshot_30b7a_16029_3)=>ReactLynx.createSnapshot(__snapshot_30b7a_16029_3, null, null, null, undefined, globDynamicComponentEntry, null, true);
+ 74 │ const __snapshot_30b7a_16029_4 = "__snapshot_30b7a_16029_4";
+ 75 │ ReactLynx.snapshotCreatorMap[__snapshot_30b7a_16029_4] = (__snapshot_30b7a_16029_4)=>ReactLynx.createSnapshot(__snapshot_30b7a_16029_4, null, null, null, undefined, globDynamicComponentEntry, null, true);
+    · ────────────────────────────
+ 76 │ const __snapshot_30b7a_16029_5 = "__snapshot_30b7a_16029_5";
+ 77 │ ReactLynx.snapshotCreatorMap[__snapshot_30b7a_16029_5] = (__snapshot_30b7a_16029_5)=>ReactLynx.createSnapshot(__snapshot_30b7a_16029_5, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/ButtonGroup.tsx ×
+
+File: ../tamer-app-shell/src/ButtonGroup.tsx:77:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[77:0]
+ 75 │ ReactLynx.snapshotCreatorMap[__snapshot_30b7a_16029_4] = (__snapshot_30b7a_16029_4)=>ReactLynx.createSnapshot(__snapshot_30b7a_16029_4, null, null, null, undefined, globDynamicComponentEntry, null, true);
+ 76 │ const __snapshot_30b7a_16029_5 = "__snapshot_30b7a_16029_5";
+ 77 │ ReactLynx.snapshotCreatorMap[__snapshot_30b7a_16029_5] = (__snapshot_30b7a_16029_5)=>ReactLynx.createSnapshot(__snapshot_30b7a_16029_5, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+    · ────────────────────────────
+ 78 │ const __snapshot_30b7a_16029_2 = "__snapshot_30b7a_16029_2";
+ 79 │ ReactLynx.snapshotCreatorMap[__snapshot_30b7a_16029_2] = (__snapshot_30b7a_16029_2)=>ReactLynx.createSnapshot(__snapshot_30b7a_16029_2, null, null, [
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/ButtonGroup.tsx ×
+
+File: ../tamer-app-shell/src/ButtonGroup.tsx:79:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[79:0]
+ 77 │ ReactLynx.snapshotCreatorMap[__snapshot_30b7a_16029_5] = (__snapshot_30b7a_16029_5)=>ReactLynx.createSnapshot(__snapshot_30b7a_16029_5, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+ 78 │ const __snapshot_30b7a_16029_2 = "__snapshot_30b7a_16029_2";
+ 79 │ ReactLynx.snapshotCreatorMap[__snapshot_30b7a_16029_2] = (__snapshot_30b7a_16029_2)=>ReactLynx.createSnapshot(__snapshot_30b7a_16029_2, null, null, [
+    · ────────────────────────────
+ 80 │         [
+ 81 │             ReactLynx.__DynamicPartChildren,
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/ButtonGroup.tsx ×
+
+File: ../tamer-app-shell/src/Card.tsx:25:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[25:0]
+ 23 │ };
+ 24 │ const __snapshot_3eb14_b403e_1 = "__snapshot_3eb14_b403e_1";
+ 25 │ ReactLynx.snapshotCreatorMap[__snapshot_3eb14_b403e_1] = (__snapshot_3eb14_b403e_1)=>ReactLynx.createSnapshot(__snapshot_3eb14_b403e_1, null, null, [
+    · ────────────────────────────
+ 26 │         [
+ 27 │             ReactLynx.__DynamicPartChildren,
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Card.tsx ×
+
+File: ../tamer-app-shell/src/Card.tsx:77:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[77:0]
+ 75 │ }
+ 76 │ const __snapshot_3eb14_b403e_2 = "__snapshot_3eb14_b403e_2";
+ 77 │ ReactLynx.snapshotCreatorMap[__snapshot_3eb14_b403e_2] = (__snapshot_3eb14_b403e_2)=>ReactLynx.createSnapshot(__snapshot_3eb14_b403e_2, null, null, null, undefined, globDynamicComponentEntry, null, true);
+    · ────────────────────────────
+ 78 │ // Ensures Lynx registers the component snapshot for Card when this module loads.
+ 79 │ export function __CardSnapshotSeed() {
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Card.tsx ×
+
+File: ../tamer-app-shell/src/Fab.tsx:29:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[29:0]
+ 27 │ };
+ 28 │ const __snapshot_dfe7f_4e792_1 = "__snapshot_dfe7f_4e792_1";
+ 29 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_1] = (__snapshot_dfe7f_4e792_1)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_1, null, null, null, undefined, globDynamicComponentEntry, [
+    · ────────────────────────────
+ 30 │         0
+ 31 │     ], true);
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Fab.tsx ×
+
+File: ../tamer-app-shell/src/Fab.tsx:92:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[92:0]
+ 90 │ const EXT_FAB_PADDING_H = 16;
+ 91 │ const __snapshot_dfe7f_4e792_3 = "__snapshot_dfe7f_4e792_3";
+ 92 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_3] = (__snapshot_dfe7f_4e792_3)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_3, null, null, null, undefined, globDynamicComponentEntry, null, true);
+    · ────────────────────────────
+ 93 │ const __snapshot_dfe7f_4e792_4 = "__snapshot_dfe7f_4e792_4";
+ 94 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_4] = (__snapshot_dfe7f_4e792_4)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_4, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Fab.tsx ×
+
+File: ../tamer-app-shell/src/Fab.tsx:94:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[94:0]
+ 92 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_3] = (__snapshot_dfe7f_4e792_3)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_3, null, null, null, undefined, globDynamicComponentEntry, null, true);
+ 93 │ const __snapshot_dfe7f_4e792_4 = "__snapshot_dfe7f_4e792_4";
+ 94 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_4] = (__snapshot_dfe7f_4e792_4)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_4, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+    · ────────────────────────────
+ 95 │ const __snapshot_dfe7f_4e792_2 = "__snapshot_dfe7f_4e792_2";
+ 96 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_2] = (__snapshot_dfe7f_4e792_2)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_2, null, null, [
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Fab.tsx ×
+
+File: ../tamer-app-shell/src/Fab.tsx:96:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[96:0]
+ 94 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_4] = (__snapshot_dfe7f_4e792_4)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_4, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+ 95 │ const __snapshot_dfe7f_4e792_2 = "__snapshot_dfe7f_4e792_2";
+ 96 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_2] = (__snapshot_dfe7f_4e792_2)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_2, null, null, [
+    · ────────────────────────────
+ 97 │         [
+ 98 │             ReactLynx.__DynamicPartSlot,
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Fab.tsx ×
+
+File: ../tamer-app-shell/src/Fab.tsx:199:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[199:0]
+ 197 │ FAB_FLOAT_Z;
+ 198 │ const __snapshot_dfe7f_4e792_5 = "__snapshot_dfe7f_4e792_5";
+ 199 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_5] = (__snapshot_dfe7f_4e792_5)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_5, null, null, null, undefined, globDynamicComponentEntry, null, true);
+     · ────────────────────────────
+ 200 │ const __snapshot_dfe7f_4e792_7 = "__snapshot_dfe7f_4e792_7";
+ 201 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_7] = (__snapshot_dfe7f_4e792_7)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_7, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Fab.tsx ×
+
+File: ../tamer-app-shell/src/Fab.tsx:201:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[201:0]
+ 199 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_5] = (__snapshot_dfe7f_4e792_5)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_5, null, null, null, undefined, globDynamicComponentEntry, null, true);
+ 200 │ const __snapshot_dfe7f_4e792_7 = "__snapshot_dfe7f_4e792_7";
+ 201 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_7] = (__snapshot_dfe7f_4e792_7)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_7, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+     · ────────────────────────────
+ 202 │ const __snapshot_dfe7f_4e792_6 = "__snapshot_dfe7f_4e792_6";
+ 203 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_6] = (__snapshot_dfe7f_4e792_6)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_6, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, [
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Fab.tsx ×
+
+File: ../tamer-app-shell/src/Fab.tsx:203:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[203:0]
+ 201 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_7] = (__snapshot_dfe7f_4e792_7)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_7, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+ 202 │ const __snapshot_dfe7f_4e792_6 = "__snapshot_dfe7f_4e792_6";
+ 203 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_6] = (__snapshot_dfe7f_4e792_6)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_6, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, [
+     · ────────────────────────────
+ 204 │         0
+ 205 │     ], true);
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Fab.tsx ×
+
+File: ../tamer-app-shell/src/Fab.tsx:207:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[207:0]
+ 205 │     ], true);
+ 206 │ const __snapshot_dfe7f_4e792_8 = "__snapshot_dfe7f_4e792_8";
+ 207 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_8] = (__snapshot_dfe7f_4e792_8)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_8, null, null, [
+     · ────────────────────────────
+ 208 │         [
+ 209 │             ReactLynx.__DynamicPartChildren,
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Fab.tsx ×
+
+File: ../tamer-app-shell/src/Fab.tsx:333:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[333:0]
+ 331 │ }
+ 332 │ const __snapshot_dfe7f_4e792_9 = "__snapshot_dfe7f_4e792_9";
+ 333 │ ReactLynx.snapshotCreatorMap[__snapshot_dfe7f_4e792_9] = (__snapshot_dfe7f_4e792_9)=>ReactLynx.createSnapshot(__snapshot_dfe7f_4e792_9, null, null, [
+     · ────────────────────────────
+ 334 │         [
+ 335 │             ReactLynx.__DynamicPartChildren,
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/Fab.tsx ×
+
+File: ../tamer-app-shell/src/NavigationDrawer.tsx:24:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[24:0]
+ 22 │ const DRAWER_PANEL_Z = DRAWER_LAYER_Z + 10;
+ 23 │ const __snapshot_e943f_faaba_2 = "__snapshot_e943f_faaba_2";
+ 24 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_2] = (__snapshot_e943f_faaba_2)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_2, null, null, [
+    · ────────────────────────────
+ 25 │         [
+ 26 │             ReactLynx.__DynamicPartChildren,
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationDrawer.tsx ×
+
+File: ../tamer-app-shell/src/NavigationDrawer.tsx:31:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[31:0]
+ 29 │     ], undefined, globDynamicComponentEntry, null, true);
+ 30 │ const __snapshot_e943f_faaba_5 = "__snapshot_e943f_faaba_5";
+ 31 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_5] = (__snapshot_e943f_faaba_5)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_5, null, null, [
+    · ────────────────────────────
+ 32 │         [
+ 33 │             ReactLynx.__DynamicPartChildren,
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationDrawer.tsx ×
+
+File: ../tamer-app-shell/src/NavigationDrawer.tsx:38:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[38:0]
+ 36 │     ], undefined, globDynamicComponentEntry, null, true);
+ 37 │ const __snapshot_e943f_faaba_6 = "__snapshot_e943f_faaba_6";
+ 38 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_6] = (__snapshot_e943f_faaba_6)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_6, null, null, null, undefined, globDynamicComponentEntry, null, true);
+    · ────────────────────────────
+ 39 │ const __snapshot_e943f_faaba_4 = "__snapshot_e943f_faaba_4";
+ 40 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_4] = (__snapshot_e943f_faaba_4)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_4, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationDrawer.tsx ×
+
+File: ../tamer-app-shell/src/NavigationDrawer.tsx:40:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[40:0]
+ 38 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_6] = (__snapshot_e943f_faaba_6)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_6, null, null, null, undefined, globDynamicComponentEntry, null, true);
+ 39 │ const __snapshot_e943f_faaba_4 = "__snapshot_e943f_faaba_4";
+ 40 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_4] = (__snapshot_e943f_faaba_4)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_4, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+    · ────────────────────────────
+ 41 │ const __snapshot_e943f_faaba_3 = "__snapshot_e943f_faaba_3";
+ 42 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_3] = (__snapshot_e943f_faaba_3)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_3, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationDrawer.tsx ×
+
+File: ../tamer-app-shell/src/NavigationDrawer.tsx:42:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[42:0]
+ 40 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_4] = (__snapshot_e943f_faaba_4)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_4, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+ 41 │ const __snapshot_e943f_faaba_3 = "__snapshot_e943f_faaba_3";
+ 42 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_3] = (__snapshot_e943f_faaba_3)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_3, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+    · ────────────────────────────
+ 43 │ const __snapshot_e943f_faaba_1 = "__snapshot_e943f_faaba_1";
+ 44 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_1] = (__snapshot_e943f_faaba_1)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_1, null, null, [
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationDrawer.tsx ×
+
+File: ../tamer-app-shell/src/NavigationDrawer.tsx:44:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[44:0]
+ 42 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_3] = (__snapshot_e943f_faaba_3)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_3, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+ 43 │ const __snapshot_e943f_faaba_1 = "__snapshot_e943f_faaba_1";
+ 44 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_1] = (__snapshot_e943f_faaba_1)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_1, null, null, [
+    · ────────────────────────────
+ 45 │         [
+ 46 │             ReactLynx.__DynamicPartSlot,
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationDrawer.tsx ×
+
+File: ../tamer-app-shell/src/NavigationDrawer.tsx:209:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[209:0]
+ 207 │ }
+ 208 │ const __snapshot_e943f_faaba_8 = "__snapshot_e943f_faaba_8";
+ 209 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_8] = (__snapshot_e943f_faaba_8)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_8, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+     · ────────────────────────────
+ 210 │ const __snapshot_e943f_faaba_9 = "__snapshot_e943f_faaba_9";
+ 211 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_9] = (__snapshot_e943f_faaba_9)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_9, null, null, [
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationDrawer.tsx ×
+
+File: ../tamer-app-shell/src/NavigationDrawer.tsx:211:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[211:0]
+ 209 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_8] = (__snapshot_e943f_faaba_8)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_8, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+ 210 │ const __snapshot_e943f_faaba_9 = "__snapshot_e943f_faaba_9";
+ 211 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_9] = (__snapshot_e943f_faaba_9)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_9, null, null, [
+     · ────────────────────────────
+ 212 │         [
+ 213 │             ReactLynx.__DynamicPartChildren,
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationDrawer.tsx ×
+
+File: ../tamer-app-shell/src/NavigationDrawer.tsx:218:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[218:0]
+ 216 │     ], undefined, globDynamicComponentEntry, null, true);
+ 217 │ const __snapshot_e943f_faaba_7 = "__snapshot_e943f_faaba_7";
+ 218 │ ReactLynx.snapshotCreatorMap[__snapshot_e943f_faaba_7] = (__snapshot_e943f_faaba_7)=>ReactLynx.createSnapshot(__snapshot_e943f_faaba_7, null, null, [
+     · ────────────────────────────
+ 219 │         [
+ 220 │             ReactLynx.__DynamicPartSlot,
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationDrawer.tsx ×
+
+File: ../tamer-app-shell/src/NavigationRail.tsx:21:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[21:0]
+ 19 │ const RAIL_INDICATOR_HEIGHT = 32;
+ 20 │ const __snapshot_8803c_5fd41_2 = "__snapshot_8803c_5fd41_2";
+ 21 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_2] = (__snapshot_8803c_5fd41_2)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_2, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+    · ────────────────────────────
+ 22 │ const __snapshot_8803c_5fd41_3 = "__snapshot_8803c_5fd41_3";
+ 23 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_3] = (__snapshot_8803c_5fd41_3)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_3, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationRail.tsx ×
+
+File: ../tamer-app-shell/src/NavigationRail.tsx:23:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[23:0]
+ 21 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_2] = (__snapshot_8803c_5fd41_2)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_2, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+ 22 │ const __snapshot_8803c_5fd41_3 = "__snapshot_8803c_5fd41_3";
+ 23 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_3] = (__snapshot_8803c_5fd41_3)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_3, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+    · ────────────────────────────
+ 24 │ const __snapshot_8803c_5fd41_1 = "__snapshot_8803c_5fd41_1";
+ 25 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_1] = (__snapshot_8803c_5fd41_1)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_1, null, null, [
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationRail.tsx ×
+
+File: ../tamer-app-shell/src/NavigationRail.tsx:25:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[25:0]
+ 23 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_3] = (__snapshot_8803c_5fd41_3)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_3, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+ 24 │ const __snapshot_8803c_5fd41_1 = "__snapshot_8803c_5fd41_1";
+ 25 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_1] = (__snapshot_8803c_5fd41_1)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_1, null, null, [
+    · ────────────────────────────
+ 26 │         [
+ 27 │             ReactLynx.__DynamicPartSlot,
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationRail.tsx ×
+
+File: ../tamer-app-shell/src/NavigationRail.tsx:126:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[126:0]
+ 124 │ }
+ 125 │ const __snapshot_8803c_5fd41_5 = "__snapshot_8803c_5fd41_5";
+ 126 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_5] = (__snapshot_8803c_5fd41_5)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_5, null, null, [
+     · ────────────────────────────
+ 127 │         [
+ 128 │             ReactLynx.__DynamicPartChildren,
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationRail.tsx ×
+
+File: ../tamer-app-shell/src/NavigationRail.tsx:133:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[133:0]
+ 131 │     ], undefined, globDynamicComponentEntry, null, true);
+ 132 │ const __snapshot_8803c_5fd41_6 = "__snapshot_8803c_5fd41_6";
+ 133 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_6] = (__snapshot_8803c_5fd41_6)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_6, null, null, null, undefined, globDynamicComponentEntry, null, true);
+     · ────────────────────────────
+ 134 │ const __snapshot_8803c_5fd41_4 = "__snapshot_8803c_5fd41_4";
+ 135 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_4] = (__snapshot_8803c_5fd41_4)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_4, null, null, [
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationRail.tsx ×
+
+File: ../tamer-app-shell/src/NavigationRail.tsx:135:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[135:0]
+ 133 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_6] = (__snapshot_8803c_5fd41_6)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_6, null, null, null, undefined, globDynamicComponentEntry, null, true);
+ 134 │ const __snapshot_8803c_5fd41_4 = "__snapshot_8803c_5fd41_4";
+ 135 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_4] = (__snapshot_8803c_5fd41_4)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_4, null, null, [
+     · ────────────────────────────
+ 136 │         [
+ 137 │             ReactLynx.__DynamicPartChildren,
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationRail.tsx ×
+
+File: ../tamer-app-shell/src/NavigationRail.tsx:142:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[142:0]
+ 140 │     ], undefined, globDynamicComponentEntry, null, true);
+ 141 │ const __snapshot_8803c_5fd41_9 = "__snapshot_8803c_5fd41_9";
+ 142 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_9] = (__snapshot_8803c_5fd41_9)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_9, null, null, [
+     · ────────────────────────────
+ 143 │         [
+ 144 │             ReactLynx.__DynamicPartChildren,
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationRail.tsx ×
+
+File: ../tamer-app-shell/src/NavigationRail.tsx:149:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[149:0]
+ 147 │     ], undefined, globDynamicComponentEntry, null, true);
+ 148 │ const __snapshot_8803c_5fd41_8 = "__snapshot_8803c_5fd41_8";
+ 149 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_8] = (__snapshot_8803c_5fd41_8)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_8, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+     · ────────────────────────────
+ 150 │ const __snapshot_8803c_5fd41_10 = "__snapshot_8803c_5fd41_10";
+ 151 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_10] = (__snapshot_8803c_5fd41_10)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_10, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationRail.tsx ×
+
+File: ../tamer-app-shell/src/NavigationRail.tsx:151:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[151:0]
+ 149 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_8] = (__snapshot_8803c_5fd41_8)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_8, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+ 150 │ const __snapshot_8803c_5fd41_10 = "__snapshot_8803c_5fd41_10";
+ 151 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_10] = (__snapshot_8803c_5fd41_10)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_10, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+     · ────────────────────────────
+ 152 │ const __snapshot_8803c_5fd41_11 = "__snapshot_8803c_5fd41_11";
+ 153 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_11] = (__snapshot_8803c_5fd41_11)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_11, null, null, [
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationRail.tsx ×
+
+File: ../tamer-app-shell/src/NavigationRail.tsx:153:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[153:0]
+ 151 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_10] = (__snapshot_8803c_5fd41_10)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_10, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+ 152 │ const __snapshot_8803c_5fd41_11 = "__snapshot_8803c_5fd41_11";
+ 153 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_11] = (__snapshot_8803c_5fd41_11)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_11, null, null, [
+     · ────────────────────────────
+ 154 │         [
+ 155 │             ReactLynx.__DynamicPartChildren,
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationRail.tsx ×
+
+File: ../tamer-app-shell/src/NavigationRail.tsx:160:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+     ╭─[160:0]
+ 158 │     ], undefined, globDynamicComponentEntry, null, true);
+ 159 │ const __snapshot_8803c_5fd41_7 = "__snapshot_8803c_5fd41_7";
+ 160 │ ReactLynx.snapshotCreatorMap[__snapshot_8803c_5fd41_7] = (__snapshot_8803c_5fd41_7)=>ReactLynx.createSnapshot(__snapshot_8803c_5fd41_7, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, null, true);
+     · ────────────────────────────
+ 161 │ function NavRailItemView({ item, isActive, expanded, colors, onTap }) {
+ 162 │     var _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _item_iconSet;
+     ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/NavigationRail.tsx ×
+
+File: ../tamer-app-shell/src/floatingFab.tsx:40:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Component, SnapshotInstance, __ComponentIsPolyfill, __DynamicPartChildren, __DynamicPartChildren_0, __DynamicPartListChildren, __DynamicPartMultiChildren, __DynamicPartSlot, __dynamicImport, __page, __pageId, __root, createSnapshot, loadDynamicJS, loadLazyBundle, loadWorkletRuntime, options, process, registerWorkletOnBackground, snapshotCreateList, snapshotManager, transformRef, transformToWorklet, updateEvent, updateGesture, updateListItemPlatformInfo, updateRef, updateSpread, updateWorkletEvent, updateWorkletRef, withInitDataInState, wrapWithLynxComponent)
+    ╭─[40:0]
+ 38 │ }
+ 39 │ const __snapshot_d7d68_406f5_1 = "__snapshot_d7d68_406f5_1";
+ 40 │ ReactLynx.snapshotCreatorMap[__snapshot_d7d68_406f5_1] = (__snapshot_d7d68_406f5_1)=>ReactLynx.createSnapshot(__snapshot_d7d68_406f5_1, null, null, ReactLynx.__DynamicPartChildren_0, undefined, globDynamicComponentEntry, [
+    · ────────────────────────────
+ 41 │         0
+ 42 │     ], true);
+    ╰────
+Import traces (entry → error):
+  ./src/index.tsx
+  ./src/pages/index.tsx
+  ../tamer-app-shell/src/index.tsx
+  ../tamer-app-shell/src/floatingFab.tsx ×
+
+File: ../tamer-app-shell/src/floatingFab.tsx:74:1-28
+  × ESModulesLinkingError: export 'snapshotCreatorMap' (imported as 'ReactLynx') was not found in '@lynx-js/react/internal' (possible exports: BackgroundSnapshotInstance, Conpm error Lifecycle script `build` failed with error:
+npm error code 1
+npm error path /Volumes/Storage/Projects/tamer4lynx/packages/tamer-dev-client
+npm error workspace @tamer4lynx/tamer-dev-client@0.0.29
+npm error location /Volumes/Storage/Projects/tamer4lynx/packages/tamer-dev-client
+npm error command failed
+npm error command sh -c node ./scripts/rspeedy-build.mjs
+❌ Build process failed.
+error: script "build:android" exited with code 1

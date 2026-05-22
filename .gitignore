@@ -3,6 +3,8 @@ dist
 .env*
 .DS_Store
 *.tsbuildinfo
+/android/
+/ios/
 android/build
 android/app/build
 android/local.properties

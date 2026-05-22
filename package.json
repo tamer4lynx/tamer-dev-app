@@ -1,7 +1,7 @@
 {
   "name": "@tamer4lynx/tamer-dev-app",
   "private": true,
-  "version": "0.0.18",
+  "version": "0.0.19",
   "type": "module",
   "description": "Standalone Tamer4Lynx dev app - Expo Go-style QR scan and HMR",
   "repository": {
@@ -13,15 +13,20 @@
     "url": "https://github.com/tamer4lynx/tamer-dev-app/issues"
   },
   "scripts": {
-    "build": "node scripts/build-dev-client-bundle.cjs",
-    "link:native": "node ../../dist/index.js link"
+    "build": "node scripts/build.cjs",
+    "build:client": "node scripts/build-dev-client-bundle.cjs",
+    "prepare:native": "node scripts/prepare-native.cjs",
+    "link:native": "node ../../dist/index.js link",
+    "build:android": "node ../../dist/index.js build android -d",
+    "build:ios": "node ../../dist/index.js build ios -d"
   },
   "dependencies": {
-    "@tamer4lynx/tamer-dev-client": "^0.0.28",
+    "@tamer4lynx/tamer-dev-client": "^0.0.29",
     "@tamer4lynx/tamer-navigation": "^0.0.1",
     "@tamer4lynx/tamer-icons": "^0.0.7",
     "@tamer4lynx/tamer-insets": "^0.0.5",
     "@tamer4lynx/tamer-system-ui": "^0.0.4",
+    "@tamer4lynx/tamer-asset": "file:../tamer-asset",
     "@tamer4lynx/tamer-webview": "^0.0.2",
     "@tamer4lynx/tamer-transports": "^0.0.9",
     "@tamer4lynx/tamer-linking": "^0.0.5",
