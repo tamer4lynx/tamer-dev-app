@@ -1,7 +1,7 @@
 {
   "name": "@tamer4lynx/tamer-dev-app",
   "private": true,
-  "version": "0.0.20",
+  "version": "0.0.35",
   "type": "module",
   "description": "Standalone Tamer4Lynx dev app - Expo Go-style QR scan and HMR",
   "repository": {
@@ -21,7 +21,7 @@
     "build:ios": "node ../../dist/index.js build ios -d"
   },
   "dependencies": {
-    "@tamer4lynx/tamer-dev-client": "^0.0.29",
+    "@tamer4lynx/tamer-dev-client": "^0.0.35",
     "@tamer4lynx/tamer-navigation": "^0.0.1",
     "@tamer4lynx/tamer-icons": "^0.0.7",
     "@tamer4lynx/tamer-insets": "^0.0.5",
