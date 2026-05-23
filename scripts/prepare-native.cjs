@@ -49,5 +49,40 @@ fs.rmSync(path.join(appRoot, 'ios'), {
 });
 
 runCli(['android', 'create', '--release'], env);
+
+// Patch versionName in build.gradle.kts to match package.json version
+const pkg = JSON.parse(fs.readFileSync(path.join(appRoot, 'package.json'), 'utf8'));
+const appVersion = pkg.version ?? '1.0';
+const gradlePath = path.join(appRoot, 'android', 'app', 'build.gradle.kts');
+if (fs.existsSync(gradlePath)) {
+  let gradle = fs.readFileSync(gradlePath, 'utf8');
+  gradle = gradle.replace(/versionName = ".*?"/, `versionName = "${appVersion}"`);
+  fs.writeFileSync(gradlePath, gradle);
+  console.log(`✅ Patched Android versionName → ${appVersion}`);
+}
+
 runCli(['sync', 'ios'], env);
+
+// Patch iOS MARKETING_VERSION and CFBundleShortVersionString
+const pbxprojPath = path.join(appRoot, 'ios', 'TamerDevApp.xcodeproj', 'project.pbxproj');
+if (fs.existsSync(pbxprojPath)) {
+  let pbx = fs.readFileSync(pbxprojPath, 'utf8');
+  pbx = pbx.replace(/MARKETING_VERSION = ".*?";/g, `MARKETING_VERSION = "${appVersion}";`);
+  fs.writeFileSync(pbxprojPath, pbx);
+}
+const infoPlistPath = path.join(appRoot, 'ios', 'TamerDevApp', 'Info.plist');
+if (fs.existsSync(infoPlistPath)) {
+  let plist = fs.readFileSync(infoPlistPath, 'utf8');
+  plist = plist.replace(
+    /(<key>CFBundleShortVersionString<\/key>\s*<string>)[^<]*(<\/string>)/,
+    `$1${appVersion}$2`
+  );
+  plist = plist.replace(
+    /(<key>CFBundleVersion<\/key>\s*<string>)[^<]*(<\/string>)/,
+    `$1${appVersion}$2`
+  );
+  fs.writeFileSync(infoPlistPath, plist);
+  console.log(`✅ Patched iOS version → ${appVersion}`);
+}
+
 runCli(['link'], env);
